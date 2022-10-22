@@ -1,2 +1,2 @@
-# climbeat-repo
+# Climbeat
 a repository for Climbeat
