@@ -23,7 +23,7 @@ public class LevelEditor : MonoBehaviour
     public TextMeshProUGUI lastSecTxt;
     public GameObject canvas;
 
-    //TextMeshProUGUI[] secTxts = new TextMeshProUGUI[0];
+    public TextMeshProUGUI[] secTxts = new TextMeshProUGUI[0];
 
     public TMP_InputField lvlName;
     public TextMeshProUGUI lvlNameTxt;
@@ -33,16 +33,6 @@ public class LevelEditor : MonoBehaviour
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
-    }
-
-    private void Start()
-    {
-        dTime = PlayerPrefs.GetFloat("dTime");
-    }
-
-    private void Update()
-    {
-        dTime += Time.deltaTime;
     }
 
     private void SamplesSave()
@@ -60,6 +50,7 @@ public class LevelEditor : MonoBehaviour
     {
         FileBrowser.SetFilters(false, new FileBrowser.Filter("Not Virus", ".notvirus"));
         FileBrowser.AddQuickLink("Users", "C:\\Users", null);
+        FileBrowser.AddQuickLink("Downloads", "C:\\Downloads", null);
 
         StartCoroutine("ShowContDialog");
     }
@@ -68,6 +59,7 @@ public class LevelEditor : MonoBehaviour
     {
         FileBrowser.SetFilters(false, new FileBrowser.Filter("Wav", ".wav"));
         FileBrowser.AddQuickLink("Users", "C:\\Users", null);
+        FileBrowser.AddQuickLink("Downloads", "C:\\Downloads", null);
 
         StartCoroutine("ShowLoadDialog");
     }
@@ -75,7 +67,6 @@ public class LevelEditor : MonoBehaviour
     public void SaveSong()
     {
         string name;
-
         if(lvlNameTxt.text == "")
         {
             name = lvlName.text;
@@ -84,6 +75,12 @@ public class LevelEditor : MonoBehaviour
         {
             name = lvlNameTxt.text;
         }
+
+        for (int i = 0; i < secTxts.Length; i++)
+        {
+            secs[i] = float.Parse(secTxts[i].text);
+        }
+
         SaveSystem.SaveLevel(this, name);
     }
 
@@ -165,7 +162,7 @@ public class LevelEditor : MonoBehaviour
             {
                 secs[i] = oldSecs[i];
             }
-
+            
             TextMeshProUGUI sec = Instantiate(lastSecTxt);
             sec.transform.SetParent(canvas.transform);
             sec.text = secInput.text;
@@ -177,12 +174,9 @@ public class LevelEditor : MonoBehaviour
             sec.transform.localScale = Vector3.one;
             sec.rectTransform.localPosition = new Vector2(lastPos.x, lastPos.y + 200);
 
-            secs[secs.Length - 1] = float.Parse(secInput.text);
-
             lastSecTxt = sec;
             sec.gameObject.SetActive(true);
 
-            /*
             TextMeshProUGUI[] newTxts = new TextMeshProUGUI[secs.Length];
             for (int i = 0; i < secTxts.Length; i++)
             {
@@ -190,7 +184,6 @@ public class LevelEditor : MonoBehaviour
             }
             newTxts[newTxts.Length - 1] = sec;
             secTxts = newTxts;
-            */
 
             return sec;
         }
@@ -220,7 +213,17 @@ public class LevelEditor : MonoBehaviour
 
             lastSecTxt = sec;
             sec.gameObject.SetActive(true);
+
+            TextMeshProUGUI[] oldTxts = secTxts;
+            secTxts = new TextMeshProUGUI[secTxts.Length + 1];
+
+            for (int j = 0; j < oldTxts.Length; j++)
+            {
+                secTxts[j] = oldTxts[j];
+            }
+            secTxts[secTxts.Length - 1] = sec;
         }
+        secs = new float[secTxts.Length];
     }
 
     public void LoadScene(int ind)
@@ -233,7 +236,6 @@ public class LevelEditor : MonoBehaviour
     {
         GameObject secObj = EventSystem.current.currentSelectedGameObject.GetComponentInParent<TextMeshProUGUI>().gameObject;
         TextMeshProUGUI secTxt = secObj.GetComponentInParent<TextMeshProUGUI>();
-        float sec = float.Parse(secTxt.text);
 
         if (secTxt.color == Color.white)
         {
@@ -241,15 +243,36 @@ public class LevelEditor : MonoBehaviour
         }
         else if(secTxt.color == Color.blue)
         {
-            for (int i = 0; i < secs.Length; i++)
-            {
-                if(secs[i] == sec)
-                {
-                    secs[i] = float.Parse(secInput.text);
-                    secTxt.text = secInput.text;
-                }
-            }
+            secTxt.text = secInput.text;
             secTxt.color = Color.white;
+        }
+    }
+
+    public void DeleteSec()
+    {
+        string sec = secInput.text;
+
+        for (int i = 0; i < secTxts.Length; i++)
+        {
+            if(secTxts[i].text == sec)
+            {
+                Destroy(secTxts[i]);
+
+                for (int j = i; j < secTxts.Length - 1; j++)
+                {
+                    secTxts[j] = secTxts[j + 1];
+                    Debug.Log(j);
+                }
+
+                TextMeshProUGUI[] newTxts = new TextMeshProUGUI[secTxts.Length - 1];
+                for (int k = 0; k < newTxts.Length; k++)
+                {
+                    newTxts[k] = secTxts[k];
+                }
+                secTxts = newTxts;
+
+                return;
+            }
         }
     }
 }

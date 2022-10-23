@@ -15,16 +15,6 @@ public class MainMenu : MonoBehaviour
         PlayerPrefs.DeleteAll();
     }
 
-    private void Start()
-    {
-        time = PlayerPrefs.GetFloat("dTime", 0);
-    }
-
-    private void Update()
-    {
-        time += Time.deltaTime;
-    }
-
     public void Play()
     {
         FileBrowser.SetFilters(false, new FileBrowser.Filter("Not Virus", ".notvirus"));

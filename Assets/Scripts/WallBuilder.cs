@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class WallBuilder : MonoBehaviour
 {
+    public GameManager gameManager;
+    float gTime;
+
     public float[] secs = new float[0];
     bool startTheThing = false;
 
@@ -15,15 +18,18 @@ public class WallBuilder : MonoBehaviour
 
     private void Awake()
     {
+        gameManager = FindObjectOfType<GameManager>();
+
         lvl = PlayerPrefs.GetString("Path");
         Debug.Log(lvl);
 
         LevelData data = SaveSystem.LoadLevel(lvl);
         secs = data.Secs;
 
+
         for (int i = 0; i < secs.Length; i++)
         {
-            secs[i] += PlayerPrefs.GetFloat("dTime");
+            secs[i] += gameManager.globTime;
         }
 
         int secLen = secs.Length;
@@ -67,6 +73,8 @@ public class WallBuilder : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(Time.deltaTime);
+
         if (Input.GetMouseButtonDown(0))
         {
             startTheThing = true;
