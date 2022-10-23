@@ -76,6 +76,7 @@ public class LevelEditor : MonoBehaviour
             name = lvlNameTxt.text;
         }
 
+        secs = new float[secTxts.Length];
         for (int i = 0; i < secTxts.Length; i++)
         {
             secs[i] = float.Parse(secTxts[i].text);
@@ -270,6 +271,7 @@ public class LevelEditor : MonoBehaviour
                     newTxts[k] = secTxts[k];
                 }
                 secTxts = newTxts;
+                lastSecTxt = secTxts[secTxts.Length - 1];
 
                 return;
             }
