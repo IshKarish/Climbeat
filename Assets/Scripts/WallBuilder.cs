@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using HexabodyVR;
+using HurricaneVR;
 
 public class WallBuilder : MonoBehaviour
 {
@@ -20,7 +22,7 @@ public class WallBuilder : MonoBehaviour
     {
         gameManager = FindObjectOfType<GameManager>();
 
-        lvl = PlayerPrefs.GetString("Path");
+        lvl = Application.persistentDataPath + "/TheGuyWhoAlwaysFail.notvirus";
         Debug.Log(lvl);
 
         LevelData data = SaveSystem.LoadLevel(lvl);
@@ -29,7 +31,7 @@ public class WallBuilder : MonoBehaviour
 
         for (int i = 0; i < secs.Length; i++)
         {
-            secs[i] += gameManager.globTime;
+            secs[i] += Time.deltaTime;
         }
 
         int secLen = secs.Length;
@@ -73,14 +75,6 @@ public class WallBuilder : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(Time.deltaTime);
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            startTheThing = true;
-            aud.Play();
-        }
-
         if (startTheThing)
         {
             for (int i = 0; i < secs.Length - 1; i++)
@@ -88,6 +82,7 @@ public class WallBuilder : MonoBehaviour
                 if (Time.time >= secs[i])
                 {
                     cubes[i].GetComponent<Renderer>().material.color = Color.red;
+                    cubes[i].GetComponent<HurricaneVR.Framework.Core.HVRGrabbable>().enabled = true;
                 }
             }
         }
@@ -97,6 +92,15 @@ public class WallBuilder : MonoBehaviour
             {
                 secs[i] += Time.deltaTime;
             }
+        }
+    }
+
+    public void start()
+    {
+        if(!startTheThing)
+        {
+            startTheThing = true;
+            aud.Play();
         }
     }
 
@@ -118,7 +122,7 @@ public class WallBuilder : MonoBehaviour
 
         Vector3 lastPos = lastCube.transform.position;
 
-        float rand = Random.Range(-1.4f, 1.4f);
+        float rand = Random.Range(-.4f, .4f);
 
         if (lastPos.x <= -3.5f)
         {

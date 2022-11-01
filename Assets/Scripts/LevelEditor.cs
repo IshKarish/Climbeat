@@ -11,6 +11,7 @@ using UnityEngine.EventSystems;
 
 public class LevelEditor : MonoBehaviour
 {
+    public string name;
     public float[] secs = new float[0];
 
     public AudioClip song;
@@ -27,6 +28,8 @@ public class LevelEditor : MonoBehaviour
 
     public TMP_InputField lvlName;
     public TextMeshProUGUI lvlNameTxt;
+
+    public GameObject loadPanel;
 
     float dTime = 0;
 
@@ -66,8 +69,7 @@ public class LevelEditor : MonoBehaviour
 
     public void SaveSong()
     {
-        string name;
-        if(lvlNameTxt.text == "")
+        if (lvlNameTxt.text == "")
         {
             name = lvlName.text;
         }
@@ -81,6 +83,8 @@ public class LevelEditor : MonoBehaviour
         {
             secs[i] = float.Parse(secTxts[i].text);
         }
+
+        SamplesSave();
 
         SaveSystem.SaveLevel(this, name);
     }
@@ -98,14 +102,14 @@ public class LevelEditor : MonoBehaviour
 
             LevelData data = SaveSystem.LoadLevel(path);
             secs = data.Secs;
-            lvlNameTxt.text = data.lvlName;
+            name = data.lvlName;
+            lvlNameTxt.text = name;
 
-            /*
+            
             song = AudioClip.Create("Clip", data.samplesLeangth, data.channels, data.frequency, false);
             song.SetData(data.samples, 0);
             audioSource.clip = song;
             audioSource.Play();
-            */
 
             ShowOldSec();
         }
@@ -142,8 +146,6 @@ public class LevelEditor : MonoBehaviour
 
             audioSource.clip = song;
             audioSource.Play();
-
-            SamplesSave();
         }
     }
 
@@ -276,5 +278,12 @@ public class LevelEditor : MonoBehaviour
                 return;
             }
         }
+    }
+
+    IEnumerator LoadingScreen(float loadTime)
+    {
+        loadPanel.SetActive(true);
+        yield return new WaitForSeconds(loadTime);
+        loadPanel.SetActive(false);
     }
 }
