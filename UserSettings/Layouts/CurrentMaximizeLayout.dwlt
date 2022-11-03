@@ -26,7 +26,7 @@ MonoBehaviour:
   m_MinSize: {x: 400, y: 200}
   m_MaxSize: {x: 32384, y: 16192}
   vertical: 0
-  controlID: 13073
+  controlID: 13428
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -177,10 +177,10 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 71.20001}
-      m_SelectedIDs: be1d0000
+      scrollPos: {x: 0, y: 0}
+      m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 426efeff666efeff8e6efeff246ffeff806ffeff866ffeff3478feff521fffffdcfaffffe2faffffecfaffff02fbffff04fbffff
+      m_ExpandedIDs: 426efeff666efeff8e6efeff866ffeff3478feff521fffffdcfaffffe2faffffecfaffff02fbffff04fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -228,7 +228,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 13074
+  controlID: 13429
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -484,9 +484,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 5.0998964, y: 0.16810322, z: -6.572816}
+    m_Target: {x: 0.8576032, y: -0.6224117, z: -4.3164463}
     speed: 2
-    m_Value: {x: 5.0998964, y: 0.16810322, z: -6.572816}
+    m_Value: {x: 0.8576032, y: -0.6224117, z: -4.3164463}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -533,13 +533,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.11492323, y: 0.8848265, z: -0.30783838, w: 0.33032805}
+    m_Target: {x: -0.0037199615, y: 0.9750604, z: -0.016392378, w: -0.22131968}
     speed: 2
-    m_Value: {x: 0.114923224, y: 0.8848264, z: -0.30783838, w: 0.33032805}
+    m_Value: {x: -0.0025436212, y: 0.97833073, z: -0.012043892, w: -0.20668218}
   m_Size:
-    m_Target: 7.3087697
+    m_Target: 0.92115873
     speed: 2
-    m_Value: 7.3087697
+    m_Value: 0.92115873
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -751,7 +751,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 13037
+  controlID: 13383
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -821,22 +821,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets/Materials
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 53
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/Materials
   m_LastFoldersGridSize: 53
   m_LastProjectPath: C:\Unity\Climbeat
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 3e7d0000
-    m_LastClickedID: 32062
-    m_ExpandedIDs: 000000002e7d000000ca9a3bffffff7f
+    scrollPos: {x: 0, y: 226.6}
+    m_SelectedIDs: 367d0000
+    m_LastClickedID: 32054
+    m_ExpandedIDs: 000000002e7d0000347d00002ca0000038a20000a0a2000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -889,8 +889,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: be1d0000
-    m_LastClickedInstanceID: 7614
+    m_SelectedInstanceIDs: 
+    m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: 00000000
     m_RenameOverlay:

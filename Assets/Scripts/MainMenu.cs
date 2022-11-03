@@ -8,11 +8,21 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     string path;
+    string[] paths = new string[0];
     float time = 0;
 
     private void Awake()
     {
         PlayerPrefs.DeleteAll();
+    }
+
+    private void Start()
+    {
+        paths = Directory.GetFiles("C://Users/Daniel/Downloads", ".notvirus");
+        for (int i = 0; i < paths.Length; i++)
+        {
+            Debug.Log(paths[i]);
+        }
     }
 
     public void Play()
