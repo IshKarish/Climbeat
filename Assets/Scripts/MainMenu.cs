@@ -7,21 +7,27 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public Transform pivot;
+
     string path;
     string[] paths = new string[0];
     float time = 0;
 
+    GameManager gameManager;
+
     private void Awake()
     {
         PlayerPrefs.DeleteAll();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     private void Start()
     {
-        paths = Directory.GetFiles("C://Users/Daniel/Downloads", ".notvirus");
-        for (int i = 0; i < paths.Length; i++)
+        paths = Directory.GetFiles(Application.persistentDataPath);
+        for (int i = 0; i < 1; i++)
         {
-            Debug.Log(paths[i]);
+            LevelData data = SaveSystem.LoadLevel(paths[i]);
+            gameManager.write(data.lvlName, pivot.transform.position);
         }
     }
 

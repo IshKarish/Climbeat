@@ -53,6 +53,7 @@ public class LevelEditor : MonoBehaviour
     {
         FileBrowser.SetFilters(false, new FileBrowser.Filter("Not Virus", ".notvirus"));
         FileBrowser.AddQuickLink("Users", "C:\\Users", null);
+        FileBrowser.AddQuickLink("Climbeat", Application.persistentDataPath, null);
         FileBrowser.AddQuickLink("Downloads", "C:\\Downloads", null);
 
         StartCoroutine("ShowContDialog");
