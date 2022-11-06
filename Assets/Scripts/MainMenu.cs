@@ -30,22 +30,26 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         paths = Directory.GetFiles(Application.persistentDataPath);
-        lvls = new string[paths.Length];
-        lvlTxts = new GameObject[paths.Length];
-
-        for (int i = 0; i < paths.Length; i++)
+        
+        if(paths.Length > 0)
         {
-            LevelData data = SaveSystem.LoadLevel(paths[i]);
-            lvls[i] = data.lvlName;
+            lvls = new string[paths.Length];
+            lvlTxts = new GameObject[paths.Length];
 
-            GameObject obj = gameManager.write(data.lvlName, pivot.transform.position, lvlTxtSize);
+            for (int i = 0; i < paths.Length; i++)
+            {
+                LevelData data = SaveSystem.LoadLevel(paths[i]);
+                lvls[i] = data.lvlName;
 
-            pivot.position = new Vector3(pivot.position.x, pivot.position.y - 1, pivot.position.z);
+                GameObject obj = gameManager.write(data.lvlName, pivot.transform.position, lvlTxtSize);
 
-            lvlTxts[i] = obj;
+                pivot.position = new Vector3(pivot.position.x, pivot.position.y - 1, pivot.position.z);
+
+                lvlTxts[i] = obj;
+            }
+
+            ChangeTxtMat(0, chooseMat);
         }
-
-        ChangeTxtMat(0, chooseMat);
     }
 
     void ChangeTxtMat(int ind, Material mat)

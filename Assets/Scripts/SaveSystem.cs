@@ -3,7 +3,7 @@ using System.IO;
 
 public static class SaveSystem
 {
-    static string path = Application.persistentDataPath;
+    static string path = Application.persistentDataPath + "/CustomLevels";
     static string format = ".notvirus";
 
     public static void SaveLevel (LevelEditor editor, string name)
