@@ -71,17 +71,17 @@ public class MainMenu : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.DownArrow))
         {
-
+            LvlDown();
         }
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            
+            LvlUp();
         }
 
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            
+            EnterLvl();
         }
     }
 
