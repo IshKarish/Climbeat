@@ -171,6 +171,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pivot: {fileID: 977119525}
   lvlTxtSize: {x: 0.35, y: 0.35, z: 0.35}
+  chooseMat: {fileID: 2100000, guid: 12b67e4cdefa4924fb369669e196dc14, type: 2}
+  txtMat: {fileID: 2100000, guid: e937fd50ed076f74d8433148dc3a1ddb, type: 2}
 --- !u!1 &6188822 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3055459396371753944, guid: 1e62a481c0516204ab49532ad55555bf,
@@ -5188,7 +5190,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -6619,7 +6621,7 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
