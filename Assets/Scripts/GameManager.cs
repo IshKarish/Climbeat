@@ -12,7 +12,10 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        Directory.CreateDirectory(Application.persistentDataPath + "/Levels");
+        if(!Directory.Exists(Application.persistentDataPath + "/CustomLevels"))
+        {
+            Directory.CreateDirectory(Application.persistentDataPath + "/CustomLevels");
+        }
 
         DontDestroyOnLoad(this);
     }

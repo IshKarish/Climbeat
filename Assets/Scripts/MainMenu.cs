@@ -29,7 +29,7 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
-        paths = Directory.GetFiles(Application.persistentDataPath);
+        paths = Directory.GetFiles(Application.persistentDataPath + "/CustomLevels");
         
         if(paths.Length > 0)
         {
