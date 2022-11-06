@@ -49,45 +49,72 @@ public class MainMenu : MonoBehaviour
             }
 
             ChangeTxtMat(0, chooseMat);
+            path = paths[0];
         }
     }
 
     void ChangeTxtMat(int ind, Material mat)
     {
         curLvl = lvlTxts[ind];
-        for (int i = 0; i < lvls[ind].Length; i++)
+        for (int i = 0; i < lvlTxts[ind].transform.childCount; i++)
         {
             curLvl.transform.GetChild(i).GetComponent<Renderer>().material = mat;
+        }
+
+        if(mat == chooseMat)
+        {
+            path = paths[ind];
         }
     }
 
     private void Update()
     {
-        if(Input.GetKey(KeyCode.DownArrow))
+        if(Input.GetKeyDown(KeyCode.DownArrow))
         {
-            for (int i = 0; i < lvlTxts.Length; i++)
-            {
-                if(lvlTxts[i] = curLvl)
-                {
-                    ChangeTxtMat(i, txtMat);
-                    ChangeTxtMat(i + 1, chooseMat);
-                    break;
-                }
-            }
+
         }
 
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            for (int i = 0; i < lvlTxts.Length; i++)
+            
+        }
+
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            
+        }
+    }
+
+    public void LvlDown()
+    {
+        for (int i = 0; i < lvlTxts.Length; i++)
+        {
+            if (lvlTxts[i] == curLvl && curLvl != lvlTxts[lvlTxts.Length - 1])
             {
-                if (lvlTxts[i] = curLvl)
-                {
-                    ChangeTxtMat(i, txtMat);
-                    ChangeTxtMat(i - 1, chooseMat);
-                    break;
-                }
+                ChangeTxtMat(i, txtMat);
+                ChangeTxtMat(i + 1, chooseMat);
+                break;
             }
         }
+    }
+
+    public void LvlUp()
+    {
+        for (int i = 0; i < lvlTxts.Length; i++)
+        {
+            if (lvlTxts[i] == curLvl && curLvl != lvlTxts[0])
+            {
+                ChangeTxtMat(i, txtMat);
+                ChangeTxtMat(i - 1, chooseMat);
+                break;
+            }
+        }
+    }
+
+    public void EnterLvl()
+    {
+        PlayerPrefs.SetString("Path", path);
+        LoadScene(1);
     }
 
     public void Play()

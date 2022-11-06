@@ -22,7 +22,7 @@ public class WallBuilder : MonoBehaviour
     {
         gameManager = FindObjectOfType<GameManager>();
 
-        lvl = Application.persistentDataPath + "/TheGuyWhoAlwaysFail.notvirus";
+        lvl = PlayerPrefs.GetString("Path");
         Debug.Log(lvl);
 
         LevelData data = SaveSystem.LoadLevel(lvl);
