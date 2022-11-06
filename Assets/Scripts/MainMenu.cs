@@ -8,9 +8,15 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     public Transform pivot;
+    public Vector3 lvlTxtSize = new Vector3(0.6f, 0.6f, 0.6f);
+    public Material chooseMat;
+    public Material txtMat;
 
     string path;
     string[] paths = new string[0];
+    string[] lvls = new string[0];
+    GameObject[] lvlTxts = new GameObject[0];
+    GameObject curLvl;
     float time = 0;
 
     GameManager gameManager;
@@ -24,10 +30,59 @@ public class MainMenu : MonoBehaviour
     private void Start()
     {
         paths = Directory.GetFiles(Application.persistentDataPath);
-        for (int i = 0; i < 1; i++)
+        lvls = new string[paths.Length];
+        lvlTxts = new GameObject[paths.Length];
+
+        for (int i = 0; i < paths.Length; i++)
         {
             LevelData data = SaveSystem.LoadLevel(paths[i]);
-            gameManager.write(data.lvlName, pivot.transform.position);
+            lvls[i] = data.lvlName;
+
+            GameObject obj = gameManager.write(data.lvlName, pivot.transform.position, lvlTxtSize);
+
+            pivot.position = new Vector3(pivot.position.x, pivot.position.y - 1, pivot.position.z);
+
+            lvlTxts[i] = obj;
+        }
+
+        ChangeTxtMat(0, chooseMat);
+    }
+
+    void ChangeTxtMat(int ind, Material mat)
+    {
+        curLvl = lvlTxts[ind];
+        for (int i = 0; i < lvls[ind].Length; i++)
+        {
+            curLvl.transform.GetChild(i).GetComponent<Renderer>().material = mat;
+        }
+    }
+
+    private void Update()
+    {
+        if(Input.GetKey(KeyCode.DownArrow))
+        {
+            for (int i = 0; i < lvlTxts.Length; i++)
+            {
+                if(lvlTxts[i] = curLvl)
+                {
+                    ChangeTxtMat(i, txtMat);
+                    ChangeTxtMat(i + 1, chooseMat);
+                    break;
+                }
+            }
+        }
+
+        if (Input.GetKey(KeyCode.UpArrow))
+        {
+            for (int i = 0; i < lvlTxts.Length; i++)
+            {
+                if (lvlTxts[i] = curLvl)
+                {
+                    ChangeTxtMat(i, txtMat);
+                    ChangeTxtMat(i - 1, chooseMat);
+                    break;
+                }
+            }
         }
     }
 

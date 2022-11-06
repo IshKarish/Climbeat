@@ -170,6 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pivot: {fileID: 977119525}
+  lvlTxtSize: {x: 0.35, y: 0.35, z: 0.35}
 --- !u!1 &6188822 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3055459396371753944, guid: 1e62a481c0516204ab49532ad55555bf,
@@ -8282,7 +8283,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 977119524}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.75, y: -4.25, z: 7.75}
+  m_LocalPosition: {x: 3.75, y: -1, z: 7.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

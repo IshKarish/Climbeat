@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
         globTime += Time.deltaTime;
     }
 
-    public void write(string txt, Vector3 pivot)
+    public GameObject write(string txt, Vector3 pivot, Vector3 size)
     {
         GameObject txt3d = new GameObject();
         txt3d.name = txt + "Txt";
@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
         char[] chars = txt.ToUpper().ToCharArray();
 
         float half = 0;
-        if (txt.Length % 2 == 0) half = (chars.Length / 2) - 2; else half = (chars.Length / 2);
+        if (txt.Length % 2 == 0) half = (chars.Length / 2) - 2; else half = (chars.Length / 2) - 1;
 
         for (int i = 0; i < chars.Length; i++)
         {
@@ -50,7 +50,9 @@ public class GameManager : MonoBehaviour
 
         txt3d.transform.position = pivot;
         txt3d.transform.rotation = Quaternion.Euler(0, -180, 0);
-        txt3d.transform.localScale = new Vector3(.6f, .6f, .6f);
+        txt3d.transform.localScale = size;
+        
+        return txt3d;
     }
 
     public void LoadScene(int ind)
