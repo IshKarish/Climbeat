@@ -75,6 +75,8 @@ public class WallBuilder : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Return)) start();
+
         if (startTheThing)
         {
             for (int i = 0; i < secs.Length - 1; i++)
@@ -101,17 +103,6 @@ public class WallBuilder : MonoBehaviour
         {
             startTheThing = true;
             aud.Play();
-        }
-    }
-
-    private void FixedUpdate()
-    {
-        Camera cam = Camera.main;
-        Vector3 camPos = cam.transform.position;
-
-        if (startTheThing)
-        {
-            cam.transform.position = Vector3.Lerp(camPos, new Vector3(camPos.x, camPos.y + 1, camPos.z), Time.deltaTime);
         }
     }
 
