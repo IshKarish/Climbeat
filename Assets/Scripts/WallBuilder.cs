@@ -31,7 +31,7 @@ public class WallBuilder : MonoBehaviour
 
         for (int i = 0; i < secs.Length; i++)
         {
-            secs[i] += Time.deltaTime;
+            secs[i] += gameManager.globTime;
         }
 
         int secLen = secs.Length;
@@ -59,12 +59,14 @@ public class WallBuilder : MonoBehaviour
             nc.name = "cube " + i;
             //nc.transform.SetParent(transform);
             nc.GetComponent<Renderer>().material.color = Color.white;
+            //cubes[i].GetComponent<HurricaneVR.Framework.Core.HVRGrabbable>().enabled = false;
             cubes[i] = nc;
         }
 
+        cubes[0].GetComponent<HurricaneVR.Framework.Core.HVRGrabbable>().enabled = true;
         Destroy(cubes[cubes.Length-1]);
 
-        PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteKey("Path");
     }
 
     private void Start()
@@ -127,6 +129,8 @@ public class WallBuilder : MonoBehaviour
         {
             newCube.transform.position = new Vector3(lastPos.x + rand, lastPos.y + 1, lastPos.z);
         }
+
+        newCube.GetComponent<HurricaneVR.Framework.Core.HVRGrabbable>().enabled = false;
 
         return newCube;
     }

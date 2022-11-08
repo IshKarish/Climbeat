@@ -11,6 +11,9 @@ using UnityEngine.EventSystems;
 
 public class LevelEditor : MonoBehaviour
 {
+    public GameObject openPanel;
+    public GameObject editorPanel;
+
     public string name;
     public float[] secs = new float[0];
 
@@ -61,6 +64,7 @@ public class LevelEditor : MonoBehaviour
 
     public void UploadSong()
     {
+        
         FileBrowser.SetFilters(false, new FileBrowser.Filter("Wav", ".wav"));
         FileBrowser.AddQuickLink("Users", "C:\\Users", null);
         FileBrowser.AddQuickLink("Downloads", "C:\\Downloads", null);
@@ -113,6 +117,7 @@ public class LevelEditor : MonoBehaviour
             audioSource.Play();
 
             ShowOldSec();
+            changePanel(openPanel, editorPanel);
         }
     }
 
@@ -128,6 +133,7 @@ public class LevelEditor : MonoBehaviour
             Debug.Log(path);
 
             StartCoroutine("GetAudio");
+            changePanel(openPanel, editorPanel);
         }
     }
 
@@ -286,5 +292,11 @@ public class LevelEditor : MonoBehaviour
         loadPanel.SetActive(true);
         yield return new WaitForSeconds(loadTime);
         loadPanel.SetActive(false);
+    }
+
+    void changePanel(GameObject first, GameObject second)
+    {
+        first.SetActive(false);
+        second.SetActive(true);
     }
 }

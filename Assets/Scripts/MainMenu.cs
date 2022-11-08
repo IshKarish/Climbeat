@@ -23,7 +23,7 @@ public class MainMenu : MonoBehaviour
 
     private void Awake()
     {
-        PlayerPrefs.DeleteAll();
+        PlayerPrefs.DeleteKey("Path");
         gameManager = FindObjectOfType<GameManager>();
     }
 
