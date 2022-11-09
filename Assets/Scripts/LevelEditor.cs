@@ -1,44 +1,72 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using SimpleFileBrowser;
 using UnityEngine.Networking;
-using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 
 public class LevelEditor : MonoBehaviour
 {
+    public GameObject ScrollView;
+
+    [Header("Panels")]
     public GameObject openPanel;
     public GameObject editorPanel;
+    public GameObject loadPanel;
 
-    public string name;
-    public float[] secs = new float[0];
+    [Header("Buttons")]
+    public GameObject enterBtn;
+    public GameObject delBtn;
 
-    public AudioClip song;
+    [Header("Inputs")]
+    public TMP_InputField lvlNameInput;
+    public TMP_InputField secInput;
+
+    [Header("Texts")]
+    public TextMeshProUGUI lastSecTxt;
+    public TextMeshProUGUI lvlNameTxt;
+
+    [Space(5)]
+
+    TextMeshProUGUI[] secTxts = new TextMeshProUGUI[0];
+
     AudioSource audioSource;
-    public float[] samples;
+    [HideInInspector] public AudioClip song;
+
+    [HideInInspector]public float[] samples;
+    [HideInInspector] public float[] secs = new float[0];
 
     string path;
 
-    public TMP_InputField secInput;
-    public TextMeshProUGUI lastSecTxt;
-    public GameObject canvas;
-
-    public TextMeshProUGUI[] secTxts = new TextMeshProUGUI[0];
-
-    public TMP_InputField lvlName;
-    public TextMeshProUGUI lvlNameTxt;
-
-    public GameObject loadPanel;
-
-    float dTime = 0;
 
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+    }
+
+    private void Update()
+    {
+        if (secInput.text == "")
+        {
+            delBtn.SetActive(false);
+            enterBtn.SetActive(false);
+        }
+    }
+
+    public void OnInput()
+    {
+        if (secInput.text == "")
+        {
+            delBtn.SetActive(false);
+            enterBtn.SetActive(false);
+        }
+        else
+        {
+            for (int i = 0; i < secTxts.Length; i++) if (secInput.text == secTxts[i].text) delBtn.SetActive(true); else delBtn.SetActive(false);
+            enterBtn.SetActive(true);
+        }
     }
 
     private void SamplesSave()
@@ -57,17 +85,16 @@ public class LevelEditor : MonoBehaviour
         FileBrowser.SetFilters(false, new FileBrowser.Filter("Not Virus", ".notvirus"));
         FileBrowser.AddQuickLink("Users", "C:\\Users", null);
         FileBrowser.AddQuickLink("Climbeat", Application.persistentDataPath, null);
-        FileBrowser.AddQuickLink("Downloads", "C:\\Downloads", null);
+        //FileBrowser.AddQuickLink("Downloads", "C:\\Downloads", null);
 
         StartCoroutine("ShowContDialog");
     }
 
     public void UploadSong()
     {
-        
         FileBrowser.SetFilters(false, new FileBrowser.Filter("Wav", ".wav"));
         FileBrowser.AddQuickLink("Users", "C:\\Users", null);
-        FileBrowser.AddQuickLink("Downloads", "C:\\Downloads", null);
+        //FileBrowser.AddQuickLink("Downloads", "C:\\Downloads", null);
 
         StartCoroutine("ShowLoadDialog");
     }
@@ -76,7 +103,7 @@ public class LevelEditor : MonoBehaviour
     {
         if (lvlNameTxt.text == "")
         {
-            name = lvlName.text;
+            name = lvlNameInput.text;
         }
         else
         {
@@ -156,6 +183,7 @@ public class LevelEditor : MonoBehaviour
         }
     }
 
+
     public void EnterSecond()
     {
         newSec();
@@ -163,6 +191,7 @@ public class LevelEditor : MonoBehaviour
 
     TextMeshProUGUI newSec()
     {
+
         if(float.TryParse(secInput.text, out float f))
         {
             float[] oldSecs = secs;
@@ -174,7 +203,7 @@ public class LevelEditor : MonoBehaviour
             }
             
             TextMeshProUGUI sec = Instantiate(lastSecTxt);
-            sec.transform.SetParent(canvas.transform);
+            sec.transform.SetParent(ScrollView.transform);
             sec.text = secInput.text;
             sec.name = "SecTxt" + secs.Length;
 
@@ -195,12 +224,49 @@ public class LevelEditor : MonoBehaviour
             newTxts[newTxts.Length - 1] = sec;
             secTxts = newTxts;
 
+            secInput.text = "";
+
             return sec;
         }
         else
         {
+            secInput.text = "";
+            enterBtn.SetActive(false);
+            if (delBtn.activeSelf) delBtn.SetActive(false);
+
             Debug.LogError("Not a number. Starting assassination process...");
             return null;
+        }
+    }
+
+    public void DeleteSec()
+    {
+        string sec = secInput.text;
+
+        for (int i = 0; i < secTxts.Length; i++)
+        {
+            if (secTxts[i].text == sec)
+            {
+                Destroy(secTxts[i]);
+
+                for (int j = i; j < secTxts.Length - 1; j++)
+                {
+                    secTxts[j] = secTxts[j + 1];
+                    Debug.Log(j);
+                }
+
+                TextMeshProUGUI[] newTxts = new TextMeshProUGUI[secTxts.Length - 1];
+                for (int k = 0; k < newTxts.Length; k++)
+                {
+                    newTxts[k] = secTxts[k];
+                }
+                secTxts = newTxts;
+                lastSecTxt = secTxts[secTxts.Length - 1];
+
+                secInput.text = "";
+
+                return;
+            }
         }
     }
 
@@ -211,7 +277,7 @@ public class LevelEditor : MonoBehaviour
             float lastY = lastSecTxt.transform.localPosition.y;
 
             TextMeshProUGUI sec = Instantiate(lastSecTxt);
-            sec.transform.SetParent(canvas.transform);
+            sec.transform.SetParent(ScrollView.transform);
             sec.text = secs[i].ToString();
             sec.name = "SecTxt" + secs.Length;
 
@@ -238,7 +304,6 @@ public class LevelEditor : MonoBehaviour
 
     public void LoadScene(int ind)
     {
-        PlayerPrefs.SetFloat("dTime", dTime);
         SceneManager.LoadScene(ind);
     }
 
@@ -255,35 +320,7 @@ public class LevelEditor : MonoBehaviour
         {
             secTxt.text = secInput.text;
             secTxt.color = Color.white;
-        }
-    }
-
-    public void DeleteSec()
-    {
-        string sec = secInput.text;
-
-        for (int i = 0; i < secTxts.Length; i++)
-        {
-            if(secTxts[i].text == sec)
-            {
-                Destroy(secTxts[i]);
-
-                for (int j = i; j < secTxts.Length - 1; j++)
-                {
-                    secTxts[j] = secTxts[j + 1];
-                    Debug.Log(j);
-                }
-
-                TextMeshProUGUI[] newTxts = new TextMeshProUGUI[secTxts.Length - 1];
-                for (int k = 0; k < newTxts.Length; k++)
-                {
-                    newTxts[k] = secTxts[k];
-                }
-                secTxts = newTxts;
-                lastSecTxt = secTxts[secTxts.Length - 1];
-
-                return;
-            }
+            secInput.text = "";
         }
     }
 
@@ -294,9 +331,11 @@ public class LevelEditor : MonoBehaviour
         loadPanel.SetActive(false);
     }
 
-    void changePanel(GameObject first, GameObject second)
+    void changePanel(GameObject first, GameObject second, float loadTime = 0)
     {
         first.SetActive(false);
+        if(loadTime > 0) StartCoroutine(LoadingScreen(loadTime));
         second.SetActive(true);
+
     }
 }
