@@ -1,23 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System.IO;
-using SimpleFileBrowser;
-using UnityEngine.Networking;
 using TMPro;
-using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class LevelEditor : MonoBehaviour
 {
-    public GameObject cursor;
-    public GameObject ScrollView;
-    public Image waveformTexture;
-    public TextMeshProUGUI firstSec;
-    public TextMeshProUGUI lastSec;
+    public Track track;
+    public GameObject waveform;
 
-    List<float> songSecs = new List<float>();
+    public GameObject ScrollView;
 
     [Header("Panels")]
     public GameObject openPanel;
@@ -40,53 +30,19 @@ public class LevelEditor : MonoBehaviour
 
     TextMeshProUGUI[] secTxts = new TextMeshProUGUI[0];
 
-    AudioSource audioSource;
+    [HideInInspector]public AudioSource audioSource;
     [HideInInspector] public AudioClip song;
 
     [HideInInspector]public float[] samples;
     [HideInInspector] public float[] secs = new float[0];
-
-    string path;
-    bool moveCursor = false;
-
 
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
     }
 
-    private void Update()
-    {
-        if (secInput.text == "")
-        {
-            delBtn.SetActive(false);
-            enterBtn.SetActive(false);
-        }
-
-        if(moveCursor)
-        {
-            for (int i = 0; i < song.length / 2; i++)
-            {
-                cursor.transform.position = new Vector2(cursor.transform.position.x + .01f, cursor.transform.position.y);
-            }
-        }
-    }
-
-    public void OnInput()
-    {
-        if (secInput.text == "")
-        {
-            delBtn.SetActive(false);
-            enterBtn.SetActive(false);
-        }
-        else
-        {
-            for (int i = 0; i < secTxts.Length; i++) if (secInput.text == secTxts[i].text) delBtn.SetActive(true); else delBtn.SetActive(false);
-            enterBtn.SetActive(true);
-        }
-    }
-
-    private void SamplesSave()
+    #region Saving functions
+    void SamplesSave()
     {
         samples = new float[song.samples * song.channels];
         song.GetData(samples, 0);
@@ -97,36 +53,8 @@ public class LevelEditor : MonoBehaviour
         }
     }
 
-    public void ContinueSong()
-    {
-        FileBrowser.SetFilters(false, new FileBrowser.Filter("Not Virus", ".notvirus"));
-        FileBrowser.AddQuickLink("Users", "C:\\Users", null);
-        FileBrowser.AddQuickLink("Climbeat", Application.persistentDataPath, null);
-        //FileBrowser.AddQuickLink("Downloads", "C:\\Downloads", null);
-
-        StartCoroutine("ShowContDialog");
-    }
-
-    public void UploadSong()
-    {
-        FileBrowser.SetFilters(false, new FileBrowser.Filter("Wav", ".wav"));
-        FileBrowser.AddQuickLink("Users", "C:\\Users", null);
-        //FileBrowser.AddQuickLink("Downloads", "C:\\Downloads", null);
-
-        StartCoroutine("ShowLoadDialog");
-    }
-
     public void SaveSong()
     {
-        if (lvlNameTxt.text == "")
-        {
-            name = lvlNameInput.text;
-        }
-        else
-        {
-            name = lvlNameTxt.text;
-        }
-
         secs = new float[secTxts.Length];
         for (int i = 0; i < secTxts.Length; i++)
         {
@@ -137,84 +65,17 @@ public class LevelEditor : MonoBehaviour
 
         SaveSystem.SaveLevel(this, name);
     }
+    #endregion
 
-    IEnumerator ShowContDialog()
-    {
-        yield return FileBrowser.WaitForLoadDialog(FileBrowser.PickMode.FilesAndFolders);
-
-        if(FileBrowser.Success)
-        {
-            string res = FileBrowser.Result[0];
-
-            path = Path.Combine(FileBrowserHelpers.GetDirectoryName(res), FileBrowserHelpers.GetFilename(res));
-            Debug.Log(path);
-
-            LevelData data = SaveSystem.LoadLevel(path);
-            secs = data.Secs;
-            name = data.lvlName;
-            lvlNameTxt.text = name;
-
-            
-            song = AudioClip.Create("Clip", data.samplesLeangth, data.channels, data.frequency, false);
-            song.SetData(data.samples, 0);
-            audioSource.clip = song;
-            audioSource.Play();
-
-            ShowOldSec();
-            changePanel(openPanel, editorPanel);
-        }
-    }
-
-    IEnumerator ShowLoadDialog()
-    {
-        yield return FileBrowser.WaitForLoadDialog(FileBrowser.PickMode.FilesAndFolders);
-
-        if (FileBrowser.Success)
-        {
-            string res = FileBrowser.Result[0];
-
-            path = Path.Combine(FileBrowserHelpers.GetDirectoryName(res), FileBrowserHelpers.GetFilename(res));
-            Debug.Log(path);
-
-            StartCoroutine("GetAudio");
-            changePanel(openPanel, editorPanel);
-        }
-    }
-
-    IEnumerator GetAudio()
-    {
-        UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip("file:///" + path, AudioType.WAV);
-
-        yield return www.SendWebRequest();
-
-        if (www.isNetworkError || www.isHttpError)
-        {
-            Debug.Log(www.error);
-        }
-        else
-        {
-            song = ((DownloadHandlerAudioClip)www.downloadHandler).audioClip;
-
-            audioSource.clip = song;
-            audioSource.Play();
-            Texture2D waveform = PaintWaveformSpectrum(song, 1000, 200, Color.yellow);
-            waveformTexture.overrideSprite = Sprite.Create(waveform, new Rect(0, 0, waveform.width, waveform.height), Vector2.zero);
-
-            fillSecs();
-            moveCursor = true;
-        }
-    }
-
-
+    #region Seconds functions
     public void EnterSecond()
     {
-        newSec();
+        newSec(secInput.text);
     }
 
-    TextMeshProUGUI newSec()
+    public TextMeshProUGUI newSec(string secToAdd)
     {
-
-        if(float.TryParse(secInput.text, out float f))
+        if(float.TryParse(secToAdd, out float f))
         {
             float[] oldSecs = secs;
             secs = new float[oldSecs.Length + 1];
@@ -226,7 +87,7 @@ public class LevelEditor : MonoBehaviour
             
             TextMeshProUGUI sec = Instantiate(lastSecTxt);
             sec.transform.SetParent(ScrollView.transform);
-            sec.text = secInput.text;
+            sec.text = secToAdd;
             sec.name = "SecTxt" + secs.Length;
 
             Vector2 lastPos = sec.rectTransform.position;
@@ -292,7 +153,7 @@ public class LevelEditor : MonoBehaviour
         }
     }
 
-    void ShowOldSec()
+    public void ShowOldSec()
     {
         for (int i = 0; i < secs.Length; i++)
         {
@@ -324,11 +185,6 @@ public class LevelEditor : MonoBehaviour
         secs = new float[secTxts.Length];
     }
 
-    public void LoadScene(int ind)
-    {
-        SceneManager.LoadScene(ind);
-    }
-
     public void ChangeSec()
     {
         GameObject secObj = EventSystem.current.currentSelectedGameObject.GetComponentInParent<TextMeshProUGUI>().gameObject;
@@ -345,64 +201,11 @@ public class LevelEditor : MonoBehaviour
             secInput.text = "";
         }
     }
+    #endregion
 
-    IEnumerator LoadingScreen(float loadTime)
+    public void SwitchPanels(GameObject p1, GameObject p2)
     {
-        loadPanel.SetActive(true);
-        yield return new WaitForSeconds(loadTime);
-        loadPanel.SetActive(false);
-    }
-
-    void changePanel(GameObject first, GameObject second, float loadTime = 0)
-    {
-        first.SetActive(false);
-        if(loadTime > 0) StartCoroutine(LoadingScreen(loadTime));
-        second.SetActive(true);
-
-    }
-
-    public Texture2D PaintWaveformSpectrum(AudioClip audio, int width, int height, Color col)
-    {
-        Texture2D tex = new Texture2D(width, height, TextureFormat.RGBA32, false);
-        float[] samples = new float[audio.samples];
-        float[] waveform = new float[width];
-        audio.GetData(samples, 0);
-        int packSize = (audio.samples / width) + 1;
-        int s = 0;
-        for (int i = 0; i < audio.samples; i += packSize)
-        {
-            waveform[s] = Mathf.Abs(samples[i]);
-            s++;
-        }
-
-        for (int x = 0; x < width; x++)
-        {
-            for (int y = 0; y < height; y++)
-            {
-                tex.SetPixel(x, y, Color.black);
-            }
-        }
-
-        for (int x = 0; x < waveform.Length; x++)
-        {
-            for (int y = 0; y <= waveform[x] * ((float)height * .75f); y++)
-            {
-                tex.SetPixel(x, (height / 2) + y, col);
-                tex.SetPixel(x, (height / 2) - y, col);
-            }
-        }
-        tex.Apply();
-
-        return tex;
-    }
-
-    void fillSecs()
-    {
-        float cur = 0;
-        while(cur < song.length)
-        {
-            cur += 0.01f;
-            songSecs.Add(cur);
-        }
+        p1.SetActive(false);
+        p2.SetActive(true);
     }
 }
