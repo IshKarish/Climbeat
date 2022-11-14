@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
         {
             Directory.CreateDirectory(Application.persistentDataPath + "/CustomLevels");
         }
+        globTime = 0;
 
         DontDestroyOnLoad(this);
     }

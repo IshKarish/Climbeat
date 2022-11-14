@@ -86,6 +86,10 @@ public class WallBuilder : MonoBehaviour
                 if (Time.time >= secs[i])
                 {
                     cubes[i].GetComponent<Renderer>().material.color = Color.red;
+                }
+
+                if (Time.time >= secs[i] - .5f)
+                {
                     cubes[i].GetComponent<HurricaneVR.Framework.Core.HVRGrabbable>().enabled = true;
                 }
             }
