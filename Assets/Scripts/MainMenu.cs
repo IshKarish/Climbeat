@@ -31,7 +31,7 @@ public class MainMenu : MonoBehaviour
     {
         paths = Directory.GetFiles(Application.persistentDataPath + "/CustomLevels");
         
-        if(paths.Length > 0)
+        if(paths.Length >= 0)
         {
             lvls = new string[paths.Length];
             lvlTxts = new GameObject[paths.Length];

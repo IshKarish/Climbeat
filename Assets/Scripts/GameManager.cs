@@ -1,12 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.IO;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public float globTime = 0;
+    public float globTime;
+    public TextMeshProUGUI txt;
     public GameObject[] letters = new GameObject[26];
     public Material txtMat;
 
@@ -16,14 +16,15 @@ public class GameManager : MonoBehaviour
         {
             Directory.CreateDirectory(Application.persistentDataPath + "/CustomLevels");
         }
-        globTime = 0;
 
+        //globTime = 3;
         DontDestroyOnLoad(this);
     }
 
     private void Update()
     {
         globTime += Time.deltaTime;
+        txt.text = globTime.ToString("0.00");
     }
 
     public GameObject write(string txt, Vector3 pivot, Vector3 size)

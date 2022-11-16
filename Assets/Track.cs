@@ -60,6 +60,20 @@ public class Track : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)) if (aud.isPlaying) aud.Stop(); else aud.Play();
         if(Input.GetKeyDown(KeyCode.Return)) editor.newSec(songTime.ToString());
 
+        if(Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            aud.time -= .5f;
+            cursor.position = new Vector3(cursor.position.x - .5f, cursor.position.y, cursor.position.z);
+            aud.Play();
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            aud.time += .5f;
+            cursor.position = new Vector3(cursor.position.x + .5f, cursor.position.y, cursor.position.z);
+            aud.Play();
+        }
+
         /*
         if(aud.isPlaying)
         {

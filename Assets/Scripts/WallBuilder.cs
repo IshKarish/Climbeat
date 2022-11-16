@@ -86,10 +86,6 @@ public class WallBuilder : MonoBehaviour
                 if (Time.time >= secs[i])
                 {
                     cubes[i].GetComponent<Renderer>().material.color = Color.red;
-                }
-
-                if (Time.time >= secs[i] - .5f)
-                {
                     cubes[i].GetComponent<HurricaneVR.Framework.Core.HVRGrabbable>().enabled = true;
                 }
             }
@@ -123,15 +119,15 @@ public class WallBuilder : MonoBehaviour
 
         if (lastPos.x <= -3.5f)
         {
-            newCube.transform.position = new Vector3(lastPos.x + 1, lastPos.y + 1, lastPos.z);
+            newCube.transform.position = new Vector3(lastPos.x + 1, lastPos.y + .7f, lastPos.z);
         }
         else if (lastPos.x >= 3.5f)
         {
-            newCube.transform.position = new Vector3(lastPos.x - 1, lastPos.y + 1, lastPos.z);
+            newCube.transform.position = new Vector3(lastPos.x - 1, lastPos.y + .7f, lastPos.z);
         }
         else
         {
-            newCube.transform.position = new Vector3(lastPos.x + rand, lastPos.y + 1, lastPos.z);
+            newCube.transform.position = new Vector3(lastPos.x + rand, lastPos.y + .7f, lastPos.z);
         }
 
         newCube.GetComponent<HurricaneVR.Framework.Core.HVRGrabbable>().enabled = false;
