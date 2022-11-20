@@ -6,9 +6,11 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public float globTime;
-    public TextMeshProUGUI txt;
+
     public GameObject[] letters = new GameObject[26];
     public Material txtMat;
+
+    bool count;
 
     private void Awake()
     {
@@ -17,14 +19,17 @@ public class GameManager : MonoBehaviour
             Directory.CreateDirectory(Application.persistentDataPath + "/CustomLevels");
         }
 
-        //globTime = 3;
         DontDestroyOnLoad(this);
+    }
+
+    private void Start()
+    {
+        count = true;
     }
 
     private void Update()
     {
-        globTime += Time.deltaTime;
-        txt.text = globTime.ToString("0.00");
+        if(count) globTime += Time.deltaTime;
     }
 
     public GameObject write(string txt, Vector3 pivot, Vector3 size)
@@ -65,6 +70,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadScene(int ind)
     {
+        count = false;
         SceneManager.LoadScene(ind);
     }
 }
