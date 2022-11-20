@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(AudioSource))]
 [RequireComponent(typeof(Sprite))]
@@ -6,6 +7,7 @@ public class Track : MonoBehaviour
 {
     public LevelEditor editor;
     public RectTransform cursor;
+    public Image fakeWaveform;
 
     public int width = 1024;
     public int height = 64;
@@ -33,11 +35,13 @@ public class Track : MonoBehaviour
         Rect rect = new Rect(Vector2.zero, new Vector2(width, height));
         sprend.sprite = Sprite.Create(texwav, rect, Vector2.zero);
 
-        cam.transform.position = new Vector3(0f, 0f, -1f);
-        cam.transform.Translate(Vector3.right * (sprend.size.x / 2f));
+        //cam.transform.position = new Vector3(0f, 0f, -1f);
+        //cam.transform.Translate(Vector3.right * (sprend.size.x / 2f));
 
         GetComponent<RectTransform>().localPosition = new Vector2(4.0935f, 0);
         GetComponent<RectTransform>().localScale = new Vector3(.2005f, .2005f, .2005f);
+
+        fakeWaveform.sprite = sprend.sprite;
     }
 
     private void Update()

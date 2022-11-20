@@ -305,6 +305,11 @@ public class LevelEditor : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(2)) if (Camera.main.fieldOfView == 60) Camera.main.fieldOfView = 20; else Camera.main.fieldOfView = 60;
+    }
+
     #region Saving functions
     void SamplesSave()
     {
