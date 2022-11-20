@@ -46,7 +46,9 @@ public class Track : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButton(0) && Input.mousePosition.x > 0 && Input.mousePosition.x < Screen.width && Input.mousePosition.x != lastX)
+        cursor.position = new Vector3(Input.mousePosition.x - 1280, cursor.position.y, cursor.position.z);
+
+        if (Input.GetMouseButtonDown(0))
         {
             float xPos = Input.mousePosition.x;
             float screenWidth = Screen.width;
@@ -54,7 +56,7 @@ public class Track : MonoBehaviour
 
             cursor.position = new Vector3(xPos, cursor.position.y, cursor.position.z);
             Debug.Log("lastX = " + lastX);
-            Debug.Log("xPos = " + xPos);
+            Debug.Log("xPos = " + (xPos - (screenWidth / 2)));
 
             aud.time = songTime;
             aud.Play();
