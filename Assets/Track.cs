@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class Track : MonoBehaviour
 {
     public LevelEditor editor;
-    public RectTransform cursor;
+    public Transform cursor;
+    public Transform editorParent;
     public Image fakeWaveform;
 
     public int width = 1024;
@@ -23,8 +24,16 @@ public class Track : MonoBehaviour
     float songTime = 0;
     float lastX;
 
+    int halfWidth;
+    int halfHeight;
+
+    Vector2 mousePos;
+
     private void Start()
     {
+        halfWidth = Screen.width / 2;
+        halfHeight = Screen.height / 2;
+
         // reference components on the gameobject
         aud = this.GetComponent<AudioSource>();
         sprend = this.GetComponent<SpriteRenderer>();
@@ -46,9 +55,7 @@ public class Track : MonoBehaviour
 
     private void Update()
     {
-        cursor.position = new Vector3(Input.mousePosition.x - 1280, cursor.position.y, cursor.position.z);
-
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButton(0) && Input.mousePosition.x > 0 && Input.mousePosition.x < Screen.width)
         {
             float xPos = Input.mousePosition.x;
             float screenWidth = Screen.width;
@@ -60,7 +67,7 @@ public class Track : MonoBehaviour
 
             aud.time = songTime;
             aud.Play();
-        }
+        } else 
 
         //if (Input.GetMouseButtonUp(0)) aud.Play();
         if (Input.GetKeyDown(KeyCode.Space)) if (aud.isPlaying) aud.Stop(); else aud.Play();
@@ -79,26 +86,25 @@ public class Track : MonoBehaviour
             cursor.position = new Vector3(cursor.position.x + .5f, cursor.position.y, cursor.position.z);
             aud.Play();
         }
-
-        /*
-        if(aud.isPlaying)
-        {
-            Vector3 startPos = cursor.position;
-            Vector3 endPos = new Vector3(Screen.width,cursor.position.y, cursor.position.z);
-            cursor.position = Vector3.Lerp(startPos, endPos, aud.clip.length * Time.deltaTime);
-        }
-        */
     }
 
     private void LateUpdate()
     {
-        /*
-        if(Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetMouseButtonDown(2))
         {
-            cam.fieldOfView = 20;
-            cam.transform.position = new Vector3(4.407f, cam.transform.position.y, cam.transform.position.z);
+            if (editorParent.localScale == new Vector3(1, 1, 1))
+            {
+                cam.transform.position = Input.mousePosition;
+                editorParent.localScale = new Vector3(3, 3, 3);
+                
+                //editorParent.position = mousePos;
+            }
+            else
+            {
+                editorParent.localScale = new Vector3(1, 1, 1);
+                
+            }
         }
-        */
 
         lastX = Input.mousePosition.x;
     }
