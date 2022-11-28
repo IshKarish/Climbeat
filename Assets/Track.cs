@@ -24,16 +24,10 @@ public class Track : MonoBehaviour
     float songTime = 0;
     float lastX;
 
-    int halfWidth;
-    int halfHeight;
-
-    Vector2 mousePos;
+    bool zoom = false;
 
     private void Start()
     {
-        halfWidth = Screen.width / 2;
-        halfHeight = Screen.height / 2;
-
         // reference components on the gameobject
         aud = this.GetComponent<AudioSource>();
         sprend = this.GetComponent<SpriteRenderer>();
@@ -58,12 +52,11 @@ public class Track : MonoBehaviour
         if (Input.GetMouseButton(0) && Input.mousePosition.x > 0 && Input.mousePosition.x < Screen.width)
         {
             float xPos = Input.mousePosition.x;
-            float screenWidth = Screen.width;
-            songTime = xPos / screenWidth * aud.clip.length;
+            float yPos = Input.mousePosition.y;
+            float screenHeight = Screen.height;
+            songTime = xPos / screenHeight * aud.clip.length;
 
-            cursor.position = new Vector3(xPos, cursor.position.y, cursor.position.z);
-            Debug.Log("lastX = " + lastX);
-            Debug.Log("xPos = " + (xPos - (screenWidth / 2)));
+            cursor.position = new Vector3(cursor.position.x, yPos - screenHeight / 2, cursor.position.z);
 
             aud.time = songTime;
             aud.Play();
@@ -92,17 +85,19 @@ public class Track : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(2))
         {
-            if (editorParent.localScale == new Vector3(1, 1, 1))
+            if (!zoom)
             {
-                cam.transform.position = Input.mousePosition;
-                editorParent.localScale = new Vector3(3, 3, 3);
-                
-                //editorParent.position = mousePos;
+                cam.transform.localPosition = cursor.localPosition;
+                cam.fieldOfView = 26.738f;
+
+                zoom = true;
             }
             else
             {
-                editorParent.localScale = new Vector3(1, 1, 1);
-                
+                cam.transform.localPosition = Vector3.zero;
+                cam.fieldOfView = 56.738f;
+
+                zoom = false;
             }
         }
 
