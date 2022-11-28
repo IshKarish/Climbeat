@@ -5,10 +5,18 @@ using UnityEngine.EventSystems;
 
 public class LevelEditor : MonoBehaviour
 {
+    public LevelEditor editor;
+
     public Track track;
     public GameObject waveform;
 
+    public GameObject wall;
+    public GameObject climbPoint;
+
     public GameObject ScrollView;
+
+    public Transform cursor;
+    public GameObject fakeWaveform;
 
     [Header("Panels")]
     public GameObject openPanel;
@@ -36,6 +44,11 @@ public class LevelEditor : MonoBehaviour
 
     [HideInInspector]public float[] samples;
     public float[] secs = new float[0];
+
+    bool zoom = false;
+    Camera cam;
+    float songTime = 0;
+
 
     float[] sora = new float[] { 1.14f,
 1.31f,
@@ -303,11 +316,68 @@ public class LevelEditor : MonoBehaviour
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        cam = Camera.main;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(2)) if (Camera.main.fieldOfView == 60) Camera.main.fieldOfView = 20; else Camera.main.fieldOfView = 60;
+        if (Input.GetMouseButton(0) && Input.mousePosition.y >= 0 && Input.mousePosition.y <= Screen.height && Input.mousePosition.x > 320 && Input.mousePosition.x < 510 && !zoom)
+        {
+            float yPos = Input.mousePosition.y;
+            float screenHeight = Screen.height;
+            songTime = yPos / screenHeight * audioSource.clip.length;
+
+            cursor.position = new Vector3(cursor.position.x, yPos - screenHeight / 2, cursor.position.z);
+
+            audioSource.time = songTime;
+            audioSource.Play();
+        }
+        else
+
+        if (Input.GetKeyDown(KeyCode.Space)) if (audioSource.isPlaying) audioSource.Stop(); else audioSource.Play();
+        if (Input.GetKeyDown(KeyCode.Return)) editor.newSec(songTime.ToString());
+
+        if (Input.GetKey(KeyCode.DownArrow) && cursor.localPosition.y > -359)
+        {
+            audioSource.time -= 1;
+            cursor.position = new Vector3(cursor.position.x, cursor.position.y - 1, cursor.position.z);
+            audioSource.Play();
+        }
+
+        if (Input.GetKey(KeyCode.UpArrow) && cursor.localPosition.y < 359)
+        {
+            audioSource.time += 1;
+            cursor.position = new Vector3(cursor.position.x, cursor.position.y + 1, cursor.position.z);
+            audioSource.Play();
+        }
+    }
+
+    private void LateUpdate()
+    {
+        if (Input.GetMouseButtonDown(2))
+        {
+            if (!zoom)
+            {
+                if (cursor.localPosition.y > 200)
+                    cam.transform.localPosition = new Vector3(fakeWaveform.transform.localPosition.x, 302.5f, cam.transform.localPosition.z);
+                else if (cursor.localPosition.y < -200)
+                    cam.transform.localPosition = new Vector3(fakeWaveform.transform.localPosition.x, -302.5f, cam.transform.localPosition.z);
+                else cam.transform.localPosition = new Vector3(fakeWaveform.transform.localPosition.x, cursor.position.y, cam.transform.localPosition.z);
+                cam.fieldOfView = 26.738f;
+
+                zoom = true;
+            }
+            else
+            {
+                cam.transform.localPosition = Vector3.zero;
+                cam.fieldOfView = 56.738f;
+
+                zoom = false;
+            }
+        }
+
+        if (zoom && cursor.localPosition.y < 200 && cursor.localPosition.y > -200)
+            cam.transform.localPosition = new Vector3(cam.transform.position.x, cursor.position.y, cam.transform.localPosition.z);
     }
 
     #region Saving functions
@@ -349,6 +419,8 @@ public class LevelEditor : MonoBehaviour
     {
         if(float.TryParse(secToAdd, out float f))
         {
+            GameObject climbPoint = climbpointVisual();
+
             float[] oldSecs = secs;
             secs = new float[oldSecs.Length + 1];
 
@@ -472,6 +544,16 @@ public class LevelEditor : MonoBehaviour
             secTxt.color = Color.white;
             secInput.text = "";
         }
+    }
+
+    GameObject climbpointVisual()
+    {
+        Vector3 newPos = new Vector3(wall.transform.position.x, track.cursor.position.y, wall.transform.position.z);
+        GameObject soraVR = Instantiate(climbPoint);
+        soraVR.transform.localPosition = newPos;
+        soraVR.transform.parent = wall.transform;
+
+        return soraVR;
     }
     #endregion
 
