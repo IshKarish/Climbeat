@@ -59,7 +59,7 @@ public class Uploader : MonoBehaviour
             editor.audioSource.clip = song;
             editor.song = song;
 
-            editor.ShowOldSec();
+            //editor.ShowOldSec();
             editor.SwitchPanels(editor.openPanel, editor.editorPanel);
         }
     }

@@ -15,23 +15,17 @@ public class Track : MonoBehaviour
     public Color background = Color.black;
     public Color foreground = Color.yellow;
 
-    Camera cam = null;
     private AudioSource aud = null;
     private SpriteRenderer sprend = null;
     private int samplesize;
     private float[] samples = null;
     private float[] waveform = null;
-    
-    float lastX;
-
-    bool zoom = false;
 
     private void Start()
     {
         // reference components on the gameobject
         aud = this.GetComponent<AudioSource>();
         sprend = this.GetComponent<SpriteRenderer>();
-        cam = Camera.main;
         //editor = GetComponent<LevelEditor>();
 
         Texture2D texwav = GetWaveform();

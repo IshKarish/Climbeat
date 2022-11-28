@@ -1,12 +1,10 @@
-using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.EventSystems;
 
 public class LevelEditor : MonoBehaviour
 {
-    public LevelEditor editor;
-
     public Track track;
     public GameObject waveform;
 
@@ -37,7 +35,9 @@ public class LevelEditor : MonoBehaviour
 
     [Space(5)]
 
-    TextMeshProUGUI[] secTxts = new TextMeshProUGUI[0];
+    List<TextMeshProUGUI> secTxts = new List<TextMeshProUGUI>();
+    List<GameObject> points = new List<GameObject>();
+    GameObject lastPoint = null;
 
     [HideInInspector]public AudioSource audioSource;
     [HideInInspector] public AudioClip song;
@@ -335,21 +335,23 @@ public class LevelEditor : MonoBehaviour
         else
 
         if (Input.GetKeyDown(KeyCode.Space)) if (audioSource.isPlaying) audioSource.Stop(); else audioSource.Play();
-        if (Input.GetKeyDown(KeyCode.Return)) editor.newSec(songTime.ToString());
+        if (Input.GetKeyDown(KeyCode.Return)) newSec(songTime.ToString());
 
-        if (Input.GetKey(KeyCode.DownArrow) && cursor.localPosition.y > -359)
+        if (Input.GetKeyDown(KeyCode.DownArrow) && cursor.localPosition.y > -359)
         {
             audioSource.time -= 1;
             cursor.position = new Vector3(cursor.position.x, cursor.position.y - 1, cursor.position.z);
             audioSource.Play();
         }
 
-        if (Input.GetKey(KeyCode.UpArrow) && cursor.localPosition.y < 359)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && cursor.localPosition.y < 359)
         {
             audioSource.time += 1;
             cursor.position = new Vector3(cursor.position.x, cursor.position.y + 1, cursor.position.z);
             audioSource.Play();
         }
+
+        Debug.Log(Input.mousePosition.x);
     }
 
     private void LateUpdate()
@@ -420,19 +422,13 @@ public class LevelEditor : MonoBehaviour
         if(float.TryParse(secToAdd, out float f))
         {
             GameObject climbPoint = climbpointVisual();
-
-            float[] oldSecs = secs;
-            secs = new float[oldSecs.Length + 1];
-
-            for (int i = 0; i < oldSecs.Length; i++)
-            {
-                secs[i] = oldSecs[i];
-            }
+            lastPoint = climbPoint;
+            points.Add(climbPoint);
             
             TextMeshProUGUI sec = Instantiate(lastSecTxt);
             sec.transform.SetParent(ScrollView.transform);
             sec.text = secToAdd;
-            sec.name = "SecTxt" + secs.Length;
+            sec.name = "SecTxt" + secTxts.Count;
 
             Vector2 lastPos = sec.rectTransform.position;
             Debug.Log(lastPos);
@@ -443,13 +439,7 @@ public class LevelEditor : MonoBehaviour
             lastSecTxt = sec;
             sec.gameObject.SetActive(true);
 
-            TextMeshProUGUI[] newTxts = new TextMeshProUGUI[secs.Length];
-            for (int i = 0; i < secTxts.Length; i++)
-            {
-                newTxts[i] = secTxts[i];
-            }
-            newTxts[newTxts.Length - 1] = sec;
-            secTxts = newTxts;
+            secTxts.Add(sec);
 
             secInput.text = "";
 
@@ -466,89 +456,17 @@ public class LevelEditor : MonoBehaviour
         }
     }
 
-    public void DeleteSec()
-    {
-        string sec = secInput.text;
-
-        for (int i = 0; i < secTxts.Length; i++)
-        {
-            if (secTxts[i].text == sec)
-            {
-                Destroy(secTxts[i]);
-
-                for (int j = i; j < secTxts.Length - 1; j++)
-                {
-                    secTxts[j] = secTxts[j + 1];
-                    Debug.Log(j);
-                }
-
-                TextMeshProUGUI[] newTxts = new TextMeshProUGUI[secTxts.Length - 1];
-                for (int k = 0; k < newTxts.Length; k++)
-                {
-                    newTxts[k] = secTxts[k];
-                }
-                secTxts = newTxts;
-                lastSecTxt = secTxts[secTxts.Length - 1];
-
-                secInput.text = "";
-
-                return;
-            }
-        }
-    }
-
-    public void ShowOldSec()
-    {
-        for (int i = 0; i < secs.Length; i++)
-        {
-            float lastY = lastSecTxt.transform.localPosition.y;
-
-            TextMeshProUGUI sec = Instantiate(lastSecTxt);
-            sec.transform.SetParent(ScrollView.transform);
-            sec.text = secs[i].ToString();
-            sec.name = "SecTxt" + secs.Length;
-
-            Vector2 lastPos = sec.rectTransform.position;
-            Debug.Log(lastPos);
-
-            sec.transform.localScale = Vector3.one;
-            sec.rectTransform.localPosition = new Vector2(0, lastY -50);
-
-            lastSecTxt = sec;
-            sec.gameObject.SetActive(true);
-
-            TextMeshProUGUI[] oldTxts = secTxts;
-            secTxts = new TextMeshProUGUI[secTxts.Length + 1];
-
-            for (int j = 0; j < oldTxts.Length; j++)
-            {
-                secTxts[j] = oldTxts[j];
-            }
-            secTxts[secTxts.Length - 1] = sec;
-        }
-        secs = new float[secTxts.Length];
-    }
-
-    public void ChangeSec()
-    {
-        GameObject secObj = EventSystem.current.currentSelectedGameObject.GetComponentInParent<TextMeshProUGUI>().gameObject;
-        TextMeshProUGUI secTxt = secObj.GetComponentInParent<TextMeshProUGUI>();
-
-        if (secTxt.color == Color.white)
-        {
-            secTxt.color = Color.blue;
-        }
-        else if(secTxt.color == Color.blue)
-        {
-            secTxt.text = secInput.text;
-            secTxt.color = Color.white;
-            secInput.text = "";
-        }
-    }
-
     GameObject climbpointVisual()
     {
-        Vector3 newPos = new Vector3(wall.transform.position.x, track.cursor.position.y, wall.transform.position.z);
+        float x = wall.transform.position.x;
+        if (lastPoint)
+        {
+            if (lastPoint.transform.position.x > 100) x = lastPoint.transform.position.x + Random.Range(-100, 0);
+            else if (lastPoint.transform.position.x < -100) x = lastPoint.transform.position.x + Random.Range(0, 100);
+            else x = lastPoint.transform.position.x + Random.Range(-100, 100);
+        }
+
+        Vector3 newPos = new Vector3(x, track.cursor.position.y, wall.transform.position.z);
         GameObject soraVR = Instantiate(climbPoint);
         soraVR.transform.localPosition = newPos;
         soraVR.transform.parent = wall.transform;
