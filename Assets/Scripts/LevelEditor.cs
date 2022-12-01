@@ -11,6 +11,11 @@ public class LevelEditor : MonoBehaviour
     [Header("Scripts")]
     public Track track;
 
+    [Header("Numbers")]
+    [Range(.1f, 1)] public float moveSpeed;
+    [Range(.1f, 1)] public float moveDelay;
+    [Range(5, 30)] public float zoomedFov;
+
     [Header("Panels")]
     public GameObject openPanel;
     public GameObject editorPanel;
@@ -46,16 +51,16 @@ public class LevelEditor : MonoBehaviour
     [HideInInspector]public AudioSource audioSource;
     [HideInInspector] public AudioClip song;
 
-    public float[] samples;
-    public float[] secs = new float[0];
-    public float[] yPointsArr = new float[0];
+    [HideInInspector]public float[] samples;
+    [HideInInspector]public float[] secs = new float[0];
+    [HideInInspector] public float[] yPointsArr = new float[0];
 
     bool zoom = false;
     Camera cam;
     float songTime = 0;
-
+    float ogFov;
     bool removeMod = false;
-    public bool load = false;
+    [HideInInspector]public bool load = false;
     bool canMove = true;
 
     float[] sora = new float[] { 1.14f,
@@ -325,6 +330,7 @@ public class LevelEditor : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         cam = Camera.main;
+        ogFov = cam.fieldOfView;
     }
 
     private void Update()
@@ -348,8 +354,9 @@ public class LevelEditor : MonoBehaviour
 
         if (Input.GetKey(KeyCode.DownArrow) && cursor.localPosition.y > -359 && canMove)
         {
-            audioSource.time -= 1;
-            cursor.position = new Vector3(cursor.position.x, cursor.position.y - 1, cursor.position.z);
+            songTime -= moveSpeed;
+            audioSource.time = songTime;
+            cursor.position = new Vector3(cursor.position.x, cursor.position.y - moveSpeed, cursor.position.z);
             audioSource.Play();
             timeTxt.text = songTime.ToString("0.00");
             StartCoroutine(LockMove());
@@ -357,10 +364,11 @@ public class LevelEditor : MonoBehaviour
 
         if (Input.GetKey(KeyCode.UpArrow) && cursor.localPosition.y < 359 && canMove)
         {
-            audioSource.time += 1;
-            cursor.position = new Vector3(cursor.position.x, cursor.position.y + 1, cursor.position.z);
+            songTime += moveSpeed;
+            audioSource.time = songTime;
+            cursor.position = new Vector3(cursor.position.x, cursor.position.y + moveSpeed, cursor.position.z);
             audioSource.Play();
-            timeTxt.text = songTime.ToString();
+            timeTxt.text = songTime.ToString("0.00");
             StartCoroutine(LockMove());
         }
     }
@@ -376,14 +384,14 @@ public class LevelEditor : MonoBehaviour
                 else if (cursor.localPosition.y < -200)
                     cam.transform.localPosition = new Vector3(fakeWaveform.transform.position.x, -302.5f, cam.transform.localPosition.z);
                 else cam.transform.localPosition = new Vector3(fakeWaveform.transform.position.x, cursor.position.y, cam.transform.localPosition.z);
-                cam.fieldOfView = 16.738f;
+                cam.fieldOfView = zoomedFov;
 
                 zoom = true;
             }
             else
             {
                 cam.transform.localPosition = Vector3.zero;
-                cam.fieldOfView = 56.738f;
+                cam.fieldOfView = ogFov;
 
                 zoom = false;
             }
@@ -396,7 +404,7 @@ public class LevelEditor : MonoBehaviour
     IEnumerator LockMove()
     {
         canMove = false;
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(moveDelay);
         canMove = true;
     }
 
@@ -411,8 +419,8 @@ public class LevelEditor : MonoBehaviour
                 Debug.Log(i);
             }
         }
-        //secs = new float[0];
-        //yPointsArr = new float[0];
+        secs = new float[0];
+        yPointsArr = new float[0];
     }
 
     #region Saving functions
