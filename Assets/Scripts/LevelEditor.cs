@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,16 +8,8 @@ using UnityEngine.EventSystems;
 
 public class LevelEditor : MonoBehaviour
 {
+    [Header("Scripts")]
     public Track track;
-    public GameObject waveform;
-
-    public GameObject wall;
-    public GameObject climbPoint;
-
-    public GameObject ScrollView;
-
-    public Transform cursor;
-    public GameObject fakeWaveform;
 
     [Header("Panels")]
     public GameObject openPanel;
@@ -34,6 +27,13 @@ public class LevelEditor : MonoBehaviour
     [Header("Texts")]
     public TextMeshProUGUI lastSecTxt;
     public TextMeshProUGUI lvlNameTxt;
+
+    [Header("Visuals")]
+    public GameObject wall;
+    public GameObject climbPoint;
+    public GameObject ScrollView;
+    public Transform cursor;
+    public GameObject fakeWaveform;
 
     [Space(5)]
 
@@ -55,6 +55,7 @@ public class LevelEditor : MonoBehaviour
 
     bool removeMod = false;
     public bool load = false;
+    bool canMove = true;
 
     float[] sora = new float[] { 1.14f,
 1.31f,
@@ -343,24 +344,26 @@ public class LevelEditor : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space)) if (audioSource.isPlaying) audioSource.Stop(); else audioSource.Play();
         if (Input.GetKeyDown(KeyCode.Return)) newSec(songTime.ToString());
 
-        if (Input.GetKeyDown(KeyCode.DownArrow) && cursor.localPosition.y > -359)
+        if (Input.GetKey(KeyCode.DownArrow) && cursor.localPosition.y > -359 && canMove)
         {
             audioSource.time -= 1;
             cursor.position = new Vector3(cursor.position.x, cursor.position.y - 1, cursor.position.z);
             audioSource.Play();
+            StartCoroutine(LockMove());
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow) && cursor.localPosition.y < 359)
+        if (Input.GetKey(KeyCode.UpArrow) && cursor.localPosition.y < 359 && canMove)
         {
             audioSource.time += 1;
             cursor.position = new Vector3(cursor.position.x, cursor.position.y + 1, cursor.position.z);
             audioSource.Play();
+            StartCoroutine(LockMove());
         }
     }
 
     private void LateUpdate()
     {
-        if (Input.GetMouseButtonDown(2))
+        if (Input.GetMouseButtonDown(2) || Input.GetKeyDown(KeyCode.Z))
         {
             if (!zoom)
             {
@@ -369,7 +372,7 @@ public class LevelEditor : MonoBehaviour
                 else if (cursor.localPosition.y < -200)
                     cam.transform.localPosition = new Vector3(fakeWaveform.transform.localPosition.x, -302.5f, cam.transform.localPosition.z);
                 else cam.transform.localPosition = new Vector3(fakeWaveform.transform.localPosition.x, cursor.position.y, cam.transform.localPosition.z);
-                cam.fieldOfView = 26.738f;
+                cam.fieldOfView = 16.738f;
 
                 zoom = true;
             }
@@ -386,6 +389,13 @@ public class LevelEditor : MonoBehaviour
             cam.transform.localPosition = new Vector3(cam.transform.position.x, cursor.position.y, cam.transform.localPosition.z);
     }
 
+    IEnumerator LockMove()
+    {
+        canMove = false;
+        yield return new WaitForSeconds(.5f);
+        canMove = true;
+    }
+
     public void FillSecTxts()
     {
         if (secs.Length > 0)
@@ -393,7 +403,8 @@ public class LevelEditor : MonoBehaviour
             secTxts = new List<TextMeshProUGUI>();
             for (int i = 0; i < secs.Length; i++)
             {
-                secTxts.Add(newSec(secs[i].ToString()));
+                newSec(secs[i].ToString(), yPointsArr[i]);
+                Debug.Log(i);
             }
         }
         //secs = new float[0];
