@@ -22,12 +22,11 @@ public class WallBuilder : MonoBehaviour
     {
         gameManager = FindObjectOfType<GameManager>();
 
-        lvl = PlayerPrefs.GetString("Path");
+        lvl = "C://Users/Daniel/AppData/LocalLow/The Banana Project/Climbeat/CustomLevels/Hoomi.notvirus";
         Debug.Log(lvl);
 
         LevelData data = SaveSystem.LoadLevel(lvl);
         secs = data.Secs;
-
 
         for (int i = 0; i < secs.Length; i++)
         {
@@ -45,7 +44,7 @@ public class WallBuilder : MonoBehaviour
         cube.transform.position = Vector3.zero;
 
         aud = GetComponent<AudioSource>();
-        AudioClip clip = AudioClip.Create("Song", data.samplesLeangth, data.channels, data.frequency, false);
+        AudioClip clip = AudioClip.Create("Song", data.samplesLeangth / 2, data.channels, data.frequency, false);
         clip.SetData(data.samples, 0);
         aud.clip = clip;
 

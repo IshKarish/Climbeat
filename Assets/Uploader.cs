@@ -52,14 +52,22 @@ public class Uploader : MonoBehaviour
             LevelData data = SaveSystem.LoadLevel(path);
             editor.secs = data.Secs;
             name = data.lvlName;
+            editor.load = true;
 
+            AudioClip clip = AudioClip.Create("Song", data.samplesLeangth / 2, data.channels, data.frequency, false);
+            clip.SetData(data.samples, 0);
+            editor.audioSource.clip = clip;
+            editor.song = clip;
 
-            song = AudioClip.Create("Clip", data.samplesLeangth, data.channels, data.frequency, false);
-            song.SetData(data.samples, 0);
-            editor.audioSource.clip = song;
-            editor.song = song;
+            Debug.Log(clip.length);
 
-            //editor.ShowOldSec();
+            waveform.GetComponent<Track>().GetComponent<AudioSource>().clip = clip;
+            waveform.GetComponent<Track>().enabled = true;
+
+            editor.yPointsArr = data.Ypoints;
+
+            editor.FillSecTxts();
+
             editor.SwitchPanels(editor.openPanel, editor.editorPanel);
         }
     }
@@ -100,6 +108,9 @@ public class Uploader : MonoBehaviour
 
             editor.SwitchPanels(editor.openPanel, editor.editorPanel);
             editor.song = song;
+
+            Debug.Log(song.length);
+            Debug.Log(song.samples * song.channels);
         }
     }
 }

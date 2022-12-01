@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 
 public class LevelEditor : MonoBehaviour
@@ -37,18 +39,22 @@ public class LevelEditor : MonoBehaviour
 
     List<TextMeshProUGUI> secTxts = new List<TextMeshProUGUI>();
     List<GameObject> points = new List<GameObject>();
+    List<float> yPoints = new List<float>();
     GameObject lastPoint = null;
 
     [HideInInspector]public AudioSource audioSource;
     [HideInInspector] public AudioClip song;
 
-    [HideInInspector]public float[] samples;
+    public float[] samples;
     public float[] secs = new float[0];
+    public float[] yPointsArr = new float[0];
 
     bool zoom = false;
     Camera cam;
     float songTime = 0;
 
+    bool removeMod = false;
+    public bool load = false;
 
     float[] sora = new float[] { 1.14f,
 1.31f,
@@ -350,8 +356,6 @@ public class LevelEditor : MonoBehaviour
             cursor.position = new Vector3(cursor.position.x, cursor.position.y + 1, cursor.position.z);
             audioSource.Play();
         }
-
-        Debug.Log(Input.mousePosition.x);
     }
 
     private void LateUpdate()
@@ -382,53 +386,118 @@ public class LevelEditor : MonoBehaviour
             cam.transform.localPosition = new Vector3(cam.transform.position.x, cursor.position.y, cam.transform.localPosition.z);
     }
 
+    public void FillSecTxts()
+    {
+        if (secs.Length > 0)
+        {
+            secTxts = new List<TextMeshProUGUI>();
+            for (int i = 0; i < secs.Length; i++)
+            {
+                secTxts.Add(newSec(secs[i].ToString()));
+            }
+        }
+        //secs = new float[0];
+        //yPointsArr = new float[0];
+    }
+
     #region Saving functions
     void SamplesSave()
     {
         samples = new float[song.samples * song.channels];
         song.GetData(samples, 0);
+    }
 
-        for (int i = 0; i < samples.Length; i++)
+    void SecsSave()
+    {
+        TextMeshProUGUI[] secTxtsArr = secTxts.ToArray();
+        secs = new float[secTxtsArr.Length];
+        for (int i = 0; i < secTxtsArr.Length; i++)
         {
-            samples[i] = samples[i] * .5f;
+            secs[i] = float.Parse(secTxtsArr[i].text);
+        }
+    }
+
+    void PointsSave()
+    {
+        float[] yPointsArray = yPoints.ToArray();
+        yPointsArr = new float[yPointsArray.Length];
+        for (int i = 0; i < yPointsArr.Length; i++)
+        {
+            yPointsArr[i] = yPointsArray[i];
         }
     }
 
     public void SaveSong()
     {
-        /*
-        secs = new float[secTxts.Length];
-        for (int i = 0; i < secTxts.Length; i++)
-        {
-            //secs[i] = float.Parse(secTxts[i].text);
-        }
-        */
-        secs = sora;
-
         SamplesSave();
+        SecsSave();
+        PointsSave();
 
         SaveSystem.SaveLevel(this, lvlNameInput.text);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
     #endregion
 
     #region Seconds functions
+    public void OnPointClick()
+    {
+        if (removeMod) RemoveSec(); else playFromSec();
+    }
+
+    public void RemoveMod()
+    {
+        GameObject[] pointsArr = points.ToArray();
+
+        for (int i = 0; i < pointsArr.Length; i++)
+        {
+            Image img = pointsArr[i].GetComponent<Image>();
+            if (img.color == Color.black)
+            {
+                img.color = Color.blue;
+                removeMod = true;
+            }
+            else
+            {
+                img.color = Color.black;
+                removeMod = false;
+            }
+        }
+    }
+
+    public void playFromSec()
+    {
+        GameObject[] pointsArr = points.ToArray();
+        TextMeshProUGUI[] secsArr = secTxts.ToArray();
+
+        for (int i = 0; i < pointsArr.Length; i++)
+        {
+            if(EventSystem.current.currentSelectedGameObject == pointsArr[i])
+            {
+                audioSource.time = float.Parse(secsArr[i].text);
+                audioSource.Play();
+                cursor.transform.position = new Vector3(cursor.position.x, EventSystem.current.currentSelectedGameObject.transform.position.y, cursor.position.z);
+            }
+        }
+    }
+
     public void EnterSecond()
     {
         newSec(secInput.text);
     }
 
-    public TextMeshProUGUI newSec(string secToAdd)
+    public TextMeshProUGUI newSec(string secToAdd, float y = 0)
     {
         if(float.TryParse(secToAdd, out float f))
         {
-            GameObject climbPoint = climbpointVisual();
+            GameObject climbPoint = climbpointVisual(y);
             lastPoint = climbPoint;
+            climbPoint.name = secToAdd;
             points.Add(climbPoint);
             
             TextMeshProUGUI sec = Instantiate(lastSecTxt);
             sec.transform.SetParent(ScrollView.transform);
             sec.text = secToAdd;
-            sec.name = "SecTxt" + secTxts.Count;
+            sec.name = secToAdd;
 
             Vector2 lastPos = sec.rectTransform.position;
             Debug.Log(lastPos);
@@ -456,22 +525,61 @@ public class LevelEditor : MonoBehaviour
         }
     }
 
-    GameObject climbpointVisual()
+    GameObject climbpointVisual(float y = 0)
     {
         float x = wall.transform.position.x;
         if (lastPoint)
         {
-            if (lastPoint.transform.position.x > 100) x = lastPoint.transform.position.x + Random.Range(-100, 0);
-            else if (lastPoint.transform.position.x < -100) x = lastPoint.transform.position.x + Random.Range(0, 100);
+            if (lastPoint.transform.position.x > 100) x = lastPoint.transform.position.x + Random.Range(-100, 50);
+            else if (lastPoint.transform.position.x < -100) x = lastPoint.transform.position.x + Random.Range(50, 100);
             else x = lastPoint.transform.position.x + Random.Range(-100, 100);
         }
 
-        Vector3 newPos = new Vector3(x, track.cursor.position.y, wall.transform.position.z);
+        Vector3 newPos = new Vector3(x, track.cursor.position.y, wall.transform.position.z); ;
+        if (y != 0)
+        {
+            newPos = new Vector3(x, y, wall.transform.position.z);
+        }
         GameObject soraVR = Instantiate(climbPoint);
         soraVR.transform.localPosition = newPos;
         soraVR.transform.parent = wall.transform;
 
+        if (!soraVR.activeSelf) soraVR.SetActive(true);
+
+        yPoints.Add(newPos.y);
+
         return soraVR;
+    }
+
+    public void RemoveSec()
+    {
+        if(removeMod)
+        {
+            GameObject[] pointsArr = points.ToArray();
+            TextMeshProUGUI[] secsArr = secTxts.ToArray();
+            GameObject cur = EventSystem.current.currentSelectedGameObject;
+
+            for (int i = 0; i < pointsArr.Length; i++)
+            {
+                if(cur == pointsArr[i])
+                {
+                    for (int j = 0; j < secsArr.Length; j++)
+                    {
+                        if (secsArr[j].text == pointsArr[i].name)
+                        {
+                            Destroy(pointsArr[i]);
+                            Destroy(secTxts[j]);
+
+                            secTxts.RemoveAt(j);
+                            points.RemoveAt(i);
+                            break;
+                        }
+                    }
+                }
+            }
+
+            RemoveMod();
+        }
     }
     #endregion
 
