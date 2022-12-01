@@ -25,6 +25,7 @@ public class LevelEditor : MonoBehaviour
     public TMP_InputField secInput;
 
     [Header("Texts")]
+    public TextMeshProUGUI timeTxt;
     public TextMeshProUGUI lastSecTxt;
     public TextMeshProUGUI lvlNameTxt;
 
@@ -335,6 +336,7 @@ public class LevelEditor : MonoBehaviour
             songTime = yPos / screenHeight * audioSource.clip.length;
 
             cursor.position = new Vector3(cursor.position.x, yPos - screenHeight / 2, cursor.position.z);
+            timeTxt.text = songTime.ToString("0.00");
 
             audioSource.time = songTime;
             audioSource.Play();
@@ -349,6 +351,7 @@ public class LevelEditor : MonoBehaviour
             audioSource.time -= 1;
             cursor.position = new Vector3(cursor.position.x, cursor.position.y - 1, cursor.position.z);
             audioSource.Play();
+            timeTxt.text = songTime.ToString("0.00");
             StartCoroutine(LockMove());
         }
 
@@ -357,6 +360,7 @@ public class LevelEditor : MonoBehaviour
             audioSource.time += 1;
             cursor.position = new Vector3(cursor.position.x, cursor.position.y + 1, cursor.position.z);
             audioSource.Play();
+            timeTxt.text = songTime.ToString();
             StartCoroutine(LockMove());
         }
     }
@@ -368,10 +372,10 @@ public class LevelEditor : MonoBehaviour
             if (!zoom)
             {
                 if (cursor.localPosition.y > 200)
-                    cam.transform.localPosition = new Vector3(fakeWaveform.transform.localPosition.x, 302.5f, cam.transform.localPosition.z);
+                    cam.transform.localPosition = new Vector3(fakeWaveform.transform.position.x, 302.5f, cam.transform.localPosition.z);
                 else if (cursor.localPosition.y < -200)
-                    cam.transform.localPosition = new Vector3(fakeWaveform.transform.localPosition.x, -302.5f, cam.transform.localPosition.z);
-                else cam.transform.localPosition = new Vector3(fakeWaveform.transform.localPosition.x, cursor.position.y, cam.transform.localPosition.z);
+                    cam.transform.localPosition = new Vector3(fakeWaveform.transform.position.x, -302.5f, cam.transform.localPosition.z);
+                else cam.transform.localPosition = new Vector3(fakeWaveform.transform.position.x, cursor.position.y, cam.transform.localPosition.z);
                 cam.fieldOfView = 16.738f;
 
                 zoom = true;
