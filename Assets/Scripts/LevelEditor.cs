@@ -12,7 +12,7 @@ public class LevelEditor : MonoBehaviour
     public Track track;
 
     [Header("Numbers")]
-    [Range(.1f, 1)] public float moveSpeed;
+    [Range(1, 20)] public float moveSpeed;
     [Range(.1f, 1)] public float moveDelay;
     [Range(5, 30)] public float zoomedFov;
 
@@ -62,6 +62,8 @@ public class LevelEditor : MonoBehaviour
     bool removeMod = false;
     [HideInInspector]public bool load = false;
     bool canMove = true;
+
+    float lastY;
 
     float[] sora = new float[] { 1.14f,
 1.31f,
@@ -335,13 +337,14 @@ public class LevelEditor : MonoBehaviour
 
     private void Update()
     {
+        float screenHeight = Screen.height;
+
         if (Input.GetMouseButton(0) && Input.mousePosition.y >= 0 && Input.mousePosition.y <= Screen.height && Input.mousePosition.x > 320 && Input.mousePosition.x < 510 && !zoom)
         {
-            float yPos = Input.mousePosition.y;
-            float screenHeight = Screen.height;
-            songTime = yPos / screenHeight * audioSource.clip.length;
+            lastY = Input.mousePosition.y;
+            songTime = lastY / screenHeight * audioSource.clip.length;
 
-            cursor.position = new Vector3(cursor.position.x, yPos - screenHeight / 2, cursor.position.z);
+            cursor.position = new Vector3(cursor.position.x, lastY - screenHeight / 2, cursor.position.z);
             timeTxt.text = songTime.ToString("0.00");
 
             audioSource.time = songTime;
@@ -350,27 +353,12 @@ public class LevelEditor : MonoBehaviour
         else
 
         if (Input.GetKeyDown(KeyCode.Space)) if (audioSource.isPlaying) audioSource.Stop(); else audioSource.Play();
+
         if (Input.GetKeyDown(KeyCode.Return)) newSec(songTime.ToString());
 
-        if (Input.GetKey(KeyCode.DownArrow) && cursor.localPosition.y > -359 && canMove)
-        {
-            songTime -= moveSpeed;
-            audioSource.time = songTime;
-            cursor.position = new Vector3(cursor.position.x, cursor.position.y - moveSpeed, cursor.position.z);
-            audioSource.Play();
-            timeTxt.text = songTime.ToString("0.00");
-            StartCoroutine(LockMove());
-        }
+        if (Input.GetKey(KeyCode.DownArrow) && cursor.localPosition.y > -360 && canMove) ArrowMove(-1);
 
-        if (Input.GetKey(KeyCode.UpArrow) && cursor.localPosition.y < 359 && canMove)
-        {
-            songTime += moveSpeed;
-            audioSource.time = songTime;
-            cursor.position = new Vector3(cursor.position.x, cursor.position.y + moveSpeed, cursor.position.z);
-            audioSource.Play();
-            timeTxt.text = songTime.ToString("0.00");
-            StartCoroutine(LockMove());
-        }
+        if (Input.GetKey(KeyCode.UpArrow) && cursor.localPosition.y < 360 && canMove) ArrowMove(1);
     }
 
     private void LateUpdate()
@@ -406,6 +394,22 @@ public class LevelEditor : MonoBehaviour
         canMove = false;
         yield return new WaitForSeconds(moveDelay);
         canMove = true;
+    }
+
+    void ArrowMove(float math)
+    {
+        if (math < 0) lastY -= moveSpeed; else lastY += moveSpeed;
+
+        float screenHeight = Screen.height;
+        cursor.position = new Vector3(cursor.position.x, lastY - screenHeight / 2, cursor.position.z);
+
+        songTime = lastY / screenHeight * audioSource.clip.length;
+
+        audioSource.time = songTime;
+        audioSource.Play();
+
+        timeTxt.text = songTime.ToString("0.00");
+        StartCoroutine(LockMove());
     }
 
     public void FillSecTxts()

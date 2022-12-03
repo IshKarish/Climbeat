@@ -59,8 +59,6 @@ public class Uploader : MonoBehaviour
             editor.audioSource.clip = clip;
             editor.song = clip;
 
-            Debug.Log(clip.length);
-
             waveform.GetComponent<Track>().GetComponent<AudioSource>().clip = clip;
             waveform.GetComponent<Track>().enabled = true;
 
@@ -108,9 +106,6 @@ public class Uploader : MonoBehaviour
 
             editor.SwitchPanels(editor.openPanel, editor.editorPanel);
             editor.song = song;
-
-            Debug.Log(song.length);
-            Debug.Log(song.samples * song.channels);
         }
     }
 }
