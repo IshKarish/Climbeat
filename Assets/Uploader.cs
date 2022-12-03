@@ -66,6 +66,8 @@ public class Uploader : MonoBehaviour
 
             editor.FillSecTxts();
 
+            editor.lvlNameTxt.text = data.lvlName;
+
             editor.SwitchPanels(editor.openPanel, editor.editorPanel);
         }
     }

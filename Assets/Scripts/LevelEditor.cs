@@ -12,7 +12,7 @@ public class LevelEditor : MonoBehaviour
     public Track track;
 
     [Header("Numbers")]
-    [Range(1, 20)] public float moveSpeed;
+    [Range(100, 1000)] public float moveSpeed;
     [Range(.1f, 1)] public float moveDelay;
     [Range(5, 30)] public float zoomedFov;
 
@@ -20,6 +20,8 @@ public class LevelEditor : MonoBehaviour
     public GameObject openPanel;
     public GameObject editorPanel;
     public GameObject loadPanel;
+    public GameObject savePanel;
+    public GameObject quitPanel;
 
     [Header("Buttons")]
     public GameObject enterBtn;
@@ -337,7 +339,9 @@ public class LevelEditor : MonoBehaviour
 
     private void Update()
     {
-        float screenHeight = Screen.height;
+        if(audioSource.clip != null)
+        {
+            float screenHeight = Screen.height;
 
         if (Input.GetMouseButton(0) && Input.mousePosition.y >= 0 && Input.mousePosition.y <= Screen.height && Input.mousePosition.x > 320 && Input.mousePosition.x < 510 && !zoom)
         {
@@ -356,9 +360,11 @@ public class LevelEditor : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Return)) newSec(songTime.ToString());
 
-        if (Input.GetKey(KeyCode.DownArrow) && cursor.localPosition.y > -360 && canMove) ArrowMove(-1);
+        if (Input.GetKey(KeyCode.DownArrow)) ArrowMove(-1);
 
-        if (Input.GetKey(KeyCode.UpArrow) && cursor.localPosition.y < 360 && canMove) ArrowMove(1);
+        if (Input.GetKey(KeyCode.UpArrow)) ArrowMove(1);
+        }
+        Debug.Log(cursor.position.y);
     }
 
     private void LateUpdate()
@@ -398,18 +404,22 @@ public class LevelEditor : MonoBehaviour
 
     void ArrowMove(float math)
     {
-        if (math < 0) lastY -= moveSpeed; else lastY += moveSpeed;
+        if(canMove && cursor.position.y > -537 && cursor.position.y < 537)
+        {
+            float s = moveSpeed / audioSource.clip.length;
+            if (math < 0) lastY -= s; else if (math > 0) lastY += s;
 
-        float screenHeight = Screen.height;
-        cursor.position = new Vector3(cursor.position.x, lastY - screenHeight / 2, cursor.position.z);
+            float screenHeight = Screen.height;
+            cursor.position = new Vector3(cursor.position.x, lastY - screenHeight / 2, cursor.position.z);
 
-        songTime = lastY / screenHeight * audioSource.clip.length;
+            songTime = lastY / screenHeight * audioSource.clip.length;
 
-        audioSource.time = songTime;
-        audioSource.Play();
+            audioSource.time = songTime;
+            audioSource.Play();
 
-        timeTxt.text = songTime.ToString("0.00");
-        StartCoroutine(LockMove());
+            timeTxt.text = songTime.ToString("0.00");
+            StartCoroutine(LockMove());
+        }
     }
 
     public void FillSecTxts()
@@ -427,7 +437,17 @@ public class LevelEditor : MonoBehaviour
         yPointsArr = new float[0];
     }
 
+    public void QuitMod()
+    {
+        quitPanel.SetActive(!quitPanel.activeSelf);
+    }
+
     #region Saving functions
+    public void SaveMod()
+    {
+        if (lvlNameTxt.text == "") savePanel.SetActive(!savePanel.activeSelf); else SaveSong();
+    }
+
     void SamplesSave()
     {
         samples = new float[song.samples * song.channels];
@@ -460,8 +480,10 @@ public class LevelEditor : MonoBehaviour
         SecsSave();
         PointsSave();
 
-        SaveSystem.SaveLevel(this, lvlNameInput.text);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if(lvlNameInput.text != "") lvlNameTxt.text = lvlNameInput.text;
+
+        SaveSystem.SaveLevel(this, lvlNameTxt.text);
+        Loadcene(SceneManager.GetActiveScene().buildIndex);
     }
     #endregion
 
@@ -473,20 +495,23 @@ public class LevelEditor : MonoBehaviour
 
     public void RemoveMod()
     {
-        GameObject[] pointsArr = points.ToArray();
-
-        for (int i = 0; i < pointsArr.Length; i++)
+        if(points.Count > 0)
         {
-            Image img = pointsArr[i].GetComponent<Image>();
-            if (img.color == Color.black)
+            GameObject[] pointsArr = points.ToArray();
+
+            for (int i = 0; i < pointsArr.Length; i++)
             {
-                img.color = Color.blue;
-                removeMod = true;
-            }
-            else
-            {
-                img.color = Color.black;
-                removeMod = false;
+                Image img = pointsArr[i].GetComponent<Image>();
+                if (img.color == Color.black)
+                {
+                    img.color = Color.blue;
+                    removeMod = true;
+                }
+                else
+                {
+                    img.color = Color.black;
+                    removeMod = false;
+                }
             }
         }
     }
@@ -614,5 +639,10 @@ public class LevelEditor : MonoBehaviour
     {
         p1.SetActive(false);
         p2.SetActive(true);
+    }
+
+    public void Loadcene(int ind)
+    {
+        SceneManager.LoadScene(ind);
     }
 }

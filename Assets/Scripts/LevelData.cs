@@ -19,7 +19,7 @@ public class LevelData
         return new LevelData
         {
             Secs = editor.secs,
-            lvlName = editor.lvlNameInput.text,
+            lvlName = editor.lvlNameTxt.text,
 
             samplesLeangth = editor.samples.Length,
             channels = editor.song.channels,
