@@ -573,6 +573,9 @@ public class LevelEditor : MonoBehaviour
 
     GameObject climbpointVisual(float y = 0)
     {
+        float s = 0
+        if(audioSource.clip.length < 1) s = 
+
         float x = wall.transform.position.x;
         if (lastPoint)
         {
