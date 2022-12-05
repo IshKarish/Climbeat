@@ -33,6 +33,7 @@ public static class SaveSystem
 
         writer.Write(data.lvlName);
 
+
         writer.Write(data.Ypoints.Length);
         for (int i = 0; i < data.Ypoints.Length; i++)
         {
