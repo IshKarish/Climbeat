@@ -33,13 +33,6 @@ public static class SaveSystem
 
         writer.Write(data.lvlName);
 
-
-        writer.Write(data.Ypoints.Length);
-        for (int i = 0; i < data.Ypoints.Length; i++)
-        {
-            writer.Write(data.Ypoints[i]);
-        }
-
         stream.Close();
     }
 
@@ -71,13 +64,6 @@ public static class SaveSystem
             }
 
             data.lvlName = reader.ReadString();
-
-            int yLen = reader.ReadInt32();
-            data.Ypoints = new float[yLen];
-            for (int i = 0; i < yLen; i++)
-            {
-                data.Ypoints[i] = reader.ReadSingle();
-            }
 
             stream.Close();
 

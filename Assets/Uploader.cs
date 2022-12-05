@@ -62,8 +62,6 @@ public class Uploader : MonoBehaviour
             waveform.GetComponent<Track>().GetComponent<AudioSource>().clip = clip;
             waveform.GetComponent<Track>().enabled = true;
 
-            editor.yPointsArr = data.Ypoints;
-
             editor.FillSecTxts();
 
             editor.lvlNameTxt.text = data.lvlName;

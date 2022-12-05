@@ -48,7 +48,6 @@ public class LevelEditor : MonoBehaviour
 
     List<TextMeshProUGUI> secTxts = new List<TextMeshProUGUI>();
     List<GameObject> points = new List<GameObject>();
-    List<float> yPoints = new List<float>();
     GameObject lastPoint = null;
 
     [HideInInspector]public AudioSource audioSource;
@@ -56,7 +55,6 @@ public class LevelEditor : MonoBehaviour
 
     [HideInInspector]public float[] samples;
     [HideInInspector]public float[] secs = new float[0];
-    [HideInInspector] public float[] yPointsArr = new float[0];
 
     bool zoom = false;
     Camera cam;
@@ -366,7 +364,6 @@ public class LevelEditor : MonoBehaviour
 
         if (Input.GetKey(KeyCode.UpArrow)) ArrowMove(1);
         }
-        Debug.Log(cursor.position.y);
     }
 
     private void LateUpdate()
@@ -428,15 +425,16 @@ public class LevelEditor : MonoBehaviour
     {
         if (secs.Length > 0)
         {
+            
             secTxts = new List<TextMeshProUGUI>();
             for (int i = 0; i < secs.Length; i++)
             {
-                newSec(secs[i].ToString(), yPointsArr[i]);
+                float yPos = ((secs[i] / audioSource.clip.length) * Screen.height) - Screen.height / 2;
+                newSec(secs[i].ToString(), yPos);
                 Debug.Log(i);
             }
         }
         secs = new float[0];
-        yPointsArr = new float[0];
     }
 
     public void QuitMod()
@@ -469,27 +467,12 @@ public class LevelEditor : MonoBehaviour
         Array.Sort(secs);
     }
 
-    void PointsSave()
-    {
-        float[] yPointsArray = yPoints.ToArray();
-        yPointsArr = new float[yPointsArray.Length];
-
-        for (int i = 0; i < yPointsArr.Length; i++)
-        {
-            yPointsArr[i] = yPointsArray[i];
-        }
-
-        Array.Sort(yPointsArr);
-    }
-
     public void SaveSong()
     {
         SamplesSave();
         SecsSave();
-        PointsSave();
 
         secs = sora;
-        yPointsArr = new float[secs.Length];
 
         if(lvlNameInput.text != "") lvlNameTxt.text = lvlNameInput.text;
 
@@ -608,8 +591,6 @@ public class LevelEditor : MonoBehaviour
         soraVR.transform.parent = wall.transform;
 
         if (!soraVR.activeSelf) soraVR.SetActive(true);
-
-        yPoints.Add(newPos.y);
 
         return soraVR;
     }

@@ -6,7 +6,6 @@ using UnityEngine;
 public class LevelData
 {
     public float[] Secs { get; set; }
-    public float[] Ypoints { get; set; }
     public string lvlName;
 
     public int samplesLeangth { get; set; }
@@ -25,8 +24,6 @@ public class LevelData
             channels = editor.song.channels,
             frequency = editor.song.frequency,
             samples = editor.samples,
-
-            Ypoints = editor.yPointsArr
         };
     }
 }

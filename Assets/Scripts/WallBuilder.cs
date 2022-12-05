@@ -22,7 +22,7 @@ public class WallBuilder : MonoBehaviour
     {
         gameManager = FindObjectOfType<GameManager>();
 
-        lvl = "C://Users/Daniel/AppData/LocalLow/The Banana Project/Climbeat/CustomLevels/Hoomi.notvirus";
+        lvl = PlayerPrefs.GetString("Path");
         Debug.Log(lvl);
 
         LevelData data = SaveSystem.LoadLevel(lvl);
