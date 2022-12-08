@@ -3345,12 +3345,12 @@ PrefabInstance:
     - target: {fileID: 8121906034688144598, guid: 3bd86f7402d779745a71783e45b9402d,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 30
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8121906034688144598, guid: 3bd86f7402d779745a71783e45b9402d,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 30
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8121906034688144598, guid: 3bd86f7402d779745a71783e45b9402d,
         type: 3}
@@ -4712,7 +4712,6 @@ MonoBehaviour:
   song: {fileID: 0}
   samples: []
   secs: []
-  yPointsArr: []
   load: 0
 --- !u!4 &1405949986
 Transform:

@@ -6,8 +6,11 @@ using HurricaneVR;
 
 public class WallBuilder : MonoBehaviour
 {
+    public AudioSource impactSFX;
+
     public GameManager gameManager;
     float gTime;
+    int nxtInd = 0;
 
     public float[] secs = new float[0];
     bool startTheThing = false;
@@ -80,13 +83,13 @@ public class WallBuilder : MonoBehaviour
 
         if (startTheThing)
         {
-            for (int i = 0; i < secs.Length - 1; i++)
+            if (Time.time >= secs[nxtInd])
             {
-                if (Time.time >= secs[i])
-                {
-                    cubes[i].GetComponent<Renderer>().material.color = Color.red;
-                    cubes[i].GetComponent<HurricaneVR.Framework.Core.HVRGrabbable>().enabled = true;
-                }
+                cubes[nxtInd].GetComponent<Renderer>().material.color = Color.red;
+                cubes[nxtInd].GetComponent<HurricaneVR.Framework.Core.HVRGrabbable>().enabled = true;
+                impactSFX.Play();
+                Debug.Log("Yes");
+                if(nxtInd < secs.Length-1) nxtInd++;
             }
         }
         else
@@ -129,7 +132,7 @@ public class WallBuilder : MonoBehaviour
             newCube.transform.position = new Vector3(lastPos.x + rand, lastPos.y + .7f, lastPos.z);
         }
 
-        newCube.GetComponent<HurricaneVR.Framework.Core.HVRGrabbable>().enabled = false;
+        newCube.GetComponent<HurricaneVR.Framework.Core.HVRGrabbable>().enabled = true;
 
         return newCube;
     }

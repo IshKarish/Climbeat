@@ -343,26 +343,25 @@ public class LevelEditor : MonoBehaviour
         {
             float screenHeight = Screen.height;
 
-        if (Input.GetMouseButton(0) && Input.mousePosition.y >= 0 && Input.mousePosition.y <= Screen.height && Input.mousePosition.x > 320 && Input.mousePosition.x < 510 && !zoom)
-        {
-            lastY = Input.mousePosition.y;
-            songTime = lastY / screenHeight * audioSource.clip.length;
+            if (Input.GetMouseButton(0) && Input.mousePosition.y >= 0 && Input.mousePosition.y <= Screen.height && Input.mousePosition.x > 320 && Input.mousePosition.x < 510 && !zoom && lastY != Input.mousePosition.y)
+            {
+                lastY = Input.mousePosition.y;
+                songTime = lastY / screenHeight * audioSource.clip.length;
 
-            cursor.position = new Vector3(cursor.position.x, lastY - screenHeight / 2, cursor.position.z);
-            timeTxt.text = songTime.ToString("0.00");
+                cursor.position = new Vector3(cursor.position.x, lastY - screenHeight / 2, cursor.position.z);
+                timeTxt.text = songTime.ToString("0.00");
 
-            audioSource.time = songTime;
-            audioSource.Play();
-        }
-        else
+                audioSource.time = songTime;
+                audioSource.Play();
+            }
 
-        if (Input.GetKeyDown(KeyCode.Space)) if (audioSource.isPlaying) audioSource.Stop(); else audioSource.Play();
+            if (Input.GetKeyDown(KeyCode.Space)) if (audioSource.isPlaying) audioSource.Stop(); else audioSource.Play();
 
-        if (Input.GetKeyDown(KeyCode.Return)) newSec(songTime.ToString());
+            if (Input.GetKeyDown(KeyCode.Return)) newSec(songTime.ToString());
 
-        if (Input.GetKey(KeyCode.DownArrow)) ArrowMove(-1);
+            if (Input.GetKey(KeyCode.DownArrow)) ArrowMove(-1);
 
-        if (Input.GetKey(KeyCode.UpArrow)) ArrowMove(1);
+            if (Input.GetKey(KeyCode.UpArrow)) ArrowMove(1);
         }
     }
 
@@ -392,6 +391,8 @@ public class LevelEditor : MonoBehaviour
 
         if (zoom && cursor.localPosition.y < 200 && cursor.localPosition.y > -200)
             cam.transform.localPosition = new Vector3(cam.transform.position.x, cursor.position.y, cam.transform.localPosition.z);
+
+        lastY = Input.mousePosition.y;
     }
 
     IEnumerator LockMove()
@@ -425,7 +426,6 @@ public class LevelEditor : MonoBehaviour
     {
         if (secs.Length > 0)
         {
-            
             secTxts = new List<TextMeshProUGUI>();
             for (int i = 0; i < secs.Length; i++)
             {
@@ -573,8 +573,7 @@ public class LevelEditor : MonoBehaviour
 
     GameObject climbpointVisual(float y = 0)
     {
-        float s = 0
-        if(audioSource.clip.length < 1) s = 
+        float s = 0;
 
         float x = wall.transform.position.x;
         if (lastPoint)
