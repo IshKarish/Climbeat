@@ -7,6 +7,7 @@ using HurricaneVR;
 public class WallBuilder : MonoBehaviour
 {
     public AudioSource impactSFX;
+    public GameObject wall;
 
     public GameManager gameManager;
     float gTime;
@@ -56,17 +57,30 @@ public class WallBuilder : MonoBehaviour
 
         for (int i = 1; i < cubes.Length; i++)
         {
-            GameObject nc = Instantiate(newCube(i-1));
+            GameObject nc = Instantiate(newCube(i-1, data.xPos[i-1]));
 
             nc.name = "cube " + i;
-            //nc.transform.SetParent(transform);
+            //nc.transform.SetParent(wall.transform);
             nc.GetComponent<Renderer>().material.color = Color.white;
+
             //cubes[i].GetComponent<HurricaneVR.Framework.Core.HVRGrabbable>().enabled = false;
             cubes[i] = nc;
         }
 
         cubes[0].GetComponent<HurricaneVR.Framework.Core.HVRGrabbable>().enabled = true;
         Destroy(cubes[cubes.Length-1]);
+
+        for (int i = 0; i < cubes.Length; i++)
+        {
+            cubes[i].transform.SetParent(transform);
+        }
+
+        wall.transform.localScale = new Vector3(10, 5000, 1);
+
+        for (int i = 0; i < cubes.Length; i++)
+        {
+            cubes[i].transform.localScale = new Vector3(0.03f, cubes[i].transform.localScale.y, cubes[i].transform.localScale.z);
+        }
 
         PlayerPrefs.DeleteKey("Path");
     }
@@ -83,13 +97,18 @@ public class WallBuilder : MonoBehaviour
 
         if (startTheThing)
         {
+            if (Time.time >= secs[nxtInd] - .3f)
+            {
+                cubes[nxtInd].GetComponent<HurricaneVR.Framework.Core.HVRGrabbable>().enabled = true;
+                cubes[nxtInd].GetComponent<BoxCollider>().size = Vector3.one;
+                cubes[nxtInd].GetComponent<Renderer>().material.color = Color.yellow;
+            }
+
             if (Time.time >= secs[nxtInd])
             {
                 cubes[nxtInd].GetComponent<Renderer>().material.color = Color.red;
-                cubes[nxtInd].GetComponent<HurricaneVR.Framework.Core.HVRGrabbable>().enabled = true;
-                impactSFX.Play();
-                Debug.Log("Yes");
                 if(nxtInd < secs.Length-1) nxtInd++;
+                Debug.Log("now");
             }
         }
         else
@@ -110,27 +129,15 @@ public class WallBuilder : MonoBehaviour
         }
     }
 
-    GameObject newCube(int num)
+    GameObject newCube(int num, float xPos)
     {
         GameObject lastCube = cubes[num];
         GameObject newCube = lastCube;
 
         Vector3 lastPos = lastCube.transform.position;
 
-        float rand = Random.Range(-.4f, .4f);
-
-        if (lastPos.x <= -3.5f)
-        {
-            newCube.transform.position = new Vector3(lastPos.x + 1, lastPos.y + .7f, lastPos.z);
-        }
-        else if (lastPos.x >= 3.5f)
-        {
-            newCube.transform.position = new Vector3(lastPos.x - 1, lastPos.y + .7f, lastPos.z);
-        }
-        else
-        {
-            newCube.transform.position = new Vector3(lastPos.x + rand, lastPos.y + .7f, lastPos.z);
-        }
+        //newCube.transform.localScale = new Vector3(0.0025f, 0.0001f, .1f);
+        newCube.transform.localPosition = new Vector3(xPos, lastPos.y + .7f, 0);
 
         newCube.GetComponent<HurricaneVR.Framework.Core.HVRGrabbable>().enabled = true;
 

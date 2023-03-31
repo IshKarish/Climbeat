@@ -3,14 +3,14 @@ using System.IO;
 
 public static class SaveSystem
 {
-    static string path = Application.persistentDataPath + "/CustomLevels";
+    //static string path = Application.persistentDataPath + "/CustomLevels";
     static string format = ".notvirus";
 
-    public static void SaveLevel (LevelEditor editor, string name)
+    public static void SaveLevel (LevelEditor editor, string name, string path)
     {
         string sPath = path + "/" + name + format;
 
-        FileStream stream = new FileStream(sPath, FileMode.Create);
+        FileStream stream = new FileStream(path + "/" + name + format, FileMode.Create);
         BinaryWriter writer = new BinaryWriter(stream);
 
         LevelData data = LevelData.FromLevel(editor);
@@ -32,6 +32,12 @@ public static class SaveSystem
         }
 
         writer.Write(data.lvlName);
+
+        writer.Write(data.xPos.Length);
+        for (int i = 0; i < data.xPos.Length; i++)
+        {
+            writer.Write(data.xPos[i]);
+        }
 
         stream.Close();
     }
@@ -64,6 +70,13 @@ public static class SaveSystem
             }
 
             data.lvlName = reader.ReadString();
+
+            int yLength = reader.ReadInt32();
+            data.xPos = new float[yLength];
+            for (int i = 0; i < data.xPos.Length; i++)
+            {
+                data.xPos[i] = reader.ReadSingle();
+            }
 
             stream.Close();
 

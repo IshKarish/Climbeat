@@ -13,6 +13,8 @@ public class LevelData
     public int frequency { get; set; }
     public float[] samples { get; set; }
 
+    public float[] xPos { get; set; }
+
     public static LevelData FromLevel (LevelEditor editor)
     {
         return new LevelData
@@ -24,6 +26,8 @@ public class LevelData
             channels = editor.song.channels,
             frequency = editor.song.frequency,
             samples = editor.samples,
+
+            xPos = editor.xPos,
         };
     }
 }

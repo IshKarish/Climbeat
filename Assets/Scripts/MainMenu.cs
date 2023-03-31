@@ -29,7 +29,15 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
-        paths = Directory.GetFiles(Application.persistentDataPath + "/CustomLevels");
+        //paths = Directory.GetFiles(Application.persistentDataPath + "/CustomLevels");
+        string levelsFolder = Application.persistentDataPath + "/CustomLevels/";
+
+        paths = Directory.GetDirectories(levelsFolder);
+
+        for (int i = 0; i < paths.Length; i++)
+        {
+            //Debug.Log(paths[i]);
+        }
         
         if(paths.Length >= 0)
         {
@@ -38,10 +46,10 @@ public class MainMenu : MonoBehaviour
 
             for (int i = 0; i < paths.Length; i++)
             {
-                LevelData data = SaveSystem.LoadLevel(paths[i]);
-                lvls[i] = data.lvlName;
+                //LevelData data = SaveSystem.LoadLevel(paths[i]);
+                lvls[i] = paths[i].Remove(0, levelsFolder.Length);
 
-                GameObject obj = gameManager.write(data.lvlName, pivot.transform.position, lvlTxtSize);
+                GameObject obj = gameManager.write(lvls[i], pivot.transform.position, lvlTxtSize);
 
                 pivot.position = new Vector3(pivot.position.x, pivot.position.y - 1, pivot.position.z);
 
