@@ -5,12 +5,19 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.Networking;
 using SimpleFileBrowser;
+using TMPro;
 
 public class Uploader : MonoBehaviour
 {
+    public TMP_InputField nameInput;
+    public TMP_InputField authorInput;
+    public TMP_InputField bpmInput;
+
     public GameObject waveform;
 
     string lvlName;
+    string authorName;
+    int bpm;
     List<float> secsLst = new List<float>();
     LevelEditor editor;
 
@@ -30,7 +37,7 @@ public class Uploader : MonoBehaviour
 
     public void ContinueSong()
     {
-        FileBrowser.SetFilters(false, new FileBrowser.Filter("Not Virus", ".notvirus"));
+        //FileBrowser.SetFilters(false, new FileBrowser.Filter("Not Virus", ".notvirus"));
         FileBrowser.AddQuickLink("Users", "C:\\Users", null);
         FileBrowser.AddQuickLink("Climbeat", Application.persistentDataPath, null);
         //FileBrowser.AddQuickLink("Downloads", "C:\\Downloads", null);
@@ -53,7 +60,7 @@ public class Uploader : MonoBehaviour
         FileBrowser.AddQuickLink("Users", "C:\\Users", null);
         //FileBrowser.AddQuickLink("Downloads", "C:\\Downloads", null);
 
-        StartCoroutine("ShowStealDialog");
+        StartCoroutine("ShowinfoDialog");
     }
 
     IEnumerator ShowinfoDialog()
@@ -67,32 +74,44 @@ public class Uploader : MonoBehaviour
             path = Path.Combine(FileBrowserHelpers.GetDirectoryName(res), FileBrowserHelpers.GetFilename(res));
 
             StreamReader reader = new StreamReader(path);
-            string levelInfo = reader.ReadToEnd();
+            string levelData = reader.ReadToEnd();
             reader.Close();
 
-            string[] arr = levelInfo.Split("\"_songName\": \"");
-            List<string> lst = new List<string>();
-            lst.Add(arr[0]);
+            string arr = levelData.Split("\"_songName\": \"")[1];
+            char[] cArr = arr.ToCharArray();
 
-            for (int i = 1; i < arr.Length - 1; i++)
+            for (int i = 0; i < arr.Length; i++)
             {
-                string sec = arr[i];
-                char[] cArr = sec.ToCharArray();
-                for (int j = 0; j < cArr.Length; j++)
-                {
-                    if (cArr[j] != ',') newSec += cArr[j]; else break;
-                }
-                lst.Add(newSec);
-                newSec = "";
+                if (cArr[i] != '"') lvlName += cArr[i]; else break;
             }
 
-            lvlName = "a";
+            arr = levelData.Split("\"_beatsPerMinute\": ")[1];
+            cArr = arr.ToCharArray();
+            string bpmStr = "";
 
-            FileBrowser.SetFilters(false, new FileBrowser.Filter("Egg", ".egg"));
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (cArr[i] != ',') bpmStr += cArr[i]; else break;
+            }
+            bpm = int.Parse(bpmStr);
+
+            arr = levelData.Split("\"_levelAuthorName\": \"")[1];
+            cArr = arr.ToCharArray();
+
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (cArr[i] != '"') authorName += cArr[i]; else break;
+            }
+
+            Debug.Log(lvlName);
+            Debug.Log(bpm);
+            Debug.Log(authorName);
+
+            FileBrowser.SetFilters(false, new FileBrowser.Filter("Dat", ".dat"));
             FileBrowser.AddQuickLink("Users", "C:\\Users", null);
             //FileBrowser.AddQuickLink("Downloads", "C:\\Downloads", null);
 
-            StartCoroutine("ShowBsDialog");
+            StartCoroutine("ShowStealDialog");
         }
     }
 
@@ -105,8 +124,6 @@ public class Uploader : MonoBehaviour
             string res = FileBrowser.Result[0];
 
             path = Path.Combine(FileBrowserHelpers.GetDirectoryName(res), FileBrowserHelpers.GetFilename(res));
-
-            lvlName = "a";
 
             StreamReader reader = new StreamReader(path);
             string levelData = reader.ReadToEnd();
@@ -149,7 +166,7 @@ public class Uploader : MonoBehaviour
                 secsLst.Add(float.Parse(str));
             }
 
-            FileBrowser.SetFilters(false, new FileBrowser.Filter("Egg", ".egg"));
+            FileBrowser.SetFilters(false, new FileBrowser.Filter("Egg", ".ogg", ".egg"));
             FileBrowser.AddQuickLink("Users", "C:\\Users", null);
             //FileBrowser.AddQuickLink("Downloads", "C:\\Downloads", null);
 
@@ -159,13 +176,13 @@ public class Uploader : MonoBehaviour
 
     IEnumerator ShowContDialog()
     {
-        yield return FileBrowser.WaitForLoadDialog(FileBrowser.PickMode.FilesAndFolders);
+        yield return FileBrowser.WaitForLoadDialog(FileBrowser.PickMode.Folders);
 
         if (FileBrowser.Success)
         {
             string res = FileBrowser.Result[0];
 
-            path = Path.Combine(FileBrowserHelpers.GetDirectoryName(res), FileBrowserHelpers.GetFilename(res));
+            path = Path.Combine(FileBrowserHelpers.GetDirectoryName(res), FileBrowserHelpers.GetFilename(res)) + "/Normal.notvirus";
             Debug.Log(path);
 
             LevelData data = SaveSystem.LoadLevel(path);
@@ -186,7 +203,11 @@ public class Uploader : MonoBehaviour
             editor.lvlNameTxt.text = data.lvlName;
 
             editor.xPos = data.xPos;
+            editor.yPos = data.yPos;
             editor.restoreYpoints();
+
+            editor.authorTxt.text = "Author:\n" + data.authorName;
+            editor.bpmTxt.text = data.bpm;
 
             string lvl = path.Remove(0, (Application.persistentDataPath + "/CustomLevels/").Length);
             Debug.Log(lvl);
@@ -199,6 +220,46 @@ public class Uploader : MonoBehaviour
 
             editor.SwitchPanels(editor.openPanel, editor.editorPanel);
         }
+    }
+
+    public void ChangeDifficultyLevel(string path)
+    {
+        Debug.Log(path);
+
+        LevelData data = SaveSystem.LoadLevel(path);
+        editor.secs = data.Secs;
+        name = data.lvlName;
+        editor.load = true;
+
+        AudioClip clip = AudioClip.Create("Song", data.samplesLeangth / 2, data.channels, data.frequency, false);
+        clip.SetData(data.samples, 0);
+        editor.audioSource.clip = clip;
+        editor.song = clip;
+
+        waveform.GetComponent<Track>().GetComponent<AudioSource>().clip = clip;
+        waveform.GetComponent<Track>().enabled = true;
+
+        editor.FillSecTxts();
+
+        editor.lvlNameTxt.text = data.lvlName;
+
+        editor.xPos = data.xPos;
+        editor.yPos = data.yPos;
+        editor.restoreYpoints();
+
+        editor.authorTxt.text = "Author:\n" + data.authorName;
+        editor.bpmTxt.text = data.bpm;
+
+        string lvl = path.Remove(0, (Application.persistentDataPath + "/CustomLevels/").Length);
+        Debug.Log(lvl);
+
+        if (lvl.Contains("Easy")) editor.difficultyLevel.value = 0;
+        else if (lvl.Contains("Normal")) editor.difficultyLevel.value = 1;
+        else if (lvl.Contains("Hard")) editor.difficultyLevel.value = 2;
+        else if (lvl.Contains("Expert")) editor.difficultyLevel.value = 3;
+        else editor.difficultyLevel.value = 1;
+
+        editor.SwitchPanels(editor.openPanel, editor.editorPanel);
     }
 
     IEnumerator ShowLoadDialog()
@@ -235,8 +296,21 @@ public class Uploader : MonoBehaviour
             waveform.GetComponent<Track>().GetComponent<AudioSource>().clip = song;
             waveform.GetComponent<Track>().enabled = true;
 
-            editor.SwitchPanels(editor.openPanel, editor.editorPanel);
             editor.song = song;
+            editor.lvlNameTxt.text = nameInput.text;
+            editor.authorTxt.text = authorInput.text;
+            editor.bpmTxt.text = bpmInput.text;
+
+            editor.SaveSong(false);
+            editor.difficultyLevel.value = 1;
+            editor.SaveSong(false);
+            editor.difficultyLevel.value = 2;
+            editor.SaveSong(false);
+            editor.difficultyLevel.value = 3;
+            editor.SaveSong(false);
+            editor.difficultyLevel.value = 1;
+
+            editor.SwitchPanels(editor.openPanel, editor.editorPanel);
         }
     }
 
@@ -272,7 +346,15 @@ public class Uploader : MonoBehaviour
 
             editor.audioSource.clip = song;
             editor.song = song;
-            editor.secs = secsLst.ToArray();
+
+            float[] secsArr = new float[(int)song.length];
+
+            for (int i = 0; i < secsArr.Length; i++)
+            {
+                secsArr[i] = secsLst[i];
+            }
+            
+            editor.secs = secsArr;
             editor.xPos = new float[editor.secs.Length];
 
             for (int i = 0; i < editor.secs.Length; i++)
@@ -281,11 +363,19 @@ public class Uploader : MonoBehaviour
             }
 
             editor.lvlNameTxt.text = lvlName;
+            editor.authorTxt.text = "Author:\n" + authorName;
+            editor.bpmTxt.text = bpm.ToString();
 
             waveform.GetComponent<Track>().GetComponent<AudioSource>().clip = song;
             waveform.GetComponent<Track>().enabled = true;
 
             editor.FillSecTxts();
+
+            if (path.Contains("Easy")) editor.difficultyLevel.value = 0;
+            else if (path.Contains("Normal")) editor.difficultyLevel.value = 1;
+            else if (path.Contains("Hard")) editor.difficultyLevel.value = 2;
+            else if (path.Contains("Expert")) editor.difficultyLevel.value = 3;
+            else editor.difficultyLevel.value = 1;
 
             editor.SwitchPanels(editor.openPanel, editor.editorPanel);
 

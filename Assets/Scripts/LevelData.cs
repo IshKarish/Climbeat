@@ -14,6 +14,9 @@ public class LevelData
     public float[] samples { get; set; }
 
     public float[] xPos { get; set; }
+    public string authorName;
+    public string bpm;
+    public float[] yPos { get; set; }
 
     public static LevelData FromLevel (LevelEditor editor)
     {
@@ -28,6 +31,9 @@ public class LevelData
             samples = editor.samples,
 
             xPos = editor.xPos,
+            authorName = editor.authorInput.text,
+            bpm = editor.bpmInput.text,
+            yPos = editor.yPos,
         };
     }
 }

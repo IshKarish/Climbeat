@@ -29,7 +29,6 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
-        //paths = Directory.GetFiles(Application.persistentDataPath + "/CustomLevels");
         string levelsFolder = Application.persistentDataPath + "/CustomLevels/";
 
         paths = Directory.GetDirectories(levelsFolder);
@@ -47,9 +46,10 @@ public class MainMenu : MonoBehaviour
             for (int i = 0; i < paths.Length; i++)
             {
                 //LevelData data = SaveSystem.LoadLevel(paths[i]);
-                lvls[i] = paths[i].Remove(0, levelsFolder.Length);
+                lvls[i] = paths[i];
+                //Debug.Log(paths[i]);
 
-                GameObject obj = gameManager.write(lvls[i], pivot.transform.position, lvlTxtSize);
+                GameObject obj = gameManager.write(lvls[i].Remove(0, levelsFolder.Length), pivot.transform.position, lvlTxtSize);
 
                 pivot.position = new Vector3(pivot.position.x, pivot.position.y - 1, pivot.position.z);
 
@@ -57,13 +57,13 @@ public class MainMenu : MonoBehaviour
             }
 
             ChangeTxtMat(0, chooseMat);
-            path = paths[0];
         }
     }
 
     void ChangeTxtMat(int ind, Material mat)
     {
         curLvl = lvlTxts[ind];
+        path = lvls[ind];
         for (int i = 0; i < lvlTxts[ind].transform.childCount; i++)
         {
             curLvl.transform.GetChild(i).GetComponent<Renderer>().material = mat;
@@ -72,25 +72,20 @@ public class MainMenu : MonoBehaviour
         if(mat == chooseMat)
         {
             path = paths[ind];
+            Debug.Log(path);
         }
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            LvlDown();
-        }
+        if(Input.GetKeyDown(KeyCode.DownArrow)) LvlDown();
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            LvlUp();
-        }
+        if (Input.GetKeyDown(KeyCode.UpArrow)) LvlUp();
 
-        if (Input.GetKeyDown(KeyCode.Return))
-        {
-            EnterLvl();
-        }
+        if (Input.GetKeyDown(KeyCode.E)) EnterLvl("easy");
+        if (Input.GetKeyDown(KeyCode.N)) EnterLvl("normal");
+        if (Input.GetKeyDown(KeyCode.H)) EnterLvl("hard");
+        if (Input.GetKeyDown(KeyCode.X)) EnterLvl("expert");
     }
 
     public void LvlDown()
@@ -119,9 +114,13 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-    public void EnterLvl()
+    public void EnterLvl(string difficulty = "normal")
     {
-        PlayerPrefs.SetString("Path", path);
+        if (difficulty == "easy") PlayerPrefs.SetString("Path", path + "/Easy.notvirus");
+        else if (difficulty == "normal") PlayerPrefs.SetString("Path", path + "/Normal.notvirus");
+        else if (difficulty == "hard") PlayerPrefs.SetString("Path", path + "/Hard.notvirus");
+        else if (difficulty == "expert") PlayerPrefs.SetString("Path", path + "/Expert.notvirus");
+
         LoadScene(1);
     }
 

@@ -27,7 +27,7 @@ public class WallBuilder : MonoBehaviour
         gameManager = FindObjectOfType<GameManager>();
 
         lvl = PlayerPrefs.GetString("Path");
-        Debug.Log(lvl);
+        Debug.Log("Level = " + lvl);
 
         LevelData data = SaveSystem.LoadLevel(lvl);
         secs = data.Secs;
@@ -57,7 +57,7 @@ public class WallBuilder : MonoBehaviour
 
         for (int i = 1; i < cubes.Length; i++)
         {
-            GameObject nc = Instantiate(newCube(i-1, data.xPos[i-1]));
+            GameObject nc = Instantiate(newCube(i-1, data.xPos[i-1], data.yPos[i-1]));
 
             nc.name = "cube " + i;
             //nc.transform.SetParent(wall.transform);
@@ -129,7 +129,7 @@ public class WallBuilder : MonoBehaviour
         }
     }
 
-    GameObject newCube(int num, float xPos)
+    GameObject newCube(int num, float xPos, float yPos)
     {
         GameObject lastCube = cubes[num];
         GameObject newCube = lastCube;
@@ -137,7 +137,7 @@ public class WallBuilder : MonoBehaviour
         Vector3 lastPos = lastCube.transform.position;
 
         //newCube.transform.localScale = new Vector3(0.0025f, 0.0001f, .1f);
-        newCube.transform.localPosition = new Vector3(xPos, lastPos.y + .7f, 0);
+        newCube.transform.localPosition = new Vector3(xPos, yPos, 0);
 
         newCube.GetComponent<HurricaneVR.Framework.Core.HVRGrabbable>().enabled = true;
 

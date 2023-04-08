@@ -39,6 +39,15 @@ public static class SaveSystem
             writer.Write(data.xPos[i]);
         }
 
+        writer.Write(data.authorName);
+        writer.Write(data.bpm);
+
+        writer.Write(data.yPos.Length);
+        for (int i = 0; i < data.yPos.Length; i++)
+        {
+            writer.Write(data.yPos[i]);
+        }
+
         stream.Close();
     }
 
@@ -71,11 +80,21 @@ public static class SaveSystem
 
             data.lvlName = reader.ReadString();
 
-            int yLength = reader.ReadInt32();
-            data.xPos = new float[yLength];
+            int xLength = reader.ReadInt32();
+            data.xPos = new float[xLength];
             for (int i = 0; i < data.xPos.Length; i++)
             {
                 data.xPos[i] = reader.ReadSingle();
+            }
+
+            data.authorName = reader.ReadString();
+            data.bpm = reader.ReadString();
+
+            int yLength = reader.ReadInt32();
+            data.yPos = new float[yLength];
+            for (int i = 0; i < data.yPos.Length; i++)
+            {
+                data.yPos[i] = reader.ReadSingle();
             }
 
             stream.Close();

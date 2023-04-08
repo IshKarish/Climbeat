@@ -10,13 +10,22 @@ using UnityEngine.EventSystems;
 
 public class LevelEditor : MonoBehaviour
 {
+    public GameObject secsWall;
+    public List<GameObject> secsVisualls = new List<GameObject>();
+
+    public GameObject xAxis;
+    public GameObject yAxis;
+
     public TMP_Dropdown difficultyLevel;
+    public TMP_InputField jumpSecInput;
 
     public float[] xPos;
+    public float[] yPos;
     public List<GameObject> pointsVisuals = new List<GameObject>();
 
     [Header("Scripts")]
     public Track track;
+    public Uploader uploader;
 
     [Header("Numbers")]
     [Range(100, 1000)] public float moveSpeed;
@@ -29,6 +38,7 @@ public class LevelEditor : MonoBehaviour
     public GameObject loadPanel;
     public GameObject savePanel;
     public GameObject quitPanel;
+    public GameObject infoPanel;
 
     [Header("Buttons")]
     public GameObject enterBtn;
@@ -36,12 +46,17 @@ public class LevelEditor : MonoBehaviour
 
     [Header("Inputs")]
     public TMP_InputField lvlNameInput;
+    public TMP_InputField authorInput;
+    public TMP_InputField bpmInput;
     public TMP_InputField secInput;
 
     [Header("Texts")]
     public TextMeshProUGUI timeTxt;
+    public TextMeshProUGUI authorTxt;
+    public TextMeshProUGUI bpmTxt;
     public TextMeshProUGUI lastSecTxt;
     public TextMeshProUGUI lvlNameTxt;
+    public TextMeshProUGUI ogSecTxt;
 
     [Header("Visuals")]
     public GameObject wall;
@@ -54,7 +69,8 @@ public class LevelEditor : MonoBehaviour
 
     List<TextMeshProUGUI> secTxts = new List<TextMeshProUGUI>();
     List<GameObject> points = new List<GameObject>();
-    GameObject lastPoint = null;
+    public GameObject lastPoint = null;
+    public GameObject ogPoint = null;
 
     [HideInInspector]public AudioSource audioSource;
     [HideInInspector] public AudioClip song;
@@ -74,12 +90,14 @@ public class LevelEditor : MonoBehaviour
     bool moveMode = false;
 
     float lastY;
+    float lastX;
 
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
         cam = Camera.main;
         ogFov = cam.fieldOfView;
+        //changeLevel.uploader = uploader;
     }
 
     private void Update()
@@ -134,20 +152,50 @@ public class LevelEditor : MonoBehaviour
 
             if(moveMode && !removeMod)
             {
-                float x = Input.mousePosition.x;
                 GameObject current = EventSystem.current.currentSelectedGameObject;
+                Transform curTrans = current.transform;
 
-                RectTransform rectTransform = current.GetComponent<RectTransform>();
-                float newX = x - Screen.width / 2;
-                rectTransform.localPosition = new Vector3(newX, rectTransform.localPosition.y, 0);
+                xAxis.SetActive(true);
+                Transform xTrans = xAxis.transform;
+                xTrans.position = new Vector3(0, curTrans.position.y, xTrans.position.z);
 
-                for (int i = 0; i < xPos.Length; i++)
+                yAxis.SetActive(true);
+                Transform yTrans = yAxis.transform;
+                yTrans.position = new Vector3(curTrans.position.x, 0, yTrans.position.z);
+
+                Transform transform = current.transform;
+                float newX = lastX - Screen.width / 2;
+                float newY = lastY - Screen.height / 2;
+
+
+                if (Input.GetKey(KeyCode.X))
                 {
-                    if(current == pointsVisuals[i])
+                    transform.position = new Vector3(newX, transform.position.y, transform.position.z);
+                    yAxis.SetActive(false);
+
+                    for (int i = 0; i < xPos.Length; i++)
                     {
-                        xPos[i] = newX;
+                        if (current == pointsVisuals[i])
+                        {
+                            xPos[i] = current.GetComponent<RectTransform>().localPosition.x;
+                        }
                     }
                 }
+                else if (Input.GetKey(KeyCode.Y))
+                {
+                    transform.position = new Vector3(transform.position.x, newY, transform.position.z);
+                    xAxis.SetActive(false);
+
+                    for (int i = 0; i < yPos.Length; i++)
+                    {
+                        if (current == pointsVisuals[i])
+                        {
+                            yPos[i] = current.GetComponent<RectTransform>().localPosition.y;
+                        }
+                    }
+                }
+
+                
             }
         }
     }
@@ -159,10 +207,10 @@ public class LevelEditor : MonoBehaviour
             if (!zoom)
             {
                 if (cursor.localPosition.y > 200)
-                    cam.transform.localPosition = new Vector3(fakeWaveform.transform.position.x, 302.5f, cam.transform.localPosition.z);
+                    cam.transform.localPosition = new Vector3(wall.transform.position.x, 408.5f, cam.transform.localPosition.z);
                 else if (cursor.localPosition.y < -200)
-                    cam.transform.localPosition = new Vector3(fakeWaveform.transform.position.x, -302.5f, cam.transform.localPosition.z);
-                else cam.transform.localPosition = new Vector3(fakeWaveform.transform.position.x, cursor.position.y, cam.transform.localPosition.z);
+                    cam.transform.localPosition = new Vector3(wall.transform.position.x, -408.5f, cam.transform.localPosition.z);
+                else cam.transform.localPosition = new Vector3(wall.transform.position.x, cursor.position.y, cam.transform.localPosition.z);
                 cam.fieldOfView = zoomedFov;
 
                 zoom = true;
@@ -180,12 +228,18 @@ public class LevelEditor : MonoBehaviour
             cam.transform.localPosition = new Vector3(cam.transform.position.x, cursor.position.y, cam.transform.localPosition.z);
 
         lastY = Input.mousePosition.y;
+        lastX = Input.mousePosition.x;
+    }
+
+    public void CreateLvl()
+    {
+        infoPanel.SetActive(!infoPanel.active);
     }
 
     #region Saving functions
     public void SaveMod()
     {
-        if (lvlNameTxt.text == "") savePanel.SetActive(!savePanel.activeSelf); else SaveSong();
+        if (lvlNameTxt.text == "") savePanel.SetActive(!savePanel.activeSelf); else SaveSong(true);
     }
 
     void SamplesSave()
@@ -204,10 +258,10 @@ public class LevelEditor : MonoBehaviour
             secs[i] = float.Parse(secTxtsArr[i].text);
         }
 
-        Sort(secs, xPos);
+        Sort(secs, xPos, yPos);
     }
 
-    public void SaveSong()
+    public void SaveSong(bool restart)
     {
         //audioSource.Play();
 
@@ -238,11 +292,11 @@ public class LevelEditor : MonoBehaviour
         path = levelsFolder + "/" + lvlNameTxt.text;
 
         SaveSystem.SaveLevel(this, difficultyLevel.GetComponentInChildren<TextMeshProUGUI>().text, path);
-        Loadcene(SceneManager.GetActiveScene().buildIndex);
+        if (restart) Loadcene(SceneManager.GetActiveScene().buildIndex);
     }
     #endregion
 
-    void Sort(float[] secsArr, float[] yPosArr)
+    void Sort(float[] secsArr, float[] xPosArr, float[] yPosArr)
     {
         for (int i = 0; i < secsArr.Length; i++)
         {
@@ -251,6 +305,7 @@ public class LevelEditor : MonoBehaviour
                 if(secsArr[i] < secsArr[j])
                 {
                     Switch(secsArr, i, j);
+                    Switch(xPosArr, i, j);
                     Switch(yPosArr, i, j);
                 }
             }
@@ -264,6 +319,11 @@ public class LevelEditor : MonoBehaviour
         arr[ind2] = temp;
     }
 
+    public void Quit()
+    {
+        Application.Quit();
+    }
+
     public void MoveOn()
     {
         moveMode = true;
@@ -272,6 +332,29 @@ public class LevelEditor : MonoBehaviour
     public void MoveOff()
     {
         moveMode = false;
+        xAxis.SetActive(false);
+        yAxis.SetActive(false);
+    }
+
+    public void JumpToSecond()
+    {
+        if (jumpSecInput.text != "" && float.Parse(jumpSecInput.text) < song.length)
+        {
+            SecJump(float.Parse(jumpSecInput.text));
+            jumpSecInput.text = "";
+            jumpSecInput.placeholder.enabled = true;
+        }
+    }
+
+    public void SecJump(float sec)
+    {
+        audioSource.time = sec;
+        audioSource.Play();
+        float y = sec / song.length * Screen.height;
+
+        cursor.position = new Vector3(cursor.position.x, y, cursor.position.z);
+        timeTxt.text = songTime.ToString("0.00");
+        moveCursor = true;
     }
 
     IEnumerator LockMove()
@@ -323,7 +406,7 @@ public class LevelEditor : MonoBehaviour
             for (int i = 0; i < xPos.Length; i++)
             {
                 RectTransform rect = pointsVisuals[i].GetComponent<RectTransform>();
-                rect.localPosition = new Vector3(xPos[i], rect.localPosition.y, rect.localPosition.z);
+                rect.localPosition = new Vector3(xPos[i], yPos[i], rect.localPosition.z);
             }
         }
     }
@@ -364,16 +447,24 @@ public class LevelEditor : MonoBehaviour
 
     public void playFromSec()
     {
-        GameObject[] pointsArr = points.ToArray();
-        TextMeshProUGUI[] secsArr = secTxts.ToArray();
+        StartCoroutine("PlayFromSec");
+    }
 
-        for (int i = 0; i < pointsArr.Length; i++)
+    IEnumerator PlayFromSec()
+    {
+        GameObject cur = EventSystem.current.currentSelectedGameObject;
+        for (int i = 0; i < secsVisualls.Count; i++)
         {
-            if(EventSystem.current.currentSelectedGameObject == pointsArr[i])
+            if (cur.name == secsVisualls[i].name)
             {
-                audioSource.time = float.Parse(secsArr[i].text);
-                audioSource.Play();
-                cursor.transform.position = new Vector3(cursor.position.x, EventSystem.current.currentSelectedGameObject.transform.position.y, cursor.position.z);
+                cur.GetComponent<Image>().color = Color.red;
+                secsVisualls[i].GetComponent<Image>().color = Color.red;
+                SecJump(float.Parse(cur.name));
+
+                yield return new WaitForSeconds(1);
+
+                cur.GetComponent<Image>().color = Color.black;
+                secsVisualls[i].GetComponent<Image>().color = Color.black;
             }
         }
     }
@@ -388,8 +479,11 @@ public class LevelEditor : MonoBehaviour
         if(float.TryParse(secToAdd, out float f))
         {
             GameObject climbPoint = climbpointVisual(y);
+            GameObject secVisuall = secVisual(y);
+
             lastPoint = climbPoint;
             climbPoint.name = secToAdd;
+            secVisuall.name = secToAdd;
             points.Add(climbPoint);
             
             TextMeshProUGUI sec = Instantiate(lastSecTxt);
@@ -421,21 +515,40 @@ public class LevelEditor : MonoBehaviour
         }
     }
 
+    GameObject secVisual(float y = 0)
+    {
+        float x = secsWall.transform.position.x;
+
+        Vector3 newPos = new Vector3(x, track.cursor.position.y, wall.transform.position.z);
+
+        soraVR = Instantiate(climbPoint);
+        soraVR.transform.localPosition = newPos;
+        soraVR.transform.parent = secsWall.transform;
+
+        if (y != 0)
+        {
+            soraVR.transform.position = new Vector3(x, y, wall.transform.position.z);
+        }
+
+        if (!soraVR.activeSelf) soraVR.SetActive(true);
+
+        secsVisualls.Add(soraVR);
+
+        return soraVR;
+    }
+
     GameObject climbpointVisual(float y = 0)
     {
         float x = wall.transform.position.x;
+
         if (lastPoint)
         {
-            if (lastPoint.transform.position.x > 100) x = lastPoint.transform.position.x + UnityEngine.Random.Range(-100, 50);
-            else if (lastPoint.transform.position.x < -100) x = lastPoint.transform.position.x + UnityEngine.Random.Range(50, 100);
-            else x = lastPoint.transform.position.x + UnityEngine.Random.Range(-100, 100);
+            if (lastPoint.transform.position.x > 100) x = UnityEngine.Random.Range(-90, -40);
+            else if (lastPoint.transform.position.x < -100) x = UnityEngine.Random.Range(40f, 90);
+            else x = UnityEngine.Random.Range(-90, 90f);
         }
 
-        Vector3 newPos = new Vector3(x, track.cursor.position.y, wall.transform.position.z); ;
-        if (y != 0)
-        {
-            newPos = new Vector3(x, y, wall.transform.position.z);
-        }
+        Vector3 newPos = new Vector3(x, lastPoint.transform.position.y + 5, wall.transform.position.z); ;
         soraVR = Instantiate(climbPoint);
         soraVR.transform.localPosition = newPos;
         soraVR.transform.parent = wall.transform;
@@ -445,9 +558,11 @@ public class LevelEditor : MonoBehaviour
         pointsVisuals.Add(soraVR);
 
         xPos = new float[pointsVisuals.Count];
+        yPos = new float[pointsVisuals.Count];
         for (int i = 0; i < xPos.Length; i++)
         {
             xPos[i] = pointsVisuals[i].GetComponent<RectTransform>().localPosition.x;
+            yPos[i] = pointsVisuals[i].GetComponent<RectTransform>().localPosition.y;
         }
 
         return soraVR;
@@ -482,6 +597,33 @@ public class LevelEditor : MonoBehaviour
 
             RemoveMod();
         }
+    }
+
+    public void difficultyChange()
+    {
+        string difficulty = difficultyLevel.GetComponentInChildren<TextMeshProUGUI>().text;
+        string lvlFolder = Application.persistentDataPath + "/CustomLevels/" + lvlNameTxt.text;
+        string lvlFile = lvlFolder + "/" + difficulty + ".notvirus";
+
+        RemoveAll();
+        uploader.ChangeDifficultyLevel(lvlFile);
+    }
+
+    void RemoveAll()
+    {
+        lastPoint = ogPoint;
+        for (int i = 0; i < secsVisualls.Count; i++)
+        {
+            Destroy(secsVisualls[i]);
+            Destroy(pointsVisuals[i]);
+            Destroy(secTxts[i]);
+        }
+        lastSecTxt = ogSecTxt;
+
+        secsVisualls.Clear();
+        pointsVisuals.Clear();
+        points.Clear();
+        secTxts.Clear();
     }
     #endregion
 
