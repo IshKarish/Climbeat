@@ -31,8 +31,8 @@ public class LevelData
             samples = editor.samples,
 
             xPos = editor.xPos,
-            authorName = editor.authorInput.text,
-            bpm = editor.bpmInput.text,
+            authorName = editor.authorTxt.text,
+            bpm = editor.bpmTxt.text,
             yPos = editor.yPos,
         };
     }

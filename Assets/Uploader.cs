@@ -166,7 +166,7 @@ public class Uploader : MonoBehaviour
                 secsLst.Add(float.Parse(str));
             }
 
-            FileBrowser.SetFilters(false, new FileBrowser.Filter("Egg", ".ogg", ".egg"));
+            FileBrowser.SetFilters(false, new FileBrowser.Filter("Audio", ".ogg", ".egg"));
             FileBrowser.AddQuickLink("Users", "C:\\Users", null);
             //FileBrowser.AddQuickLink("Downloads", "C:\\Downloads", null);
 
@@ -206,17 +206,11 @@ public class Uploader : MonoBehaviour
             editor.yPos = data.yPos;
             editor.restoreYpoints();
 
-            editor.authorTxt.text = "Author:\n" + data.authorName;
+            editor.authorTxt.text = data.authorName;
             editor.bpmTxt.text = data.bpm;
 
             string lvl = path.Remove(0, (Application.persistentDataPath + "/CustomLevels/").Length);
             Debug.Log(lvl);
-
-            if (lvl.Contains("Easy")) editor.difficultyLevel.value = 0;
-            else if (lvl.Contains("Normal")) editor.difficultyLevel.value = 1;
-            else if(lvl.Contains("Hard")) editor.difficultyLevel.value = 2;
-            else if(lvl.Contains("Expert")) editor.difficultyLevel.value = 3;
-            else editor.difficultyLevel.value = 1;
 
             editor.SwitchPanels(editor.openPanel, editor.editorPanel);
         }
@@ -301,6 +295,7 @@ public class Uploader : MonoBehaviour
             editor.authorTxt.text = authorInput.text;
             editor.bpmTxt.text = bpmInput.text;
 
+            editor.difficultyLevel.value = 0;
             editor.SaveSong(false);
             editor.difficultyLevel.value = 1;
             editor.SaveSong(false);

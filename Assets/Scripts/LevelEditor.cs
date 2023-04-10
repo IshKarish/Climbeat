@@ -164,13 +164,12 @@ public class LevelEditor : MonoBehaviour
                 yTrans.position = new Vector3(curTrans.position.x, 0, yTrans.position.z);
 
                 Transform transform = current.transform;
-                float newX = lastX - Screen.width / 2;
-                float newY = lastY - Screen.height / 2;
-
+                Vector3 mousePos = Camera.main.ScreenToWorldPoint(new Vector3(lastX, lastY, transform.position.z));
 
                 if (Input.GetKey(KeyCode.X))
                 {
-                    transform.position = new Vector3(newX, transform.position.y, transform.position.z);
+                    Debug.Log(mousePos.x);
+                    transform.position = new Vector3(mousePos.x, transform.position.y, transform.position.z);
                     yAxis.SetActive(false);
 
                     for (int i = 0; i < xPos.Length; i++)
@@ -183,7 +182,8 @@ public class LevelEditor : MonoBehaviour
                 }
                 else if (Input.GetKey(KeyCode.Y))
                 {
-                    transform.position = new Vector3(transform.position.x, newY, transform.position.z);
+                    Debug.Log(mousePos.y);
+                    transform.position = new Vector3(transform.position.x, mousePos.y, transform.position.z);
                     xAxis.SetActive(false);
 
                     for (int i = 0; i < yPos.Length; i++)
@@ -194,8 +194,6 @@ public class LevelEditor : MonoBehaviour
                         }
                     }
                 }
-
-                
             }
         }
     }
@@ -233,7 +231,7 @@ public class LevelEditor : MonoBehaviour
 
     public void CreateLvl()
     {
-        infoPanel.SetActive(!infoPanel.active);
+        infoPanel.SetActive(!infoPanel.activeInHierarchy);
     }
 
     #region Saving functions
@@ -605,8 +603,11 @@ public class LevelEditor : MonoBehaviour
         string lvlFolder = Application.persistentDataPath + "/CustomLevels/" + lvlNameTxt.text;
         string lvlFile = lvlFolder + "/" + difficulty + ".notvirus";
 
-        RemoveAll();
-        uploader.ChangeDifficultyLevel(lvlFile);
+        if(Directory.Exists(lvlFile))
+        {
+            RemoveAll();
+            uploader.ChangeDifficultyLevel(lvlFile);
+        }
     }
 
     void RemoveAll()
