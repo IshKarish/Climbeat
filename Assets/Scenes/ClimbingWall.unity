@@ -1137,6 +1137,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hexa4Rig OpenXR
       objectReference: {fileID: 0}
+    - target: {fileID: 8560143638615957955, guid: 524eedae73dd3d545b15fbceb728e2bf,
+        type: 3}
+      propertyPath: m_TagString
+      value: HVR
+      objectReference: {fileID: 0}
     - target: {fileID: 8560143638724017128, guid: 524eedae73dd3d545b15fbceb728e2bf,
         type: 3}
       propertyPath: SitStanding

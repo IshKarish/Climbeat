@@ -5,6 +5,7 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public HVRHexaBodyInputs inputs;
     public float globTime;
 
     public GameObject[] letters = new GameObject[26];
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
             Directory.CreateDirectory(Application.persistentDataPath + "/CustomLevels");
         }
 
+        inputs = GameObject.FindGameObjectWithTag("HVR").GetComponentInChildren<HVRHexaBodyInputs>();
         DontDestroyOnLoad(this);
     }
 
@@ -30,6 +32,8 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         if(count) globTime += Time.deltaTime;
+        if (inputs.RightController.PrimaryButton) Debug.Log("right");
+        if (inputs.LeftController.PrimaryButton) Debug.Log("left");
     }
 
     public GameObject write(string txt, Vector3 pivot, Vector3 size)

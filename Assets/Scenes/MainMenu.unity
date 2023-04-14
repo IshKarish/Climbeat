@@ -17263,6 +17263,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8560143638615957955, guid: 524eedae73dd3d545b15fbceb728e2bf,
+        type: 3}
+      propertyPath: m_TagString
+      value: HVR
+      objectReference: {fileID: 0}
     - target: {fileID: 8560143638724017128, guid: 524eedae73dd3d545b15fbceb728e2bf,
         type: 3}
       propertyPath: SitStanding
@@ -21066,6 +21071,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f735ebcb9108e1743ae0502e60cc0005, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inputs: {fileID: 0}
   globTime: 0
   letters:
   - {fileID: 919132149155446097, guid: 4bc0477225bb4474788a242000ece7b8, type: 3}

@@ -25,6 +25,7 @@ public class MainMenu : MonoBehaviour
     {
         PlayerPrefs.DeleteKey("Path");
         gameManager = FindObjectOfType<GameManager>();
+        //hvr = h.GetComponent<HVRHexaBodyInputs>();
     }
 
     private void Start()
