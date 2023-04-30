@@ -19,8 +19,6 @@ public class GameManager : MonoBehaviour
         {
             Directory.CreateDirectory(Application.persistentDataPath + "/CustomLevels");
         }
-
-        inputs = GameObject.FindGameObjectWithTag("HVR").GetComponentInChildren<HVRHexaBodyInputs>();
         DontDestroyOnLoad(this);
     }
 
@@ -31,9 +29,10 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if(count) globTime += Time.deltaTime;
-        if (inputs.RightController.PrimaryButton) Debug.Log("right");
-        if (inputs.LeftController.PrimaryButton) Debug.Log("left");
+        if(inputs == null) inputs = GameObject.FindGameObjectWithTag("HVR").GetComponentInChildren<HVRHexaBodyInputs>();
+        if (count) globTime += Time.deltaTime;
+        if (inputs.RightController.PrimaryButton) LoadScene(0);
+        if (inputs.LeftController.PrimaryButton && SceneManager.GetActiveScene().buildIndex == 1) LoadScene(1);
     }
 
     public GameObject write(string txt, Vector3 pivot, Vector3 size)

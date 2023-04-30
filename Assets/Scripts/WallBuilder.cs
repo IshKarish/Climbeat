@@ -82,7 +82,7 @@ public class WallBuilder : MonoBehaviour
             cubes[i].transform.localScale = new Vector3(0.03f, cubes[i].transform.localScale.y, cubes[i].transform.localScale.z);
         }
 
-        PlayerPrefs.DeleteKey("Path");
+        //PlayerPrefs.DeleteKey("Path");
     }
 
     private void Start()
