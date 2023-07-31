@@ -273,6 +273,9 @@ public class LevelEditor : MonoBehaviour
 
         string path = "";
         string levelsFolder = Application.persistentDataPath + "/CustomLevels/";
+
+        if(!Directory.Exists(levelsFolder)) Directory.CreateDirectory(levelsFolder);
+
         string[] paths = Directory.GetDirectories(levelsFolder);
 
         for (int i = 0; i < paths.Length; i++)

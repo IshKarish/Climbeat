@@ -3,9 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using HexabodyVR;
 using HurricaneVR;
+using UnityEngine.UI;
 
 public class WallBuilder : MonoBehaviour
 {
+    public GameObject vrController;
+    public GameObject pcCam;
+    public Slider speedSlider;
+    bool vrMode;
+
     public AudioSource impactSFX;
     public GameObject wall;
 
@@ -25,6 +31,8 @@ public class WallBuilder : MonoBehaviour
     private void Awake()
     {
         gameManager = FindObjectOfType<GameManager>();
+
+        vrMode = gameManager.vrMode;
 
         lvl = PlayerPrefs.GetString("Path");
         Debug.Log("Level = " + lvl);
@@ -57,29 +65,25 @@ public class WallBuilder : MonoBehaviour
 
         for (int i = 1; i < cubes.Length; i++)
         {
-            GameObject nc = Instantiate(newCube(i-1, data.xPos[i-1], data.yPos[i-1]));
+            GameObject nc = Instantiate(newCube(i-1, data.xPos[i-1], data.yPos[i-1] + 355));
 
             nc.name = "cube " + i;
-            //nc.transform.SetParent(wall.transform);
             nc.GetComponent<Renderer>().material.color = Color.white;
-
-            //cubes[i].GetComponent<HurricaneVR.Framework.Core.HVRGrabbable>().enabled = false;
             cubes[i] = nc;
         }
-
-        cubes[0].GetComponent<HurricaneVR.Framework.Core.HVRGrabbable>().enabled = true;
-        Destroy(cubes[cubes.Length-1]);
+        //Destroy(cubes[cubes.Length-1]);
 
         for (int i = 0; i < cubes.Length; i++)
         {
             cubes[i].transform.SetParent(transform);
+            cubes[i].transform.localScale = new Vector3(0.03f, cubes[i].transform.localScale.y, cubes[i].transform.localScale.z);
         }
 
         wall.transform.localScale = new Vector3(10, 5000, 1);
 
         for (int i = 0; i < cubes.Length; i++)
         {
-            cubes[i].transform.localScale = new Vector3(0.03f, cubes[i].transform.localScale.y, cubes[i].transform.localScale.z);
+            //cubes[i].transform.localScale = new Vector3(0.03f, cubes[i].transform.localScale.y, cubes[i].transform.localScale.z);
         }
 
         //PlayerPrefs.DeleteKey("Path");
@@ -88,6 +92,17 @@ public class WallBuilder : MonoBehaviour
     private void Start()
     {
         Debug.Log(Time.time);
+
+        if (vrMode)
+        {
+            vrController.SetActive(true);
+            pcCam.SetActive(false);
+        }
+        else
+        {
+            vrController.SetActive(false);
+            pcCam.SetActive(true);
+        }
     }
 
     // Update is called once per frame
@@ -109,6 +124,12 @@ public class WallBuilder : MonoBehaviour
                 cubes[nxtInd].GetComponent<Renderer>().material.color = Color.red;
                 if(nxtInd < secs.Length-1) nxtInd++;
                 Debug.Log("now");
+            }
+
+            if (!vrMode)
+            {
+                Vector3 pos = pcCam.transform.position;
+                pcCam.transform.position = new Vector3(pos.x, pos.y + Time.deltaTime * speedSlider.value, pos.z);
             }
         }
         else
@@ -146,6 +167,6 @@ public class WallBuilder : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        cube.transform.position = Vector3.zero;
+        //cube.transform.position = Vector3.zero;
     }
 }

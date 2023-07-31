@@ -5,6 +5,10 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
+    public bool vrMode = true;
+    public GameObject vrController;
+    public GameObject pcCam;
+
     public HVRHexaBodyInputs inputs;
     public float globTime;
 
@@ -25,14 +29,33 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         count = true;
+
+        if(vrMode)
+        {
+            vrController.SetActive(true);
+            pcCam.SetActive(false);
+        }
+        else
+        {
+            vrController.SetActive(false);
+            pcCam.SetActive(true);
+        }
     }
 
     private void Update()
     {
-        if(inputs == null) inputs = GameObject.FindGameObjectWithTag("HVR").GetComponentInChildren<HVRHexaBodyInputs>();
         if (count) globTime += Time.deltaTime;
-        if (inputs.RightController.PrimaryButton) LoadScene(0);
-        if (inputs.LeftController.PrimaryButton && SceneManager.GetActiveScene().buildIndex == 1) LoadScene(1);
+
+        if (Input.GetKey(KeyCode.M)) LoadScene(2);
+        if (Input.GetKey(KeyCode.Escape)) LoadScene(0);
+        if (Input.GetKey(KeyCode.R) && SceneManager.GetActiveScene().buildIndex == 1) LoadScene(1);
+
+        if(vrMode)
+        {
+            if (inputs == null) inputs = GameObject.FindGameObjectWithTag("HVR").GetComponentInChildren<HVRHexaBodyInputs>();
+            if (inputs.RightController.PrimaryButton) LoadScene(0);
+            if (inputs.LeftController.PrimaryButton && SceneManager.GetActiveScene().buildIndex == 1) LoadScene(1);
+        }
     }
 
     public GameObject write(string txt, Vector3 pivot, Vector3 size)
