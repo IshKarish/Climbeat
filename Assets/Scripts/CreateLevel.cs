@@ -1,74 +1,107 @@
-
 using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-using TMPro;
 using SimpleFileBrowser;
+using TMPro;
+using UnityEngine.Networking;
 
 public class CreateLevel : MonoBehaviour
 {
-    LevelEditor editor;
+    private string path;
     
-    // Level stats
-    string lvlName;
-    string authorName;
-    int bpm;
+    private AudioClip audioClip;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private GameObject playBtn;
+
+    [SerializeField] private TMP_InputField levelNameInput;
+    [SerializeField] private TMP_InputField authorInput;
+    [SerializeField] private TMP_InputField bpmInput;
+
+    [HideInInspector] public string levelName;
+    [HideInInspector] public string authorName;
+    [HideInInspector] public int bpm;
     
-    // New level inputs
-    [SerializeField]TMP_InputField nameInput;
-    [SerializeField]TMP_InputField authorInput;
-    [SerializeField]TMP_InputField bpmInput;
-
-    public GameObject waveform;
+    //LevelEditor editor;
     
-    List<float> secsLst = new List<float>();
-
-    string path;
-    private string presistentDataPath;
-
-    AudioClip song;
-
-    string newSec;
-
-    [HideInInspector] public float[] samples;
-    public float[] secs = new float[0];
+    //private string presistentDataPath;
     
-    private IEnumerator _enumerator;
+    private IEnumerator enumerator;
 
     private void Start()
     {
-        _enumerator = FileBrowser.WaitForLoadDialog(FileBrowser.PickMode.FilesAndFolders);
+        enumerator = FileBrowser.WaitForLoadDialog(FileBrowser.PickMode.FilesAndFolders);
     }
 
     private void Awake()
     {
-        editor = GetComponent<LevelEditor>();
-        presistentDataPath = Application.persistentDataPath;
+        //editor = GetComponent<LevelEditor>();
+        //presistentDataPath = Application.persistentDataPath;
     }
 
-    public void CreateNewLevel()
+    public void SwitchMenu(GameObject menu)
+    {
+        Transform canvas = GetComponentInParent<CreateLevel>().transform;
+        for (int i = 0; i < canvas.childCount; i++)
+        {
+            GameObject currentChild = canvas.GetChild(i).gameObject;
+            if(currentChild.activeSelf) currentChild.SetActive(false);
+        }
+        
+        menu.SetActive(true);
+    }
+
+    void CreateNewLevel()
+    {
+        levelName = levelNameInput.text;
+        authorName = authorInput.text;
+        
+        if(!int.TryParse(bpmInput.text, out bpm)) Debug.LogError("Invalid BPM");
+    }
+    
+    public void UploadSong()
     {
         FileBrowser.SetFilters(false, new FileBrowser.Filter("Wav file", ".wav"));
         FileBrowser.AddQuickLink("Climbeat", Application.persistentDataPath, null);
-
-        StartCoroutine("ShowLoadDialog");
+        
+        StartCoroutine(LoadDialog(true));
     }
 
-    IEnumerator ShowLoadDialog()
+    public void LoadLevel()
     {
-        yield return _enumerator;
+        FileBrowser.SetFilters(false, new FileBrowser.Filter("Not Virus", ".notvirus"));
+        FileBrowser.AddQuickLink("Climbeat", Application.persistentDataPath, null);
+        
+        StartCoroutine(LoadDialog(false));
+    }
 
+    IEnumerator LoadDialog(bool getAudio)
+    {
+        yield return enumerator;
+        
         if (FileBrowser.Success)
         {
             string res = FileBrowser.Result[0];
-
             path = Path.Combine(FileBrowserHelpers.GetDirectoryName(res), FileBrowserHelpers.GetFilename(res));
         }
+        
+        StartCoroutine(GetAudio());
     }
 
-    public void EditExistingLevel()
+    IEnumerator GetAudio()
     {
-        
+        UnityWebRequest www = UnityWebRequestMultimedia.GetAudioClip("file:///" + path, AudioType.WAV);
+
+        yield return www.SendWebRequest();
+
+        if (www.isNetworkError || www.isHttpError)
+        {
+            Debug.Log(www.error);
+        }
+        else
+        {
+            audioClip = ((DownloadHandlerAudioClip)www.downloadHandler).audioClip;
+            audioSource.clip = audioClip;
+            playBtn.SetActive(true);
+        }
     }
 }
