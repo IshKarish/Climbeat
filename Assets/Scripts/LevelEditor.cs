@@ -356,6 +356,7 @@ public class LevelEditor : MonoBehaviour
         cursor.position = new Vector3(cursor.position.x, y, cursor.position.z);
         timeTxt.text = songTime.ToString("0.00");
         moveCursor = true;
+        audioSource.Pause();
     }
 
     IEnumerator LockMove()
@@ -587,9 +588,13 @@ public class LevelEditor : MonoBehaviour
                         {
                             Destroy(pointsArr[i]);
                             Destroy(secTxts[j]);
+                            Destroy(secsVisualls[j]);
 
                             secTxts.RemoveAt(j);
                             points.RemoveAt(i);
+
+                            Debug.Log("Removed");
+
                             break;
                         }
                     }
@@ -604,13 +609,11 @@ public class LevelEditor : MonoBehaviour
     {
         string difficulty = difficultyLevel.GetComponentInChildren<TextMeshProUGUI>().text;
         string lvlFolder = Application.persistentDataPath + "/CustomLevels/" + lvlNameTxt.text;
-        string lvlFile = lvlFolder + "/" + difficulty + ".notvirus";
+        string lvlFile = lvlFolder + "/" + difficulty + ".fuckunity";
 
-        if(Directory.Exists(lvlFile))
-        {
-            RemoveAll();
-            uploader.ChangeDifficultyLevel(lvlFile);
-        }
+        Debug.Log("Change to " + difficulty);
+        RemoveAll();
+        uploader.ChangeDifficultyLevel(lvlFile);
     }
 
     void RemoveAll()

@@ -39,7 +39,7 @@ public class MainMenu : MonoBehaviour
             //Debug.Log(paths[i]);
         }
         
-        if(paths.Length >= 0)
+        if(paths.Length > 0)
         {
             lvls = new string[paths.Length];
             lvlTxts = new GameObject[paths.Length];
@@ -79,9 +79,9 @@ public class MainMenu : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.DownArrow)) LvlDown();
+        if (Input.GetKeyDown(KeyCode.DownArrow) || gameManager.inputs.RightController.JoystickAxis.y < 0.1f) LvlDown();
 
-        if (Input.GetKeyDown(KeyCode.UpArrow)) LvlUp();
+        if (Input.GetKeyDown(KeyCode.UpArrow) || gameManager.inputs.RightController.JoystickAxis.y > 0.1f) LvlUp();
 
         if (Input.GetKeyDown(KeyCode.E)) EnterLvl("easy");
         if (Input.GetKeyDown(KeyCode.N)) EnterLvl("normal");
@@ -117,18 +117,35 @@ public class MainMenu : MonoBehaviour
 
     public void EnterLvl(string difficulty = "normal")
     {
-        if (difficulty == "easy") PlayerPrefs.SetString("Path", path + "/Easy.notvirus");
-        else if (difficulty == "normal") PlayerPrefs.SetString("Path", path + "/Normal.notvirus");
-        else if (difficulty == "hard") PlayerPrefs.SetString("Path", path + "/Hard.notvirus");
-        else if (difficulty == "expert") PlayerPrefs.SetString("Path", path + "/Expert.notvirus");
+        if (difficulty == "easy") StartLevel(path + "/Easy.fuckunity");
+        else if (difficulty == "normal") StartLevel(path + "/Normal.fuckunity");
+        else if (difficulty == "hard") StartLevel(path + "/Hard.fuckunity");
+        else if (difficulty == "expert") StartLevel(path + "/Expert.fuckunity");
+    }
 
-        LoadScene(1);
+    void StartLevel(string path)
+    {
+        if(isEdited(path))
+        {
+            PlayerPrefs.SetString("Path", path);
+            LoadScene(1);
+        }
+        else
+        {
+            Debug.Log("Nothing at " + path);
+        }
+    }
+
+    bool isEdited(string path)
+    {
+        LevelData levelData = SaveSystem.LoadLevel(path);
+        return levelData.Secs.Length > 0;
     }
 
     public void Play()
     {
-        FileBrowser.SetFilters(false, new FileBrowser.Filter("Not Virus", ".notvirus"));
-        FileBrowser.SetDefaultFilter(".notvirus");
+        FileBrowser.SetFilters(false, new FileBrowser.Filter("Fuck Unity", ".fuckunity"));
+        FileBrowser.SetDefaultFilter(".fuckunity");
         FileBrowser.AddQuickLink("Users", "C:\\Users", null);
         FileBrowser.ShowHiddenFiles = true;
 

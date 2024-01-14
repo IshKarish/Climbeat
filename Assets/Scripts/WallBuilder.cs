@@ -123,13 +123,14 @@ public class WallBuilder : MonoBehaviour
             {
                 cubes[nxtInd].GetComponent<Renderer>().material.color = Color.red;
                 if(nxtInd < secs.Length-1) nxtInd++;
+                impactSFX.Play();
                 Debug.Log("now");
             }
 
             if (!vrMode)
             {
-                Vector3 pos = pcCam.transform.position;
-                pcCam.transform.position = new Vector3(pos.x, pos.y + Time.deltaTime * speedSlider.value, pos.z);
+                //Vector3 pos = pcCam.transform.position;
+                //pcCam.transform.position = new Vector3(pos.x, pos.y + Time.deltaTime * speedSlider.value, pos.z);
             }
         }
         else
