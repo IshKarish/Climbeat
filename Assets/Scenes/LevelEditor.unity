@@ -819,7 +819,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 618916372}
+      - m_Target: {fileID: 1405949989}
         m_TargetAssemblyTypeName: CreateLevel, Assembly-CSharp
         m_MethodName: SwitchMenu
         m_Mode: 2
@@ -1840,7 +1840,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1363780813}
+      - m_Target: {fileID: 1405949987}
         m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
         m_MethodName: Play
         m_Mode: 1
@@ -2474,7 +2474,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 618916372}
+      - m_Target: {fileID: 1405949989}
         m_TargetAssemblyTypeName: CreateLevel, Assembly-CSharp
         m_MethodName: UploadSong
         m_Mode: 1
@@ -2536,7 +2536,7 @@ GameObject:
   - component: {fileID: 350227890}
   - component: {fileID: 350227889}
   m_Layer: 5
-  m_Name: AuthorNameTxt
+  m_Name: Author Txt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2562,7 +2562,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 'Author:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5983a40fce5ef3b428ae28cc23ad3f80, type: 2}
   m_sharedMaterial: {fileID: -1214597345382243527, guid: 5983a40fce5ef3b428ae28cc23ad3f80,
@@ -3011,13 +3011,13 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: LevelEditor, Assembly-CSharp
-        m_MethodName: JumpToSecond
-        m_Mode: 1
+      - m_Target: {fileID: 1405949988}
+        m_TargetAssemblyTypeName: Editor, Assembly-CSharp
+        m_MethodName: SetSecondManually
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 394934390}
+          m_ObjectArgumentAssemblyTypeName: TMPro.TMP_InputField, Unity.TextMeshPro
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3482,7 +3482,7 @@ GameObject:
   - component: {fileID: 493097204}
   - component: {fileID: 493097203}
   m_Layer: 5
-  m_Name: BpmTxt
+  m_Name: Bpm Txt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3527,7 +3527,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 'Bpm:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5983a40fce5ef3b428ae28cc23ad3f80, type: 2}
   m_sharedMaterial: {fileID: -1214597345382243527, guid: 5983a40fce5ef3b428ae28cc23ad3f80,
@@ -3918,7 +3918,7 @@ GameObject:
   - component: {fileID: 590557584}
   - component: {fileID: 590557583}
   m_Layer: 5
-  m_Name: LvlNameTxt
+  m_Name: Lvl Name Txt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3963,7 +3963,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: 'Level Name:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5983a40fce5ef3b428ae28cc23ad3f80, type: 2}
   m_sharedMaterial: {fileID: -1214597345382243527, guid: 5983a40fce5ef3b428ae28cc23ad3f80,
@@ -4188,8 +4188,6 @@ GameObject:
   - component: {fileID: 618916370}
   - component: {fileID: 618916369}
   - component: {fileID: 618916368}
-  - component: {fileID: 618916372}
-  - component: {fileID: 618916373}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -4283,79 +4281,6 @@ RectTransform:
   m_AnchoredPosition: {x: -19, y: -3}
   m_SizeDelta: {x: 1280, y: 720}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &618916372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 618916367}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b932b0a36725a1144b97f404b8194b74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioSource: {fileID: 1363780813}
-  playBtn: {fileID: 242111814}
-  levelNameInput: {fileID: 1385364966}
-  authorInput: {fileID: 647906074}
-  bpmInput: {fileID: 2045980409}
---- !u!114 &618916373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 618916367}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62d105dba6e38154e9aa793ad8d0c2f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  secsWall: {fileID: 0}
-  secsVisualls: []
-  xAxis: {fileID: 0}
-  yAxis: {fileID: 0}
-  difficultyLevel: {fileID: 0}
-  jumpSecInput: {fileID: 0}
-  xPos: []
-  yPos: []
-  pointsVisuals: []
-  track: {fileID: 0}
-  uploader: {fileID: 0}
-  moveSpeed: 0
-  moveDelay: 0
-  zoomedFov: 0
-  openPanel: {fileID: 0}
-  editorPanel: {fileID: 0}
-  loadPanel: {fileID: 0}
-  savePanel: {fileID: 0}
-  quitPanel: {fileID: 0}
-  infoPanel: {fileID: 0}
-  enterBtn: {fileID: 0}
-  delBtn: {fileID: 0}
-  lvlNameInput: {fileID: 0}
-  authorInput: {fileID: 0}
-  bpmInput: {fileID: 0}
-  secInput: {fileID: 0}
-  timeTxt: {fileID: 0}
-  authorTxt: {fileID: 0}
-  bpmTxt: {fileID: 0}
-  lastSecTxt: {fileID: 0}
-  lvlNameTxt: {fileID: 0}
-  ogSecTxt: {fileID: 0}
-  wall: {fileID: 0}
-  climbPoint: {fileID: 0}
-  ScrollView: {fileID: 0}
-  cursor: {fileID: 0}
-  fakeWaveform: {fileID: 0}
-  lastPoint: {fileID: 0}
-  ogPoint: {fileID: 0}
-  audioSource: {fileID: 0}
-  song: {fileID: 0}
-  samples: []
-  secs: []
-  load: 0
 --- !u!1 &625619180
 GameObject:
   m_ObjectHideFlags: 0
@@ -4891,7 +4816,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &702428987
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5683,7 +5608,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 618916372}
+      - m_Target: {fileID: 1405949989}
         m_TargetAssemblyTypeName: CreateLevel, Assembly-CSharp
         m_MethodName: CreateNewLevel
         m_Mode: 2
@@ -8658,10 +8583,9 @@ GameObject:
   - component: {fileID: 1363780809}
   - component: {fileID: 1363780811}
   - component: {fileID: 1363780814}
-  - component: {fileID: 1363780813}
   - component: {fileID: 1363780812}
   m_Layer: 5
-  m_Name: Waveform
+  m_Name: Waveform Creator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8706,110 +8630,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d443756e13eacb44d829b28ab5c7e4f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  editor: {fileID: 0}
   cursor: {fileID: 409522285}
-  editorParent: {fileID: 0}
   fakeWaveform: {fileID: 164146973}
   width: 1024
   height: 64
   background: {r: 0.5019608, g: 0.4039216, b: 0, a: 1}
   foreground: {r: 0, g: 0, b: 0, a: 1}
---- !u!82 &1363780813
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1363780808}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!212 &1363780814
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9182,8 +9008,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1405949986}
   - component: {fileID: 1405949987}
+  - component: {fileID: 1405949989}
+  - component: {fileID: 1405949988}
   m_Layer: 0
-  m_Name: LevelEditor
+  m_Name: Level Editor
   m_TagString: Editor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9301,6 +9129,43 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1405949988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405949984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8de974f52b587f44f8920d14b508f8b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lvlNameTxt: {fileID: 590557583}
+  authorTxt: {fileID: 350227889}
+  bpmTxt: {fileID: 493097203}
+  songTimeInupt: {fileID: 394934390}
+  cursor: {fileID: 409522285}
+  pointPrefab: {fileID: 5118684040601322857, guid: 3bd86f7402d779745a71783e45b9402d,
+    type: 3}
+  wall: {fileID: 422172009}
+--- !u!114 &1405949989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405949984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b932b0a36725a1144b97f404b8194b74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playBtn: {fileID: 242111814}
+  levelNameInput: {fileID: 1385364966}
+  authorInput: {fileID: 647906074}
+  bpmInput: {fileID: 2045980409}
+  canvas: {fileID: 618916371}
 --- !u!1 &1450039232
 GameObject:
   m_ObjectHideFlags: 0
@@ -9921,7 +9786,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1630319487
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13010,7 +12875,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 618916372}
+      - m_Target: {fileID: 1405949989}
         m_TargetAssemblyTypeName: CreateLevel, Assembly-CSharp
         m_MethodName: SwitchMenu
         m_Mode: 2
