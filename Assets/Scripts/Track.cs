@@ -1,13 +1,10 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(AudioSource))]
 [RequireComponent(typeof(Sprite))]
 public class Track : MonoBehaviour
 {
-    public LevelEditor editor;
     public Transform cursor;
-    public Transform editorParent;
     public Image fakeWaveform;
 
     public int width = 1024;
@@ -24,8 +21,8 @@ public class Track : MonoBehaviour
     private void Start()
     {
         // reference components on the gameobject
-        aud = this.GetComponent<AudioSource>();
-        sprend = this.GetComponent<SpriteRenderer>();
+        aud = GetComponentInParent<AudioSource>();
+        sprend = GetComponent<SpriteRenderer>();
         //editor = GetComponent<LevelEditor>();
 
         Texture2D texwav = GetWaveform();
