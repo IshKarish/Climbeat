@@ -1454,7 +1454,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1405949985}
           m_TargetAssemblyTypeName: LevelEditor, Assembly-CSharp
           m_MethodName: OnPointClick
           m_Mode: 1
@@ -1470,7 +1470,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1405949985}
           m_TargetAssemblyTypeName: LevelEditor, Assembly-CSharp
           m_MethodName: MoveOff
           m_Mode: 1
@@ -1498,7 +1498,7 @@ MonoBehaviour:
   onLongPress:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1405949985}
         m_TargetAssemblyTypeName: LevelEditor, Assembly-CSharp
         m_MethodName: MoveOn
         m_Mode: 1
@@ -1593,7 +1593,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1405949985}
         m_TargetAssemblyTypeName: LevelEditor, Assembly-CSharp
         m_MethodName: SaveSong
         m_Mode: 1
@@ -2246,7 +2246,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1405949985}
     - target: {fileID: 825609320928487537, guid: 3bd86f7402d779745a71783e45b9402d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -3011,7 +3011,7 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1405949985}
         m_TargetAssemblyTypeName: LevelEditor, Assembly-CSharp
         m_MethodName: JumpToSecond
         m_Mode: 1
@@ -4189,7 +4189,6 @@ GameObject:
   - component: {fileID: 618916369}
   - component: {fileID: 618916368}
   - component: {fileID: 618916372}
-  - component: {fileID: 618916373}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -4297,65 +4296,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1363780813}
   playBtn: {fileID: 242111814}
-  levelNameInput: {fileID: 1385364966}
-  authorInput: {fileID: 647906074}
-  bpmInput: {fileID: 2045980409}
---- !u!114 &618916373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 618916367}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62d105dba6e38154e9aa793ad8d0c2f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  secsWall: {fileID: 0}
-  secsVisualls: []
-  xAxis: {fileID: 0}
-  yAxis: {fileID: 0}
-  difficultyLevel: {fileID: 0}
-  jumpSecInput: {fileID: 0}
-  xPos: []
-  yPos: []
-  pointsVisuals: []
-  track: {fileID: 0}
-  uploader: {fileID: 0}
-  moveSpeed: 0
-  moveDelay: 0
-  zoomedFov: 0
-  openPanel: {fileID: 0}
-  editorPanel: {fileID: 0}
-  loadPanel: {fileID: 0}
-  savePanel: {fileID: 0}
-  quitPanel: {fileID: 0}
-  infoPanel: {fileID: 0}
-  enterBtn: {fileID: 0}
-  delBtn: {fileID: 0}
-  lvlNameInput: {fileID: 0}
+  levelNameInput: {fileID: 0}
   authorInput: {fileID: 0}
   bpmInput: {fileID: 0}
-  secInput: {fileID: 0}
-  timeTxt: {fileID: 0}
-  authorTxt: {fileID: 0}
-  bpmTxt: {fileID: 0}
-  lastSecTxt: {fileID: 0}
-  lvlNameTxt: {fileID: 0}
-  ogSecTxt: {fileID: 0}
-  wall: {fileID: 0}
-  climbPoint: {fileID: 0}
-  ScrollView: {fileID: 0}
-  cursor: {fileID: 0}
-  fakeWaveform: {fileID: 0}
-  lastPoint: {fileID: 0}
-  ogPoint: {fileID: 0}
-  audioSource: {fileID: 0}
-  song: {fileID: 0}
-  samples: []
-  secs: []
-  load: 0
+  levelName: 
+  authorName: 
+  bpm: 0
 --- !u!1 &625619180
 GameObject:
   m_ObjectHideFlags: 0
@@ -4824,7 +4770,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1405949985}
         m_TargetAssemblyTypeName: LevelEditor, Assembly-CSharp
         m_MethodName: QuitMod
         m_Mode: 1
@@ -5176,7 +5122,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1405949985}
         m_TargetAssemblyTypeName: LevelEditor, Assembly-CSharp
         m_MethodName: QuitMod
         m_Mode: 1
@@ -5329,7 +5275,7 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1405949985}
         m_TargetAssemblyTypeName: LevelEditor, Assembly-CSharp
         m_MethodName: EnterSecond
         m_Mode: 1
@@ -5498,7 +5444,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1405949985}
         m_TargetAssemblyTypeName: LevelEditor, Assembly-CSharp
         m_MethodName: DeleteSec
         m_Mode: 1
@@ -5685,11 +5631,11 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 618916372}
         m_TargetAssemblyTypeName: CreateLevel, Assembly-CSharp
-        m_MethodName: CreateNewLevel
-        m_Mode: 2
+        m_MethodName: UploadSong
+        m_Mode: 1
         m_Arguments:
-          m_ObjectArgument: {fileID: 1496413354}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -6790,7 +6736,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1405949985}
     - target: {fileID: 825609320928487537, guid: 3bd86f7402d779745a71783e45b9402d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -7198,7 +7144,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1405949985}
         m_TargetAssemblyTypeName: LevelEditor, Assembly-CSharp
         m_MethodName: SaveMod
         m_Mode: 1
@@ -7328,7 +7274,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1405949985}
         m_TargetAssemblyTypeName: LevelEditor, Assembly-CSharp
         m_MethodName: difficultyChange
         m_Mode: 1
@@ -7536,7 +7482,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1405949985}
         m_TargetAssemblyTypeName: LevelEditor, Assembly-CSharp
         m_MethodName: RemoveMod
         m_Mode: 1
@@ -8706,7 +8652,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d443756e13eacb44d829b28ab5c7e4f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  editor: {fileID: 0}
+  editor: {fileID: 1405949985}
   cursor: {fileID: 409522285}
   editorParent: {fileID: 0}
   fakeWaveform: {fileID: 164146973}
@@ -9181,6 +9127,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1405949986}
+  - component: {fileID: 1405949985}
+  - component: {fileID: 1405949988}
   - component: {fileID: 1405949987}
   m_Layer: 0
   m_Name: LevelEditor
@@ -9189,6 +9137,62 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1405949985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405949984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62d105dba6e38154e9aa793ad8d0c2f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  secsWall: {fileID: 179359387}
+  secsVisualls: []
+  xAxis: {fileID: 1029416576}
+  yAxis: {fileID: 1040166437}
+  difficultyLevel: {fileID: 1086734170}
+  jumpSecInput: {fileID: 394934390}
+  xPos: []
+  yPos: []
+  pointsVisuals: []
+  track: {fileID: 1363780812}
+  uploader: {fileID: 1405949988}
+  moveSpeed: 150
+  moveDelay: 0.3
+  zoomedFov: 15
+  openPanel: {fileID: 1630319486}
+  editorPanel: {fileID: 1496413354}
+  loadPanel: {fileID: 358440506}
+  savePanel: {fileID: 1311602040}
+  quitPanel: {fileID: 1994236445}
+  infoPanel: {fileID: 702428986}
+  enterBtn: {fileID: 1815048603}
+  delBtn: {fileID: 815933706}
+  lvlNameInput: {fileID: 133589410}
+  authorInput: {fileID: 374710667}
+  bpmInput: {fileID: 113263169}
+  secInput: {fileID: 797725440}
+  timeTxt: {fileID: 1818495379}
+  authorTxt: {fileID: 350227889}
+  bpmTxt: {fileID: 493097203}
+  lastSecTxt: {fileID: 1878519950}
+  lvlNameTxt: {fileID: 590557583}
+  ogSecTxt: {fileID: 1878519950}
+  wall: {fileID: 422172008}
+  climbPoint: {fileID: 205471847}
+  ScrollView: {fileID: 402535071}
+  cursor: {fileID: 409522285}
+  fakeWaveform: {fileID: 164146971}
+  lastPoint: {fileID: 205471847}
+  ogPoint: {fileID: 205471847}
+  audioSource: {fileID: 0}
+  song: {fileID: 0}
+  samples: []
+  secs: []
+  load: 0
 --- !u!4 &1405949986
 Transform:
   m_ObjectHideFlags: 0
@@ -9301,6 +9305,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1405949988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405949984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ad91b0dc989efa458d431712ed1672b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nameInput: {fileID: 1385364966}
+  authorInput: {fileID: 647906074}
+  bpmInput: {fileID: 2045980409}
+  waveform: {fileID: 1363780808}
+  samples: []
+  secs: []
 --- !u!1 &1450039232
 GameObject:
   m_ObjectHideFlags: 0
@@ -10221,7 +10243,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1405949985}
         m_TargetAssemblyTypeName: LevelEditor, Assembly-CSharp
         m_MethodName: Loadcene
         m_Mode: 3
@@ -10564,7 +10586,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1405949988}
         m_TargetAssemblyTypeName: Uploader, Assembly-CSharp
         m_MethodName: StealSong
         m_Mode: 1
@@ -11124,7 +11146,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1405949985}
         m_TargetAssemblyTypeName: LevelEditor, Assembly-CSharp
         m_MethodName: EnterSecond
         m_Mode: 1
@@ -11628,7 +11650,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1405949985}
           m_TargetAssemblyTypeName: LevelEditor, Assembly-CSharp
           m_MethodName: MoveOn
           m_Mode: 1
@@ -11644,7 +11666,7 @@ MonoBehaviour:
     callback:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 0}
+        - m_Target: {fileID: 1405949985}
           m_TargetAssemblyTypeName: LevelEditor, Assembly-CSharp
           m_MethodName: MoveOff
           m_Mode: 1
@@ -12615,7 +12637,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1405949985}
         m_TargetAssemblyTypeName: LevelEditor, Assembly-CSharp
         m_MethodName: SaveMod
         m_Mode: 1

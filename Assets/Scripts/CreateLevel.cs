@@ -10,20 +10,18 @@ public class CreateLevel : MonoBehaviour
     private string path;
     
     private AudioClip audioClip;
-    private AudioSource audioSource;
+    [SerializeField] private AudioSource audioSource;
     [SerializeField] private GameObject playBtn;
 
     [SerializeField] private TMP_InputField levelNameInput;
     [SerializeField] private TMP_InputField authorInput;
     [SerializeField] private TMP_InputField bpmInput;
-    
-    [SerializeField] private Transform canvas;
 
-    private string levelName;
-    private string authorName;
-    private int bpm;
+    [HideInInspector] public string levelName;
+    [HideInInspector] public string authorName;
+    [HideInInspector] public int bpm;
     
-    Editor editor;
+    //LevelEditor editor;
     
     //private string presistentDataPath;
     
@@ -36,14 +34,13 @@ public class CreateLevel : MonoBehaviour
 
     private void Awake()
     {
-        editor = GetComponent<Editor>();
-        audioSource = GetComponent<AudioSource>();
+        //editor = GetComponent<LevelEditor>();
         //presistentDataPath = Application.persistentDataPath;
     }
 
     public void SwitchMenu(GameObject menu)
     {
-        //Transform canvas = GetComponentInParent<Canvas>().transform;
+        Transform canvas = GetComponentInParent<CreateLevel>().transform;
         for (int i = 0; i < canvas.childCount; i++)
         {
             GameObject currentChild = canvas.GetChild(i).gameObject;
@@ -51,6 +48,14 @@ public class CreateLevel : MonoBehaviour
         }
         
         menu.SetActive(true);
+    }
+
+    void CreateNewLevel()
+    {
+        levelName = levelNameInput.text;
+        authorName = authorInput.text;
+        
+        if(!int.TryParse(bpmInput.text, out bpm)) Debug.LogError("Invalid BPM");
     }
     
     public void UploadSong()
@@ -79,7 +84,7 @@ public class CreateLevel : MonoBehaviour
             path = Path.Combine(FileBrowserHelpers.GetDirectoryName(res), FileBrowserHelpers.GetFilename(res));
         }
         
-        if(getAudio) StartCoroutine(GetAudio());
+        StartCoroutine(GetAudio());
     }
 
     IEnumerator GetAudio()
@@ -98,17 +103,5 @@ public class CreateLevel : MonoBehaviour
             audioSource.clip = audioClip;
             playBtn.SetActive(true);
         }
-    }
-    
-    public void CreateNewLevel(GameObject editorMenu)
-    {
-        levelName = levelNameInput.text;
-        authorName = authorInput.text;
-        
-        if(!int.TryParse(bpmInput.text, out bpm)) Debug.LogError("Invalid BPM");
-
-        editor.enabled = true;
-        editor.EditorSetting(levelName, authorName, bpm, true);
-        SwitchMenu(editorMenu);
     }
 }

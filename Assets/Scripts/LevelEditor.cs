@@ -99,7 +99,7 @@ public class LevelEditor : MonoBehaviour
         ogFov = cam.fieldOfView;
         //changeLevel.uploader = uploader;
     }
-    
+
     private void Update()
     {
         if(audioSource.clip != null)
@@ -284,7 +284,7 @@ public class LevelEditor : MonoBehaviour
             if (folder == lvlNameTxt.text)
             {
                 path = folder;
-                //SaveSystem.SaveLevel(this, difficultyLevel.GetComponent<TextMeshProUGUI>().text, path);
+                SaveSystem.SaveLevel(this, difficultyLevel.GetComponent<TextMeshProUGUI>().text, path);
                 Loadcene(SceneManager.GetActiveScene().buildIndex);
             }
         }
@@ -292,7 +292,7 @@ public class LevelEditor : MonoBehaviour
         Directory.CreateDirectory(levelsFolder + "/" + lvlNameTxt.text);
         path = levelsFolder + "/" + lvlNameTxt.text;
 
-        //SaveSystem.SaveLevel(this, difficultyLevel.GetComponentInChildren<TextMeshProUGUI>().text, path);
+        SaveSystem.SaveLevel(this, difficultyLevel.GetComponentInChildren<TextMeshProUGUI>().text, path);
         if (restart) Loadcene(SceneManager.GetActiveScene().buildIndex);
     }
     #endregion

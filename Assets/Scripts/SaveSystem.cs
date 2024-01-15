@@ -3,13 +3,13 @@ using System.IO;
 
 public static class SaveSystem
 {
-    static string format = ".notvirus";
+    static string format = ".fuckunity";
 
-    public static void SaveLevel (LevelEditor editor, string name, string difficulty, string path)
+    public static void SaveLevel (LevelEditor editor, string name, string path)
     {
-        string sPath = path + "/" + name + difficulty + format;
+        string sPath = path + "/" + name + format;
 
-        FileStream stream = new FileStream(sPath, FileMode.Create);
+        FileStream stream = new FileStream(path + "/" + name + format, FileMode.Create);
         BinaryWriter writer = new BinaryWriter(stream);
 
         LevelData data = LevelData.FromLevel(editor);
@@ -31,14 +31,15 @@ public static class SaveSystem
         }
 
         writer.Write(data.lvlName);
-        writer.Write(data.authorName);
-        writer.Write(data.bpm);
 
         writer.Write(data.xPos.Length);
         for (int i = 0; i < data.xPos.Length; i++)
         {
             writer.Write(data.xPos[i]);
         }
+
+        writer.Write(data.authorName);
+        writer.Write(data.bpm);
 
         writer.Write(data.yPos.Length);
         for (int i = 0; i < data.yPos.Length; i++)
@@ -77,8 +78,6 @@ public static class SaveSystem
             }
 
             data.lvlName = reader.ReadString();
-            data.authorName = reader.ReadString();
-            data.bpm = reader.ReadString();
 
             int xLength = reader.ReadInt32();
             data.xPos = new float[xLength];
@@ -86,6 +85,9 @@ public static class SaveSystem
             {
                 data.xPos[i] = reader.ReadSingle();
             }
+
+            data.authorName = reader.ReadString();
+            data.bpm = reader.ReadString();
 
             int yLength = reader.ReadInt32();
             data.yPos = new float[yLength];
@@ -104,22 +106,4 @@ public static class SaveSystem
             return null;
         }
     }
-    
-    /*
-     * Saving/Loading order:
-     * 1. Seconds array length
-     * 2. Seconds array values
-     * 3. Audio samples length
-     * 4. Audio channels
-     * 5. Audio frequency
-     * 6. Audio samples array length
-     * 7. Audio samples array values
-     * 8. Level name
-     * 9. Author
-     * 10. BPM
-     * 11. X Positions array length
-     * 12. X Positions array values
-     * 13. Y Positions array length
-     * 14. Y Positions array values
-     */
 }
