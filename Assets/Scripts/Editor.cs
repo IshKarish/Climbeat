@@ -1,41 +1,63 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Editor : MonoBehaviour
 {
+    [SerializeField] private GameObject xAxisVisual;
+    [SerializeField] private GameObject yAxisVisual;
+    
     private List<float> seconds = new List<float>();
     
+    [Header("Texts (TMPro)")]
     [SerializeField] private TextMeshProUGUI lvlNameTxt;
     [SerializeField] private TextMeshProUGUI authorTxt;
     [SerializeField] private TextMeshProUGUI bpmTxt;
-
+    [Space(5)]
     [SerializeField] private TMP_InputField songTimeInupt;
-
+    
+    [Header("Walls")]
+    [SerializeField] private Transform climbingWall;
+    [SerializeField] private Transform secondsWall;
+    
+    [Header("Other visuals")]
     [SerializeField] private Transform cursor;
-
     [SerializeField] private GameObject pointPrefab;
-    [SerializeField] private Transform wall;
 
     private AudioSource audioSource;
 
+    private Camera cam;
+    [SerializeField][Range(5, 30)] private float zoomFov = 15;
+    private float ogFov;
+    private bool isZooming;
+
+    private bool moveMod;
+
     private string presistentDataPath;
+
+    private float screenWidth;
     private float screenHeight;
 
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
         presistentDataPath = Application.persistentDataPath;
+        cam = Camera.main;
+
+        if (cam != null) ogFov = cam.fieldOfView;
     }
 
-    public void EditorSetting(string lvlName, string author, int bpm, bool IsNewLevel)
+    public void EditorSetting(string lvlName, string author, int bpm, bool isNewLevel)
     {
         lvlNameTxt.text = lvlName;
         authorTxt.text = author;
         bpmTxt.text = bpm.ToString();
 
         GetComponentInChildren<Track>().enabled = true;
-        
+
+        screenWidth = Screen.width;
         screenHeight = Screen.height;
     }
 
@@ -46,7 +68,7 @@ public class Editor : MonoBehaviour
             bool isMouseInBoundsY = Input.mousePosition.y >= 0 && Input.mousePosition.y <= screenHeight;
             bool isMouseInBoundsX = Input.mousePosition.x > 320 && Input.mousePosition.x < 510;
 
-            if (Input.GetMouseButton(0) && isMouseInBoundsY & isMouseInBoundsX)
+            if (Input.GetMouseButton(0) && isMouseInBoundsY & isMouseInBoundsX && !isZooming)
             {
                 float newSongTime;
                 
@@ -69,7 +91,46 @@ public class Editor : MonoBehaviour
             {
                 AddSecond();
             }
+
+            if (moveMod)
+            {
+                if(Input.GetKey(KeyCode.X)) MovePoint('x');
+                else if(Input.GetKey(KeyCode.Y)) MovePoint('y');
+                else MovePoint();
+            }
         }
+    }
+
+    private void LateUpdate()
+    {
+        if (Input.GetMouseButtonDown(2))
+            CameraZoom(!isZooming);
+    }
+
+    void CameraZoom(bool zoomIn = true)
+    {
+        if (!zoomIn)
+        {
+            isZooming = false;
+            
+            cam.transform.localPosition = Vector2.zero;
+            cam.fieldOfView = ogFov;
+            
+            return;
+        }
+
+        isZooming = true;
+        
+        Vector3 wallPos = climbingWall.position;
+        float yPos = cursor.position.y;
+
+        if (cursor.localPosition.y > 200)
+            yPos = 408.5f;
+        else if (cursor.localPosition.y < -200)
+            yPos = -408.5f;
+
+        cam.transform.localPosition = new Vector2(wallPos.x, yPos);
+        cam.fieldOfView = zoomFov;
     }
 
     float MoveCursor(float yPos)
@@ -77,9 +138,9 @@ public class Editor : MonoBehaviour
         float songTime = yPos / screenHeight * audioSource.clip.length;
 
         float yCursor = yPos - screenHeight / 2;
-        Vector3 position = cursor.position;
-        position = new Vector3(position.x, yCursor, position.z);
-        cursor.position = position;
+        Vector3 pos = cursor.position;
+        pos = new Vector3(pos.x, yCursor, pos.z);
+        cursor.position = pos;
 
         return songTime;
     }
@@ -114,22 +175,70 @@ public class Editor : MonoBehaviour
         songTimeInupt.text = null;
     }
 
+    void MovePoint(char axis = ' ')
+    {
+        Transform current = EventSystem.current.currentSelectedGameObject.transform;
+
+        float mouseX = Input.mousePosition.x;
+        float mouseY = Input.mousePosition.y;
+        
+        Vector2 mousePos = new Vector2(mouseX, mouseY);
+        Vector2 halfScreen = new Vector2(screenWidth, screenHeight) / 2;
+
+        Vector3 currentPos = current.position;
+        Vector2 newPos = mousePos - halfScreen;
+
+        Vector2 axisVisualPos = new Vector2(xAxisVisual.transform.position.x, yAxisVisual.transform.position.y);
+        switch (axis)
+        {
+            case 'x':
+                xAxisVisual.SetActive(true);
+                current.position = new Vector3(newPos.x, currentPos.y, currentPos.z);
+                xAxisVisual.transform.position = new Vector3(axisVisualPos.x, currentPos.y, currentPos.z);
+                break;
+            case 'y':
+                yAxisVisual.SetActive(true);
+                current.position = new Vector3(currentPos.x, newPos.y, currentPos.z);
+                yAxisVisual.transform.position = new Vector3(currentPos.x, axisVisualPos.y, currentPos.z);
+                break;
+            default:
+                xAxisVisual.SetActive(false);
+                yAxisVisual.SetActive(false);
+                current.position = new Vector3(newPos.x, newPos.y, currentPos.z);
+                break;
+        }
+    }
+
     void AddSecond()
     {
         seconds.Add(audioSource.time);
         Debug.Log(audioSource.time + " added to the list");
 
-        Instantiate(secondVisual());
+        GameObject secondVisual = PointVisual(secondsWall, 0);
+        GameObject climbpointVisual = PointVisual(climbingWall, Random.Range(100, -100));
+        SetupClimbpointButton(climbpointVisual);
     }
 
-    GameObject secondVisual()
+    GameObject PointVisual(Transform wall, float xPos)
     {
-        float x = wall.position.x;
-        Vector3 newPos = new Vector3(x, cursor.position.y, wall.position.z);
+        Vector3 pos = wall.position;
+        xPos += pos.x;
+        
+        Vector3 newPos = new Vector3(xPos, cursor.position.y, pos.z);
 
-        GameObject obj = pointPrefab;
+        GameObject obj = Instantiate(pointPrefab);
         obj.transform.localPosition = newPos;
+        if (wall) obj.transform.SetParent(wall);
 
         return obj;
+    }
+
+    void SetupClimbpointButton(GameObject obj)
+    {
+        Button button = obj.AddComponent<Button>();
+        button.onClick.AddListener((() => moveMod = !moveMod));
+
+        //ButtonLongPressListener longPressListener = obj.AddComponent<ButtonLongPressListener>();
+        //longPressListener.onLongPress.AddListener((() => Debug.Log("AAAAAAAAAAA")));
     }
 }
