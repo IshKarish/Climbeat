@@ -1,22 +1,16 @@
-﻿/*--------------------------------------
-   Email  : hamza95herbou@gmail.com
-   Github : https://github.com/herbou
-----------------------------------------*/
-
-using System;
+﻿using System;
 using System.Collections;
 using UnityEngine ;
 using UnityEngine.Events ;
 using UnityEngine.EventSystems ;
 using UnityEngine.UI ;
 
-
 [RequireComponent(typeof(Button))]
 public class ButtonLongPressListener : MonoBehaviour, IPointerDownHandler, IPointerUpHandler {
 
     [Tooltip("Hold duration in seconds")]
     [Range(0.3f, 5f)] public float holdDuration = 0.5f;
-    public UnityEvent onLongPress;
+    [HideInInspector]public UnityAction onLongPress;
 
     private bool isPointerDown = false;
     private bool isLongPressed = false;
@@ -25,7 +19,6 @@ public class ButtonLongPressListener : MonoBehaviour, IPointerDownHandler, IPoin
     private Button button;
 
     private WaitForSeconds delay;
-
 
     private void Awake() {
         button = GetComponent<Button>();
@@ -37,7 +30,6 @@ public class ButtonLongPressListener : MonoBehaviour, IPointerDownHandler, IPoin
         pressTime = DateTime.Now;
         StartCoroutine(Timer());
     }
-
 
     public void OnPointerUp(PointerEventData eventData) {
         isPointerDown = false;
@@ -51,7 +43,7 @@ public class ButtonLongPressListener : MonoBehaviour, IPointerDownHandler, IPoin
             if (elapsedSeconds >= holdDuration) {
                 isLongPressed = true;
                 if (button.interactable)
-                    onLongPress?.Invoke();
+                    onLongPress.Invoke();
 
                 yield break;
             }
