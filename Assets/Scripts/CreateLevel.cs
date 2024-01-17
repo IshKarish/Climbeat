@@ -6,18 +6,22 @@ using TMPro;
 using UnityEngine.Networking;
 
 public class CreateLevel : MonoBehaviour
-{
-    private string path;
+{    
+    [SerializeField] private Transform canvas;
     
-    private AudioClip audioClip;
-    private AudioSource audioSource;
-    [SerializeField] private GameObject playBtn;
-
+    [Header("Texts (TMPro)")]
     [SerializeField] private TMP_InputField levelNameInput;
     [SerializeField] private TMP_InputField authorInput;
     [SerializeField] private TMP_InputField bpmInput;
     
-    [SerializeField] private Transform canvas;
+    [Header("Buttons")]
+    [SerializeField] private GameObject playBtn;
+    
+    private string path;
+    
+    private AudioClip audioClip;
+    private AudioSource audioSource;
+
 
     private string levelName;
     private string authorName;
