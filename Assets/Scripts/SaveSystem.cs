@@ -5,105 +5,103 @@ public static class SaveSystem
 {
     static string format = ".notvirus";
 
-    public static void SaveLevel (LevelEditor editor, string name, string difficulty, string path)
+    public static void SaveLevel (SavesManager savesManager, string name, string path)
     {
-        string sPath = path + "/" + name + difficulty + format;
+        string sPath = path + "/" + name + format;
 
         FileStream stream = new FileStream(sPath, FileMode.Create);
         BinaryWriter writer = new BinaryWriter(stream);
 
-        LevelData data = LevelData.FromLevel(editor);
-
-        writer.Write(data.Secs.Length);
-        for (int i = 0; i < data.Secs.Length; i++)
+        writer.Write(savesManager.seconds.Length);
+        for (int i = 0; i < savesManager.seconds.Length; i++)
         {
-            writer.Write(data.Secs[i]);
+            writer.Write(savesManager.seconds[i]);
         }
 
-        writer.Write(data.samplesLeangth);
-        writer.Write(data.channels);
-        writer.Write(data.frequency);
+        writer.Write(savesManager.samplesLength);
+        writer.Write(savesManager.channels);
+        writer.Write(savesManager.frequency);
 
-        writer.Write(data.samples.Length);
-        for (int i = 0; i < data.samples.Length; i++)
+        writer.Write(savesManager.samples.Length);
+        for (int i = 0; i < savesManager.samples.Length; i++)
         {
-            writer.Write(data.samples[i]);
+            writer.Write(savesManager.samples[i]);
         }
 
-        writer.Write(data.lvlName);
-        writer.Write(data.authorName);
-        writer.Write(data.bpm);
+        writer.Write(savesManager.levelName);
+        writer.Write(savesManager.author);
+        writer.Write(savesManager.bpm);
 
-        writer.Write(data.xPos.Length);
-        for (int i = 0; i < data.xPos.Length; i++)
-        {
-            writer.Write(data.xPos[i]);
-        }
-
-        writer.Write(data.yPos.Length);
-        for (int i = 0; i < data.yPos.Length; i++)
-        {
-            writer.Write(data.yPos[i]);
-        }
+        //writer.Write(data.xPos.Length);
+        //for (int i = 0; i < data.xPos.Length; i++)
+        //{
+        //    writer.Write(data.xPos[i]);
+        //}
+//
+        //writer.Write(data.yPos.Length);
+        //for (int i = 0; i < data.yPos.Length; i++)
+        //{
+        //    writer.Write(data.yPos[i]);
+        //}
 
         stream.Close();
     }
 
-    public static LevelData LoadLevel (string path)
-    {
-        if (File.Exists(path))
-        {
-            FileStream stream = new FileStream(path, FileMode.Open);
-            BinaryReader reader = new BinaryReader(stream);
-
-            LevelData data = new LevelData();
-
-            int len = reader.ReadInt32();
-            data.Secs = new float[len];
-            for (int i = 0; i < len; i++)
-            {
-                data.Secs[i] = reader.ReadSingle();
-            }
-
-            data.samplesLeangth = reader.ReadInt32();
-            data.channels = reader.ReadInt32();
-            data.frequency = reader.ReadInt32();
-
-            int sLength = reader.ReadInt32();
-            data.samples = new float[sLength];
-            for (int i = 0; i < data.samples.Length; i++)
-            {
-                data.samples[i] = reader.ReadSingle();
-            }
-
-            data.lvlName = reader.ReadString();
-            data.authorName = reader.ReadString();
-            data.bpm = reader.ReadString();
-
-            int xLength = reader.ReadInt32();
-            data.xPos = new float[xLength];
-            for (int i = 0; i < data.xPos.Length; i++)
-            {
-                data.xPos[i] = reader.ReadSingle();
-            }
-
-            int yLength = reader.ReadInt32();
-            data.yPos = new float[yLength];
-            for (int i = 0; i < data.yPos.Length; i++)
-            {
-                data.yPos[i] = reader.ReadSingle();
-            }
-
-            stream.Close();
-
-            return data;
-        }
-        else
-        {
-            Debug.LogError("There is no level file. starting assassination process...");
-            return null;
-        }
-    }
+    //public static LevelData LoadLevel (string path)
+    //{
+    //    if (File.Exists(path))
+    //    {
+    //        FileStream stream = new FileStream(path, FileMode.Open);
+    //        BinaryReader reader = new BinaryReader(stream);
+//
+    //        LevelData data = new LevelData();
+//
+    //        int len = reader.ReadInt32();
+    //        data.Secs = new float[len];
+    //        for (int i = 0; i < len; i++)
+    //        {
+    //            data.Secs[i] = reader.ReadSingle();
+    //        }
+//
+    //        data.samplesLeangth = reader.ReadInt32();
+    //        data.channels = reader.ReadInt32();
+    //        data.frequency = reader.ReadInt32();
+//
+    //        int sLength = reader.ReadInt32();
+    //        data.samples = new float[sLength];
+    //        for (int i = 0; i < data.samples.Length; i++)
+    //        {
+    //            data.samples[i] = reader.ReadSingle();
+    //        }
+//
+    //        data.lvlName = reader.ReadString();
+    //        data.authorName = reader.ReadString();
+    //        data.bpm = reader.ReadString();
+//
+    //        int xLength = reader.ReadInt32();
+    //        data.xPos = new float[xLength];
+    //        for (int i = 0; i < data.xPos.Length; i++)
+    //        {
+    //            data.xPos[i] = reader.ReadSingle();
+    //        }
+//
+    //        int yLength = reader.ReadInt32();
+    //        data.yPos = new float[yLength];
+    //        for (int i = 0; i < data.yPos.Length; i++)
+    //        {
+    //            data.yPos[i] = reader.ReadSingle();
+    //        }
+//
+    //        stream.Close();
+//
+    //        return data;
+    //    }
+    //    else
+    //    {
+    //        Debug.LogError("There is no level file. starting assassination process...");
+    //        return null;
+    //    }
+    //}
     
     /*
      * Saving/Loading order:

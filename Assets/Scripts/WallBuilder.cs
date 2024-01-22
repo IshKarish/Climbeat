@@ -28,66 +28,66 @@ public class WallBuilder : MonoBehaviour
 
     string lvl;
 
-    private void Awake()
-    {
-        gameManager = FindObjectOfType<GameManager>();
+//private void Awake()
+//{
+//    gameManager = FindObjectOfType<GameManager>();
 
-        vrMode = gameManager.vrMode;
+//    vrMode = gameManager.vrMode;
 
-        lvl = PlayerPrefs.GetString("Path");
-        Debug.Log("Level = " + lvl);
+//    lvl = PlayerPrefs.GetString("Path");
+//    Debug.Log("Level = " + lvl);
 
-        LevelData data = SaveSystem.LoadLevel(lvl);
-        secs = data.Secs;
+//    LevelData data = SaveSystem.LoadLevel(lvl);
+//    secs = data.Secs;
 
-        for (int i = 0; i < secs.Length; i++)
-        {
-            secs[i] += gameManager.globTime;
-        }
+//    for (int i = 0; i < secs.Length; i++)
+//    {
+//        secs[i] += gameManager.globTime;
+//    }
 
-        int secLen = secs.Length;
-        float[] newSec = new float[secLen + 1];
-        for (int i = 0; i < secLen; i++)
-        {
-            newSec[i] = secs[i];
-        }
-        secs = newSec;
+//    int secLen = secs.Length;
+//    float[] newSec = new float[secLen + 1];
+//    for (int i = 0; i < secLen; i++)
+//    {
+//        newSec[i] = secs[i];
+//    }
+//    secs = newSec;
 
-        cube.transform.position = Vector3.zero;
+//    cube.transform.position = Vector3.zero;
 
-        aud = GetComponent<AudioSource>();
-        AudioClip clip = AudioClip.Create("Song", data.samplesLeangth / 2, data.channels, data.frequency, false);
-        clip.SetData(data.samples, 0);
-        aud.clip = clip;
+//    aud = GetComponent<AudioSource>();
+//    AudioClip clip = AudioClip.Create("Song", data.samplesLeangth / 2, data.channels, data.frequency, false);
+//    clip.SetData(data.samples, 0);
+//    aud.clip = clip;
 
-        cubes = new GameObject[secs.Length];
-        cubes[0] = cube;
+//    cubes = new GameObject[secs.Length];
+//    cubes[0] = cube;
 
-        for (int i = 1; i < cubes.Length; i++)
-        {
-            GameObject nc = Instantiate(newCube(i-1, data.xPos[i-1], data.yPos[i-1] + 355));
+//    for (int i = 1; i < cubes.Length; i++)
+//    {
+//        GameObject nc = Instantiate(newCube(i-1, data.xPos[i-1], data.yPos[i-1] + 355));
 
-            nc.name = "cube " + i;
-            nc.GetComponent<Renderer>().material.color = Color.white;
-            cubes[i] = nc;
-        }
-        //Destroy(cubes[cubes.Length-1]);
+//        nc.name = "cube " + i;
+//        nc.GetComponent<Renderer>().material.color = Color.white;
+//        cubes[i] = nc;
+//    }
+//    //Destroy(cubes[cubes.Length-1]);
 
-        for (int i = 0; i < cubes.Length; i++)
-        {
-            cubes[i].transform.SetParent(transform);
-            cubes[i].transform.localScale = new Vector3(0.03f, cubes[i].transform.localScale.y, cubes[i].transform.localScale.z);
-        }
+//    for (int i = 0; i < cubes.Length; i++)
+//    {
+//        cubes[i].transform.SetParent(transform);
+//        cubes[i].transform.localScale = new Vector3(0.03f, cubes[i].transform.localScale.y, cubes[i].transform.localScale.z);
+//    }
 
-        wall.transform.localScale = new Vector3(10, 5000, 1);
+//    wall.transform.localScale = new Vector3(10, 5000, 1);
 
-        for (int i = 0; i < cubes.Length; i++)
-        {
-            //cubes[i].transform.localScale = new Vector3(0.03f, cubes[i].transform.localScale.y, cubes[i].transform.localScale.z);
-        }
+//    for (int i = 0; i < cubes.Length; i++)
+//    {
+//        //cubes[i].transform.localScale = new Vector3(0.03f, cubes[i].transform.localScale.y, cubes[i].transform.localScale.z);
+//    }
 
-        //PlayerPrefs.DeleteKey("Path");
-    }
+//    //PlayerPrefs.DeleteKey("Path");
+//}
 
     private void Start()
     {
