@@ -1,10 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 public class Editor : MonoBehaviour
 {
@@ -257,7 +260,7 @@ public class Editor : MonoBehaviour
     void SetClimbPointBtn(GameObject obj)
     {
         Button button = obj.AddComponent<Button>();
-        button.onClick.AddListener(OnClimbPointPress(5));
+        //button.onClick.AddListener(OnClimbPointPress(5));
 
         ButtonLongPressListener longPressListener = obj.AddComponent<ButtonLongPressListener>();
         longPressListener.holdDuration = 3;
@@ -274,6 +277,7 @@ public class Editor : MonoBehaviour
 
     UnityAction OnClimbPointPress(float resetColorDelay)
     {
+        Debug.Log("Yay");
         FindMatchingVisuals(out Image climbPointImg, out Image secondImg);
         
         StartCoroutine(PaintMatchingVisuals(Color.red, climbPointImg, secondImg, 0));
@@ -306,5 +310,18 @@ public class Editor : MonoBehaviour
         
         climbPointImg.color = color;
         secondImg.color = color;
+    }
+
+    public void SaveLevel()
+    {
+        string levelName = lvlNameTxt.text;
+        string author = authorTxt.text;
+        int bpm = int.Parse(bpmTxt.text);
+
+        float[] secondsArr = secondsLst.ToArray();
+        Array.Sort(secondsArr);
+        
+        SavesManager savesManager = new SavesManager(levelName, author, bpm, audioSource.clip, secondsArr);
+        savesManager.SaveLevel();
     }
 }
