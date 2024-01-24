@@ -209,9 +209,8 @@ public class Editor : MonoBehaviour
     void JumpToSecond(float second, bool play = true)
     {
         audioSource.time = second;
-        
-        if(play) audioSource.Play();
-        else audioSource.Pause();
+        audioSource.Play();
+        if(!play) audioSource.Pause();
     }
 
     public void SetSecondManually(TMP_InputField secondInput)
@@ -243,7 +242,7 @@ public class Editor : MonoBehaviour
     void AddSecond()
     {
         secondsLst.Add(audioSource.time);
-        Debug.Log(audioSource.time + " added to the list");
+        //Debug.Log(audioSource.time + " added to the list");
 
         GameObject secondVisual = PointVisual(secondsWall, 0);
         secondVisuals.Add(secondVisual);
@@ -342,14 +341,14 @@ public class Editor : MonoBehaviour
     IEnumerator PaintMatchingVisuals(Color color, Image climbPointImg, Image secondImg, float delay)
     {
         yield return new WaitForSeconds(delay);
-        
-        climbPointImg.color = color;
-        secondImg.color = color;
+
+        if (climbPointImg) climbPointImg.color = color;
+        if (secondImg) secondImg.color = color;
     }
 
     void RemovePoints(Image climbPointImg, Image secondImg)
     {
-        secondsLst.Remove(float.Parse(secondImg.name));
+        secondsLst.Remove(float.Parse(climbPointImg.name));
         
         climbPointVisuals.Remove(climbPointImg.gameObject);
         secondVisuals.Remove(secondImg.gameObject);
@@ -376,7 +375,7 @@ public class Editor : MonoBehaviour
         SavesManager savesManager = SaveSystem.LoadLevel(path);
         EditorSetting(savesManager.levelName, savesManager.author, savesManager.bpm, false);
         audioSource.clip = savesManager.clip;
-
+        
         for (int i = 0; i < savesManager.seconds.Length; i++)
         {
             SetSecondManually(savesManager.seconds[i]);
