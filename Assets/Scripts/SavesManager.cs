@@ -15,6 +15,8 @@ public class SavesManager
 
     public float[] seconds;
 
+    public AudioClip clip;
+
     public SavesManager(string levelName, string author, int bpm, AudioClip clip, float[] seconds)
     {
         this.levelName = levelName;
@@ -26,6 +28,7 @@ public class SavesManager
         this.channels = channels;
         this.frequency = frequency;
         this.samples = samples;
+        this.clip = clip;
 
         this.seconds = seconds;
     }
@@ -41,5 +44,7 @@ public class SavesManager
         samplesLength = clip.samples * channels;
         samples = new float[samplesLength];
         frequency = clip.frequency;
+
+        clip.GetData(samples, 0);
     }
 }

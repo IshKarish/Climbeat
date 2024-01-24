@@ -47,61 +47,63 @@ public static class SaveSystem
         stream.Close();
     }
 
-    //public static LevelData LoadLevel (string path)
-    //{
-    //    if (File.Exists(path))
-    //    {
-    //        FileStream stream = new FileStream(path, FileMode.Open);
-    //        BinaryReader reader = new BinaryReader(stream);
+    public static SavesManager LoadLevel (string path)
+    {
+        if (File.Exists(path))
+        {
+            FileStream stream = new FileStream(path, FileMode.Open);
+            BinaryReader reader = new BinaryReader(stream);
+
+            int len = reader.ReadInt32();
+            float[] secondsArr = new float[len];
+            for (int i = 0; i < len; i++)
+            {
+                secondsArr[i] = reader.ReadSingle();
+            }
+
+            int samplesLength = reader.ReadInt32();
+            int channels = reader.ReadInt32();
+            int frequency = reader.ReadInt32();
+           
+            int sLength = reader.ReadInt32();
+            float[] samples = new float[sLength];
+            for (int i = 0; i < samples.Length; i++)
+            {
+                samples[i] = reader.ReadSingle();
+            }
+            AudioClip clip = AudioClip.Create("Clip", samplesLength / 2, channels, frequency, false);
+            clip.SetData(samples, 0);
+
+            string lvlName = reader.ReadString();
+            string authorName = reader.ReadString();
+            int bpm = reader.ReadInt32();
+
+            SavesManager savesManager = new SavesManager(lvlName, authorName, bpm, clip, secondsArr);
 //
-    //        LevelData data = new LevelData();
+            //int xLength = reader.ReadInt32();
+            //savesManager.xPos = new float[xLength];
+            //for (int i = 0; i < savesManager.xPos.Length; i++)
+            //{
+            //    savesManager.xPos[i] = reader.ReadSingle();
+            //}
 //
-    //        int len = reader.ReadInt32();
-    //        data.Secs = new float[len];
-    //        for (int i = 0; i < len; i++)
-    //        {
-    //            data.Secs[i] = reader.ReadSingle();
-    //        }
-//
-    //        data.samplesLeangth = reader.ReadInt32();
-    //        data.channels = reader.ReadInt32();
-    //        data.frequency = reader.ReadInt32();
-//
-    //        int sLength = reader.ReadInt32();
-    //        data.samples = new float[sLength];
-    //        for (int i = 0; i < data.samples.Length; i++)
-    //        {
-    //            data.samples[i] = reader.ReadSingle();
-    //        }
-//
-    //        data.lvlName = reader.ReadString();
-    //        data.authorName = reader.ReadString();
-    //        data.bpm = reader.ReadString();
-//
-    //        int xLength = reader.ReadInt32();
-    //        data.xPos = new float[xLength];
-    //        for (int i = 0; i < data.xPos.Length; i++)
-    //        {
-    //            data.xPos[i] = reader.ReadSingle();
-    //        }
-//
-    //        int yLength = reader.ReadInt32();
-    //        data.yPos = new float[yLength];
-    //        for (int i = 0; i < data.yPos.Length; i++)
-    //        {
-    //            data.yPos[i] = reader.ReadSingle();
-    //        }
-//
-    //        stream.Close();
-//
-    //        return data;
-    //    }
-    //    else
-    //    {
-    //        Debug.LogError("There is no level file. starting assassination process...");
-    //        return null;
-    //    }
-    //}
+            //int yLength = reader.ReadInt32();
+            //savesManager.yPos = new float[yLength];
+            //for (int i = 0; i < savesManager.yPos.Length; i++)
+            //{
+            //    savesManager.yPos[i] = reader.ReadSingle();
+            //}
+
+            stream.Close();
+
+            return savesManager;
+        }
+        else
+        {
+            Debug.LogError("There is no level file. starting assassination process...");
+            return null;
+        }
+    }
     
     /*
      * Saving/Loading order:

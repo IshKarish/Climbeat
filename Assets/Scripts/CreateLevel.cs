@@ -21,8 +21,7 @@ public class CreateLevel : MonoBehaviour
     
     private AudioClip audioClip;
     private AudioSource audioSource;
-
-
+    
     private string levelName;
     private string authorName;
     private int bpm;
@@ -33,18 +32,18 @@ public class CreateLevel : MonoBehaviour
     
     private IEnumerator enumerator;
 
-    private void Start()
-    {
-        enumerator = FileBrowser.WaitForLoadDialog(FileBrowser.PickMode.FilesAndFolders);
-    }
-
     private void Awake()
     {
         editor = GetComponent<Editor>();
         audioSource = GetComponent<AudioSource>();
         //presistentDataPath = Application.persistentDataPath;
     }
-
+    
+    private void Start()
+    {
+        enumerator = FileBrowser.WaitForLoadDialog(FileBrowser.PickMode.FilesAndFolders);
+    }
+    
     public void SwitchMenu(GameObject menu)
     {
         //Transform canvas = GetComponentInParent<Canvas>().transform;
@@ -62,18 +61,18 @@ public class CreateLevel : MonoBehaviour
         FileBrowser.SetFilters(false, new FileBrowser.Filter("Wav file", ".wav"));
         FileBrowser.AddQuickLink("Climbeat", Application.persistentDataPath, null);
         
-        StartCoroutine(LoadDialog(true));
+        StartCoroutine(LoadDialog(true, null));
     }
 
-    public void LoadLevel()
+    public void LoadLevel(GameObject editorMenu)
     {
         FileBrowser.SetFilters(false, new FileBrowser.Filter("Not Virus", ".notvirus"));
         FileBrowser.AddQuickLink("Climbeat", Application.persistentDataPath, null);
         
-        StartCoroutine(LoadDialog(false));
+        StartCoroutine(LoadDialog(false, editorMenu));
     }
 
-    IEnumerator LoadDialog(bool getAudio)
+    IEnumerator LoadDialog(bool getAudio, GameObject editorMenu)
     {
         yield return enumerator;
         
@@ -84,6 +83,13 @@ public class CreateLevel : MonoBehaviour
         }
         
         if(getAudio) StartCoroutine(GetAudio());
+        else
+        {
+            editor.enabled = true;
+            editor.LoadLevel(path);
+        
+            SwitchMenu(editorMenu);
+        }
     }
 
     IEnumerator GetAudio()

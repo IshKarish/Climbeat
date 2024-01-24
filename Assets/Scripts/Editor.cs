@@ -64,6 +64,8 @@ public class Editor : MonoBehaviour
 
         screenWidth = Screen.width;
         screenHeight = Screen.height;
+        
+        if (isNewLevel) SaveLevel();
     }
 
     private void Update()
@@ -228,6 +230,16 @@ public class Editor : MonoBehaviour
         songTimeInput.text = null;
     }
 
+    void SetSecondManually(float second)
+    {
+        float newCursorYPos = FindCursorPos(second);
+        MoveCursor(newCursorYPos);
+        
+        JumpToSecond(second, false);
+        
+        AddSecond();
+    }
+
     void AddSecond()
     {
         secondsLst.Add(audioSource.time);
@@ -235,6 +247,7 @@ public class Editor : MonoBehaviour
 
         GameObject secondVisual = PointVisual(secondsWall, 0);
         secondVisuals.Add(secondVisual);
+        SetSecondVisualBtn(secondVisual);
         
         GameObject climbPointVisual = PointVisual(climbingWall, Random.Range(100, -100));
         climbPointVisuals.Add(climbPointVisual);
@@ -260,11 +273,16 @@ public class Editor : MonoBehaviour
     void SetClimbPointBtn(GameObject obj)
     {
         Button button = obj.AddComponent<Button>();
-        //button.onClick.AddListener(OnClimbPointPress(5));
+        button.onClick.AddListener((Call));
+        void Call() {OnVisualBtnPress(5);}
 
         ButtonLongPressListener longPressListener = obj.AddComponent<ButtonLongPressListener>();
         longPressListener.holdDuration = 3;
         longPressListener.onLongPress = () => moveMod = true;
+
+        ButtonDoubleClickListener doubleClickListener = obj.AddComponent<ButtonDoubleClickListener>();
+        doubleClickListener.onDoubleClick = OnDoubleClick;
+        void OnDoubleClick() {OnVisualDoubleClick();}
 
         EventTrigger trigger = obj.AddComponent<EventTrigger>();
         EventTrigger.Entry entry = new EventTrigger.Entry
@@ -275,15 +293,32 @@ public class Editor : MonoBehaviour
         trigger.triggers.Add(entry);
     }
 
-    UnityAction OnClimbPointPress(float resetColorDelay)
+    void SetSecondVisualBtn(GameObject obj)
+    {
+        Button button = obj.AddComponent<Button>();
+        button.onClick.AddListener((Call));
+        void Call() {OnVisualBtnPress(5);}
+
+        ButtonDoubleClickListener doubleClickListener = obj.AddComponent<ButtonDoubleClickListener>();
+        doubleClickListener.onDoubleClick = OnDoubleClick;
+        void OnDoubleClick() {OnVisualDoubleClick();}
+    }
+
+    void OnVisualBtnPress(float resetColorDelay)
     {
         Debug.Log("Yay");
         FindMatchingVisuals(out Image climbPointImg, out Image secondImg);
         
         StartCoroutine(PaintMatchingVisuals(Color.red, climbPointImg, secondImg, 0));
         StartCoroutine(PaintMatchingVisuals(Color.black, climbPointImg, secondImg, resetColorDelay));
+    }
+    
+    void OnVisualDoubleClick()
+    {
+        Debug.Log("Yay");
+        FindMatchingVisuals(out Image climbPointImg, out Image secondImg);
         
-        return null;
+        RemovePoints(climbPointImg, secondImg);
     }
 
     void FindMatchingVisuals(out Image climbPointImg, out Image secondImg)
@@ -312,6 +347,17 @@ public class Editor : MonoBehaviour
         secondImg.color = color;
     }
 
+    void RemovePoints(Image climbPointImg, Image secondImg)
+    {
+        secondsLst.Remove(float.Parse(secondImg.name));
+        
+        climbPointVisuals.Remove(climbPointImg.gameObject);
+        secondVisuals.Remove(secondImg.gameObject);
+        
+        Destroy(climbPointImg.gameObject);
+        Destroy(secondImg.gameObject);
+    }
+
     public void SaveLevel()
     {
         string levelName = lvlNameTxt.text;
@@ -323,5 +369,17 @@ public class Editor : MonoBehaviour
         
         SavesManager savesManager = new SavesManager(levelName, author, bpm, audioSource.clip, secondsArr);
         savesManager.SaveLevel();
+    }
+
+    public void LoadLevel(string path)
+    {
+        SavesManager savesManager = SaveSystem.LoadLevel(path);
+        EditorSetting(savesManager.levelName, savesManager.author, savesManager.bpm, false);
+        audioSource.clip = savesManager.clip;
+
+        for (int i = 0; i < savesManager.seconds.Length; i++)
+        {
+            SetSecondManually(savesManager.seconds[i]);
+        }
     }
 }
