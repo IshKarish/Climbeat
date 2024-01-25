@@ -4,6 +4,7 @@ using UnityEngine;
 using SimpleFileBrowser;
 using TMPro;
 using UnityEngine.Networking;
+using UnityEngine.SceneManagement;
 
 public class CreateLevel : MonoBehaviour
 {    
@@ -81,6 +82,7 @@ public class CreateLevel : MonoBehaviour
             string res = FileBrowser.Result[0];
             path = Path.Combine(FileBrowserHelpers.GetDirectoryName(res), FileBrowserHelpers.GetFilename(res));
         }
+        else LoadScene(0);
         
         if(getAudio) StartCoroutine(GetAudio());
         else
@@ -98,10 +100,7 @@ public class CreateLevel : MonoBehaviour
 
         yield return www.SendWebRequest();
 
-        if (www.isNetworkError || www.isHttpError)
-        {
-            Debug.Log(www.error);
-        }
+        if (www.isNetworkError || www.isHttpError) LoadScene(0);
         else
         {
             audioClip = ((DownloadHandlerAudioClip)www.downloadHandler).audioClip;
@@ -120,5 +119,10 @@ public class CreateLevel : MonoBehaviour
         editor.enabled = true;
         editor.EditorSetting(levelName, authorName, bpm, true);
         SwitchMenu(editorMenu);
+    }
+
+    public void LoadScene(int buildIndex)
+    {
+        SceneManager.LoadScene(buildIndex);
     }
 }

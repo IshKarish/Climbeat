@@ -1,23 +1,19 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.Events;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class Editor : MonoBehaviour
 {
-    [SerializeField] private GameObject xAxisVisual;
-    [SerializeField] private GameObject yAxisVisual;
-    
-    [SerializeField] private List<float> secondsLst = new List<float>();
+     private List<float> secondsLst = new List<float>();
 
-    [SerializeField] private List<GameObject> climbPointVisuals = new List<GameObject>();
-    [SerializeField] private List<GameObject> secondVisuals = new List<GameObject>();
+     private List<GameObject> climbPointVisuals = new List<GameObject>();
+     private List<GameObject> secondVisuals = new List<GameObject>();
+
+     private List<Vector2> climbPointsPositions = new List<Vector2>();
     
     [Header("Texts (TMPro)")]
     [SerializeField] private TextMeshProUGUI lvlNameTxt;
@@ -33,6 +29,8 @@ public class Editor : MonoBehaviour
     [Header("Other visuals")]
     [SerializeField] private Transform cursor;
     [SerializeField] private GameObject pointPrefab;
+    [SerializeField] private GameObject xAxisVisual;
+    [SerializeField] private GameObject yAxisVisual;
 
     private AudioSource audioSource;
 
@@ -94,7 +92,7 @@ public class Editor : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                AddSecond();
+                AddSecond(true);
             }
 
             if (moveMod)
@@ -186,6 +184,14 @@ public class Editor : MonoBehaviour
                 
                 break;
         }
+
+        for (int i = 0; i < climbPointVisuals.Count; i++)
+        {
+            if (climbPointVisuals[i] == EventSystem.current.currentSelectedGameObject)
+            {
+                climbPointsPositions[i] = current.localPosition;
+            }
+        }
     }
 
     float MoveCursor(float yPos)
@@ -236,13 +242,12 @@ public class Editor : MonoBehaviour
         
         JumpToSecond(second, false);
         
-        AddSecond();
+        AddSecond(false);
     }
 
-    void AddSecond()
+    void AddSecond(bool newSecond)
     {
         secondsLst.Add(audioSource.time);
-        //Debug.Log(audioSource.time + " added to the list");
 
         GameObject secondVisual = PointVisual(secondsWall, 0);
         secondVisuals.Add(secondVisual);
@@ -250,6 +255,14 @@ public class Editor : MonoBehaviour
         
         GameObject climbPointVisual = PointVisual(climbingWall, Random.Range(100, -100));
         climbPointVisuals.Add(climbPointVisual);
+        if (newSecond) climbPointsPositions.Add(climbPointVisual.transform.localPosition);
+        else
+        {
+            Vector2 currentPos = climbPointsPositions[^1];
+            Vector3 newPos = new Vector3(currentPos.x, currentPos.y, 0);
+            climbPointVisual.transform.localPosition = newPos;
+        }
+        
         SetClimbPointBtn(climbPointVisual);
     }
 
@@ -364,9 +377,10 @@ public class Editor : MonoBehaviour
         int bpm = int.Parse(bpmTxt.text);
 
         float[] secondsArr = secondsLst.ToArray();
-        Array.Sort(secondsArr);
+        Vector2[] positionsArr = climbPointsPositions.ToArray();
+        SortSecondsAndPositions(secondsArr, positionsArr);
         
-        SavesManager savesManager = new SavesManager(levelName, author, bpm, audioSource.clip, secondsArr);
+        SavesManager savesManager = new SavesManager(levelName, author, bpm, audioSource.clip, secondsArr, positionsArr);
         savesManager.SaveLevel();
     }
 
@@ -378,7 +392,33 @@ public class Editor : MonoBehaviour
         
         for (int i = 0; i < savesManager.seconds.Length; i++)
         {
+            climbPointsPositions.Add(savesManager.positions[i]);
             SetSecondManually(savesManager.seconds[i]);
         }
+    }
+
+    void SortSecondsAndPositions(float[] seconds, Vector2[] positions)
+    {
+        for (int i = 0; i < seconds.Length; i++)
+        {
+            for (int j = 0; j < seconds.Length; j++)
+            {
+                if(seconds[i] < seconds[j])
+                {
+                    Switch(seconds, i, j);
+                    Switch(positions, i, j);
+                }
+            }
+        }
+    }
+    
+    void Switch(float[] arr, int ind1, int ind2)
+    {
+        (arr[ind1], arr[ind2]) = (arr[ind2], arr[ind1]);
+    }
+    
+    void Switch(Vector2[] arr, int ind1, int ind2)
+    {
+        (arr[ind1], arr[ind2]) = (arr[ind2], arr[ind1]);
     }
 }

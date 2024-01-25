@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SavesManager
@@ -15,9 +13,11 @@ public class SavesManager
 
     public float[] seconds;
 
+    public Vector2[] positions;
+
     public AudioClip clip;
 
-    public SavesManager(string levelName, string author, int bpm, AudioClip clip, float[] seconds)
+    public SavesManager(string levelName, string author, int bpm, AudioClip clip, float[] seconds, Vector2[] positions)
     {
         this.levelName = levelName;
         this.author = author;
@@ -31,6 +31,7 @@ public class SavesManager
         this.clip = clip;
 
         this.seconds = seconds;
+        this.positions = positions;
     }
 
     public void SaveLevel()
