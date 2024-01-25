@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using HexabodyVR;
-using HurricaneVR;
 using UnityEngine.UI;
 
 public class WallBuilder : MonoBehaviour
@@ -104,8 +100,7 @@ public class WallBuilder : MonoBehaviour
             pcCam.SetActive(true);
         }
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Return)) start();
@@ -125,12 +120,6 @@ public class WallBuilder : MonoBehaviour
                 if(nxtInd < secs.Length-1) nxtInd++;
                 impactSFX.Play();
                 Debug.Log("now");
-            }
-
-            if (!vrMode)
-            {
-                //Vector3 pos = pcCam.transform.position;
-                //pcCam.transform.position = new Vector3(pos.x, pos.y + Time.deltaTime * speedSlider.value, pos.z);
             }
         }
         else
