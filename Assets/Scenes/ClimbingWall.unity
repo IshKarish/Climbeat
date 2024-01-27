@@ -1539,9 +1539,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a442d8a4c3c86dc4b9c8f0071d23e07b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lettersScriptableObject: {fileID: 11400000, guid: f7a1104d58339d04d9ba5837d8d5c290,
+    type: 2}
   climbPoint: {fileID: 9042448353077352431, guid: 2d707acce6a388e40b19a1feb1293945,
     type: 3}
   climbPoints: []
+  getReadyColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  climbColor: {r: 1, g: 0, b: 0, a: 1}
+  getReadyTime: 0.3
 --- !u!1 &2060750467
 GameObject:
   m_ObjectHideFlags: 0
