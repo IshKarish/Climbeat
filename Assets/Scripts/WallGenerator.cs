@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class WallGenerator : MonoBehaviour
 {
-    [SerializeField] private LettersScriptableObject lettersScriptableObject;
-    
     [Header("Climb Point")]
     [SerializeField] private GameObject climbPoint;
     [SerializeField] private GameObject[] climbPoints;
@@ -28,12 +26,6 @@ public class WallGenerator : MonoBehaviour
     {
         audioSource = GetComponent<AudioSource>();
         LoadLevel();
-    }
-
-    private void Start()
-    {
-        Writer writer = new Writer(lettersScriptableObject);
-        writer.Write("Lol");
     }
 
     void Update()

@@ -1425,7 +1425,7 @@ Transform:
   m_GameObject: {fileID: 1924409392}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10, y: 2500, z: 0.5}
+  m_LocalPosition: {x: 0, y: 2500, z: 0.5}
   m_LocalScale: {x: 200, y: 5000, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1539,8 +1539,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a442d8a4c3c86dc4b9c8f0071d23e07b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lettersScriptableObject: {fileID: 11400000, guid: f7a1104d58339d04d9ba5837d8d5c290,
-    type: 2}
   climbPoint: {fileID: 9042448353077352431, guid: 2d707acce6a388e40b19a1feb1293945,
     type: 3}
   climbPoints: []

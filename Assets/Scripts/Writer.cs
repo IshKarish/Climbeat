@@ -10,14 +10,14 @@ public class Writer : MonoBehaviour
         this.lettersScriptableObject = lettersScriptableObject;
     }
     
-    public void Write(string text)
+    public GameObject Write(string text, bool applyPhysics = false)
     {
         GameObject parent = Instantiate(new GameObject());
         parent.name = text + " (Text)";
         
         string txtUpper = text.ToUpper();
 
-        float half = 0;
+        float half;
         if (text.Length % 2 == 0) half = (text.Length / 2) - 2;
         else half = (text.Length / 2) - 1;
             
@@ -30,11 +30,33 @@ public class Writer : MonoBehaviour
                     GameObject newLetter = CreateLetter(c);
                     newLetter.transform.position = new Vector3(half, 0, 0);
                     newLetter.transform.SetParent(parent.transform);
+                    if (applyPhysics) newLetter.AddComponent<Rigidbody>();
                     half--;
                     break;
                 }
             }
         }
+
+        CenterPivot(parent.transform);
+        return parent;
+    }
+
+    void CenterPivot(Transform text)
+    {
+        Transform[] letters = new Transform[text.childCount];
+        for (int i = 0; i < letters.Length; i++)
+        {
+            letters[i] = text.GetChild(i);
+        }
+        text.DetachChildren();
+
+        text.position = new Vector3(-1.5f, text.position.y, 0);
+
+        foreach (Transform t in letters)
+        {
+            t.SetParent(text);
+        }
+        text.position = Vector3.zero;
     }
 
     GameObject CreateLetter(char c)
