@@ -13,7 +13,7 @@ public class WallGenerator : MonoBehaviour
     [Header("Times")]
     [SerializeField] private float getReadyTime = .3f;
     
-    private string path = "C:/Users/danie/AppData/LocalLow/The Banana Project/Climbeat/PetahTikva.notvirus";
+    private string path;
     private AudioSource audioSource;
 
     private float[] seconds;
@@ -25,7 +25,10 @@ public class WallGenerator : MonoBehaviour
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        
+        path = PlayerPrefs.GetString("Path");
         LoadLevel();
+        PlayerPrefs.DeleteKey("Path");
     }
 
     void Update()

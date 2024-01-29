@@ -1,9 +1,13 @@
 using System.IO;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    [SerializeField] private LettersScriptableObject lettersScriptableObject;
+    [SerializeField] private Transform scrollViewContent;
+    [SerializeField] private GameObject buttonPrefab;
     
     private string[] paths;
     private string[] levels;
@@ -15,29 +19,40 @@ public class MainMenu : MonoBehaviour
         levelsFolder = Application.persistentDataPath;
         paths = Directory.GetFiles(levelsFolder);
         
-        SetLevelTexts();
+        SetLevelList();
     }
 
-    void SetLevelTexts()
+    void SetLevelList()
     {
-        GameObject newText = AddLevelText(paths[0]);
-        newText.transform.localScale = new Vector3(-1, 1, 1);
-      
+        GameObject button = LevelButton(paths[0]);
+        button.transform.localPosition = Vector3.zero;
         for (int i = 1; i < paths.Length; i++)
         {
-            Vector3 newPos = new Vector3(0, newText.transform.position.y - 1.5f, 0);
+            Vector3 currentPos = button.transform.localPosition;
+            Vector3 nextPos = new Vector3(currentPos.x, currentPos.y - 150, currentPos.z);
             
-            newText = AddLevelText(paths[i]);
-            newText.transform.localScale = new Vector3(-1, 1, 1);
-            newText.transform.position = newPos;
+            button = LevelButton(paths[i]);
+            button.transform.localPosition = nextPos;
         }
     }
 
-    GameObject AddLevelText(string path)
+    GameObject LevelButton(string path)
     {
-        Writer writer = new Writer(lettersScriptableObject);
+        GameObject button = Instantiate(buttonPrefab, scrollViewContent, true);
+        Button buttonComponent = button.GetComponent<Button>();
+        buttonComponent.onClick.AddListener((() => {LoadLevel(path);}));
+
         SavesManager savesManager = SaveSystem.LoadLevel(path);
-        
-        return writer.Write(savesManager.levelName);
+        string levelName = savesManager.levelName;
+        button.GetComponentInChildren<TextMeshProUGUI>().text = levelName;
+        button.name = levelName + " Button";
+
+        return button;
+    }
+
+    void LoadLevel(string path)
+    {
+        PlayerPrefs.SetString("Path", path);
+        SceneManager.LoadScene(1);
     }
 }
