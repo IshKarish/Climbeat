@@ -19,16 +19,24 @@ public class WallGenerator : MonoBehaviour
     private float[] seconds;
     private int nextIndex;
 
-    private float time;
+    private float timePassed;
     private bool startLevel;
+
+    private GameManager gameManager;
 
     private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        gameManager = FindObjectOfType<GameManager>();
         
         path = PlayerPrefs.GetString("Path");
         LoadLevel();
         PlayerPrefs.DeleteKey("Path");
+
+        for (int i = 0; i < seconds.Length; i++)
+        {
+            seconds[i] += gameManager.globTime;
+        }
     }
 
     void Update()
@@ -37,13 +45,13 @@ public class WallGenerator : MonoBehaviour
         
         if (startLevel && nextIndex < seconds.Length)
         {
-            if (Time.time >= seconds[nextIndex] - getReadyTime)
+            if (Time.time >= (seconds[nextIndex] - getReadyTime) + timePassed)
             {
                 ColorClimbPoint(climbPoints[nextIndex], getReadyColor);
                 Debug.Log("Get Ready...");
             }
 
-            if (Time.time >= seconds[nextIndex])
+            if (Time.time >= seconds[nextIndex] + timePassed)
             {
                 ColorClimbPoint(climbPoints[nextIndex], climbColor);
                 Debug.Log("Now!");
@@ -52,7 +60,13 @@ public class WallGenerator : MonoBehaviour
             
             if (!audioSource.isPlaying) audioSource.Play();
         }
-        else time += Time.deltaTime;
+        else
+        {
+            for (int i = 0; i < seconds.Length; i++)
+            {
+                seconds[i] += Time.deltaTime;
+            }
+        }
     }
 
     void ColorClimbPoint(GameObject point, Color color)
