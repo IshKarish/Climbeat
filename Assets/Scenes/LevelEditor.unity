@@ -341,7 +341,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1405949989}
+      - m_Target: {fileID: 1405949988}
         m_TargetAssemblyTypeName: CreateLevel, Assembly-CSharp
         m_MethodName: SwitchMenu
         m_Mode: 2
@@ -1100,7 +1100,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1405949989}
+      - m_Target: {fileID: 1405949988}
         m_TargetAssemblyTypeName: CreateLevel, Assembly-CSharp
         m_MethodName: UploadSong
         m_Mode: 1
@@ -1969,37 +1969,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 493097201}
   m_CullTransparentMesh: 1
---- !u!1 &568556831
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 568556832}
-  m_Layer: 0
-  m_Name: ----Buttons----
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &568556832
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 568556831}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 702428987}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &590557581
 GameObject:
   m_ObjectHideFlags: 0
@@ -2709,15 +2678,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1405949989}
-        m_TargetAssemblyTypeName: CreateLevel, Assembly-CSharp
-        m_MethodName: LoadScene
-        m_Mode: 3
+        m_TargetAssemblyTypeName: Editor, Assembly-CSharp
+        m_MethodName: LoadLevel
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: 0
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &695695948
@@ -2788,11 +2757,9 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1768127791}
   - {fileID: 1385364965}
   - {fileID: 647906073}
   - {fileID: 2045980408}
-  - {fileID: 568556832}
   - {fileID: 340965183}
   - {fileID: 242111818}
   - {fileID: 842516242}
@@ -3060,7 +3027,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1405949989}
+      - m_Target: {fileID: 1405949988}
         m_TargetAssemblyTypeName: CreateLevel, Assembly-CSharp
         m_MethodName: CreateNewLevel
         m_Mode: 2
@@ -3369,7 +3336,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1405949989}
+      - m_Target: {fileID: 1405949988}
         m_TargetAssemblyTypeName: CreateLevel, Assembly-CSharp
         m_MethodName: LoadLevel
         m_Mode: 2
@@ -4278,7 +4245,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1405949988}
+      - m_Target: {fileID: 1405949989}
         m_TargetAssemblyTypeName: Editor, Assembly-CSharp
         m_MethodName: SaveLevel
         m_Mode: 1
@@ -5120,7 +5087,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1363780808}
   m_Enabled: 0
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d443756e13eacb44d829b28ab5c7e4f3, type: 3}
+  m_Script: {fileID: 11500000, guid: 1a15cb032febca64083522fd2f8e5662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cursor: {fileID: 409522285}
@@ -5496,21 +5463,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1405949984}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8de974f52b587f44f8920d14b508f8b6, type: 3}
+  m_Script: {fileID: 11500000, guid: 51338248f9e3f1f4bbe49685431aade2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lvlNameTxt: {fileID: 590557583}
-  authorTxt: {fileID: 350227889}
-  bpmTxt: {fileID: 493097203}
-  songTimeInput: {fileID: 394934390}
-  climbingWall: {fileID: 422172009}
-  secondsWall: {fileID: 179359390}
-  cursor: {fileID: 409522285}
-  pointPrefab: {fileID: 3931924504527642817, guid: 2deb2974a28195f4db1e773527863419,
-    type: 3}
-  xAxisVisual: {fileID: 1029416576}
-  yAxisVisual: {fileID: 1040166437}
-  zoomFov: 15
+  canvas: {fileID: 618916371}
+  levelNameInput: {fileID: 1385364966}
+  authorInput: {fileID: 647906074}
+  bpmInput: {fileID: 2045980409}
+  playBtn: {fileID: 242111814}
 --- !u!114 &1405949989
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5520,14 +5480,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1405949984}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b932b0a36725a1144b97f404b8194b74, type: 3}
+  m_Script: {fileID: 11500000, guid: 990eaea0486b995489ae3dd91c3522da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvas: {fileID: 618916371}
-  levelNameInput: {fileID: 1385364966}
-  authorInput: {fileID: 647906074}
-  bpmInput: {fileID: 2045980409}
-  playBtn: {fileID: 242111814}
+  lvlNameTxt: {fileID: 590557583}
+  authorTxt: {fileID: 350227889}
+  bpmTxt: {fileID: 493097203}
+  songTimeInput: {fileID: 394934390}
+  climbingWall: {fileID: 422172009}
+  secondsWall: {fileID: 179359390}
+  cursor: {fileID: 409522285}
+  pointPrefab: {fileID: 3931924504527642817, guid: 25d2e1233972df447aee9a7dd044add6,
+    type: 3}
+  xAxisVisual: {fileID: 1029416576}
+  yAxisVisual: {fileID: 1040166437}
+  zoomFov: 15
 --- !u!1 &1496413354
 GameObject:
   m_ObjectHideFlags: 0
@@ -6233,37 +6200,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1767813762}
   m_CullTransparentMesh: 1
---- !u!1 &1768127790
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1768127791}
-  m_Layer: 0
-  m_Name: ----Input Fields
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1768127791
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1768127790}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 702428987}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1773331743
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,17 +5,20 @@ public class PhysicsRig : MonoBehaviour
     [Header("XR Rig stuff")]
     [SerializeField] private Transform leftHand;
     [SerializeField] private Transform rightHand;
-
+    
     [Header("Joints")]
-    [SerializeField] private ConfigurableJoint leftHandPhysics;
-    [SerializeField] private ConfigurableJoint rightHandPhysics;
+    [SerializeField] private ConfigurableJoint leftHandJoint;
+    [SerializeField] private ConfigurableJoint rightHandJoint;
 
     private void FixedUpdate()
     {
-        leftHandPhysics.targetPosition = leftHand.localPosition;
-        leftHandPhysics.targetRotation = leftHand.localRotation;
+        leftHandJoint.targetPosition = leftHand.localPosition;
+        leftHandJoint.targetRotation = leftHand.localRotation;
 
-        rightHandPhysics.targetPosition = rightHand.localPosition;
-        rightHandPhysics.targetRotation = rightHand.localRotation;
+        rightHandJoint.targetPosition = rightHand.localPosition;
+        rightHandJoint.targetRotation = rightHand.localRotation;
+        
+        Debug.Log(leftHand.localRotation);
+        Debug.Log(rightHand.localRotation);
     }
 }

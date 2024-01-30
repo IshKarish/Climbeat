@@ -4,9 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - projectile
   - Editor
-  - HVR
   layers:
   - Default
   - TransparentFX
@@ -16,8 +14,6 @@ TagManager:
   - UI
   - Body
   - 
-  - Player
-  - DynamicPose
   - 
   - 
   - 
@@ -28,9 +24,11 @@ TagManager:
   - 
   - 
   - 
-  - Grabbable
-  - Hand
-  - PostProcesing
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 

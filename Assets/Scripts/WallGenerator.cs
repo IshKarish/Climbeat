@@ -4,7 +4,7 @@ public class WallGenerator : MonoBehaviour
 {
     [Header("Climb Point")]
     [SerializeField] private GameObject climbPoint;
-    [SerializeField] private GameObject[] climbPoints;
+    private GameObject[] climbPoints;
     
     [Header("Colors")]
     [SerializeField] private Color getReadyColor = Color.yellow;

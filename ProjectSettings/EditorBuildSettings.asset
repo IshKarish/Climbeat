@@ -7,19 +7,15 @@ EditorBuildSettings:
   m_Scenes:
   - enabled: 1
     path: Assets/Scenes/Menu.unity
-    guid: db6902300e6eb794887eccefc09a2964
+    guid: f604c2bdf65e9c74e9ee5a0e9d8c394e
   - enabled: 1
     path: Assets/Scenes/ClimbingWall.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    guid: 13e94abd8f366b74797ddbc0539356f9
   - enabled: 0
     path: Assets/Scenes/LevelEditor.unity
-    guid: 030e5cda5510a3740962733f12eff112
+    guid: a89b8d6daf822e7438f0c33d6f48e1c5
   m_configObjects:
-    Unity.XR.Oculus.Settings: {fileID: 11400000, guid: e8ab5a4a0df78864cba940ec48c93857,
+    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 47990bfa1b7ba7445bdbb86316329d65,
       type: 2}
-    com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 93fbdddf92336d4458d95da0159978f3,
-      type: 2}
-    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 8eef5c90634e7a145831f3abfc98dccf,
-      type: 2}
-    xr.sdk.mock-hmd.settings: {fileID: 11400000, guid: a36fc53dff5c0f54db82e455cb9e1afa,
+    com.unity.xr.openxr.settings4: {fileID: 11400000, guid: daaefd49957d2924282624996887e5bb,
       type: 2}
