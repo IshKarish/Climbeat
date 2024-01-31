@@ -17,8 +17,5 @@ public class PhysicsRig : MonoBehaviour
 
         rightHandJoint.targetPosition = rightHand.localPosition;
         rightHandJoint.targetRotation = rightHand.localRotation;
-        
-        Debug.Log(leftHand.localRotation);
-        Debug.Log(rightHand.localRotation);
     }
 }
