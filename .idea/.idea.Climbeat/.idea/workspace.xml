@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d67143f-cd4f-4567-805e-7f081479c747" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Climbeat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Climbeat/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ClimbingWall.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ClimbingWall.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/XR Rig Scripts/PhysicsRig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/XR Rig Scripts/PhysicsRig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WallGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WallGenerator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2022.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2022.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,7 +104,7 @@
       <option name="presentableId" value="Default" />
       <updated>1706627444679</updated>
       <workItem from="1706627446323" duration="2335000" />
-      <workItem from="1706699512749" duration="712000" />
+      <workItem from="1706699512749" duration="1040000" />
     </task>
     <servers />
   </component>

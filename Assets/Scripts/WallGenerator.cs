@@ -4,6 +4,7 @@ public class WallGenerator : MonoBehaviour
 {
     [Header("Climb Point")]
     [SerializeField] private GameObject climbPoint;
+    [SerializeField] private float climbPointSize = 0.5f;
     private GameObject[] climbPoints;
     
     [Header("Colors")]
@@ -108,7 +109,7 @@ public class WallGenerator : MonoBehaviour
     {
         point.transform.SetParent(null);
             
-        Vector3 newScale = new Vector3(0.3f, 0.3f, 0.3f);
+        Vector3 newScale = new Vector3(climbPointSize, climbPointSize, climbPointSize);
         point.transform.localScale = newScale;
             
         point.transform.SetParent(transform);
