@@ -2197,6 +2197,45 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "Both Hands",
+            "id": "5b1a90cd-3376-4bd3-b04e-40e511ded259",
+            "actions": [
+                {
+                    "name": "Start Level",
+                    "type": "Button",
+                    "id": "fd7dc036-55a3-4850-8407-883efc075265",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "29774e2a-6dcb-4007-8b18-11aa0b7b7fb1",
+                    "path": "<XRController>{LeftHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Start Level",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1b4ce3e0-24b2-42e2-87ef-2a8ef2e14e0d",
+                    "path": "<XRController>{RightHand}/gripPressed",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Start Level",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": [

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 9042448353077352418}
   - component: {fileID: 9042448353077352417}
   - component: {fileID: 9042448353077352416}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Climb Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}

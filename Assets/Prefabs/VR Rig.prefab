@@ -2437,7 +2437,7 @@ MonoBehaviour:
   radius: 0.1
   grabLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
 --- !u!1001 &7789302877536561210
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2726,7 +2726,7 @@ MonoBehaviour:
   radius: 0.1
   grabLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
 --- !u!4 &2517544477228064168 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5686134208185136530, guid: 1fd3a7c43c8190f4d8c167ebde694364,

@@ -5,7 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8d67143f-cd4f-4567-805e-7f081479c747" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Climbeat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Climbeat/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/XRI Default Input Actions.inputactions" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/XRI Default Input Actions.inputactions" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ClimbingWall.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ClimbingWall.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/WallGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WallGenerator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/XR Rig Scripts/Grabber.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/XR Rig Scripts/Grabber.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -15,6 +20,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/ScoreVisuallizer.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -104,7 +112,7 @@
       <option name="presentableId" value="Default" />
       <updated>1706627444679</updated>
       <workItem from="1706627446323" duration="2335000" />
-      <workItem from="1706699512749" duration="1040000" />
+      <workItem from="1706699512749" duration="4360000" />
     </task>
     <servers />
   </component>

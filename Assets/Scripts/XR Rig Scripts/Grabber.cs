@@ -12,14 +12,28 @@ public class Grabber : MonoBehaviour
     
     private void FixedUpdate()
     {
+        Color climbPointColor = Color.clear;
+        
         bool IsGrabButtonPressed = grabInput.action.ReadValue<float>() > 0.1f;
         Collider[] nearbyColliders = Physics.OverlapSphere(transform.position, radius, grabLayer, QueryTriggerInteraction.Ignore);
         
         if (IsGrabButtonPressed && !isGrabbing)
         {
-            if (nearbyColliders.Length > 0) Grab(nearbyColliders[0]);
+            if (nearbyColliders.Length > 0)
+            {
+                Grab(nearbyColliders[0]);
+                climbPointColor = nearbyColliders[0].gameObject.GetComponent<MeshRenderer>().material.color;
+            }
         }
         else Release();
+        
+        if (isGrabbing && climbPointColor != Color.clear)
+        {
+            if (climbPointColor == Color.red)
+                FindObjectOfType<GameManager>().AddPoint(1);
+            else if (climbPointColor == Color.yellow)
+                FindObjectOfType<GameManager>().AddPoint(0.5f);
+        }
     }
 
     void Grab(Collider nearbyCollider)
