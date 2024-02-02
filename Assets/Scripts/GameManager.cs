@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [HideInInspector] public float globTime;
-    [HideInInspector] public float points;
+    [HideInInspector] public float score;
 
     private void Awake()
     {
@@ -16,23 +16,23 @@ public class GameManager : MonoBehaviour
         globTime += Time.deltaTime;
     }
 
-    public void AddPoint(float points)
+    public void WinLevel()
     {
-        this.points += points;
-    }
+        ScoreTracker scoreTracker = FindObjectOfType<ScoreTracker>();
+        scoreTracker.SaveScore(out string levelName, out float score);
+        
+        LoadScene(2);
 
-    public void LoseLevel()
-    {
-        SceneManager.LoadScene(0);
-    }
+        EndMenu endMenu = FindObjectOfType<EndMenu>();
+        endMenu.nameText.text = levelName;
+        endMenu.scoreText.text = "Score: " + score.ToString("0.0");
 
-    public void EndLevel(string levelName)
-    {
-        PlayerPrefs.SetFloat(levelName + " Score", points);
+        float best = PlayerPrefs.GetFloat(levelName + " Best", 0);
+        endMenu.bestText.text = "Best: " + best.ToString("0.0");
     }
-
-    public void LoadBestScore(string levelName)
+    
+    public void LoadScene(int buildIndex)
     {
-        PlayerPrefs.GetFloat(levelName + " Score", 0);
+        SceneManager.LoadScene(buildIndex);
     }
 }

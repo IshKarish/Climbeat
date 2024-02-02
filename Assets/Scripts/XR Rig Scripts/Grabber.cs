@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,33 +7,38 @@ public class Grabber : MonoBehaviour
     [SerializeField] private InputActionProperty grabInput;
     [SerializeField] private float radius = 0.1f;
     [SerializeField] private LayerMask grabLayer;
+    
+    private ScoreTracker scoreTracker;
 
     private FixedJoint fixedJoint;
     private bool isGrabbing;
-    
+
+    private GameObject currentGrabbed;
+
+    private void Awake()
+    {
+        scoreTracker = GetComponentInParent<ScoreTracker>();
+    }
+
     private void FixedUpdate()
     {
-        Color climbPointColor = Color.clear;
-        
         bool IsGrabButtonPressed = grabInput.action.ReadValue<float>() > 0.1f;
         Collider[] nearbyColliders = Physics.OverlapSphere(transform.position, radius, grabLayer, QueryTriggerInteraction.Ignore);
         
-        if (IsGrabButtonPressed && !isGrabbing)
+        if (nearbyColliders.Length > 0)
         {
-            if (nearbyColliders.Length > 0)
+            if (IsGrabButtonPressed && !isGrabbing)
             {
                 Grab(nearbyColliders[0]);
-                climbPointColor = nearbyColliders[0].gameObject.GetComponent<MeshRenderer>().material.color;
+            }
+            else if (!IsGrabButtonPressed && isGrabbing)
+            {
+                Release();
             }
         }
-        else Release();
-        
-        if (isGrabbing && climbPointColor != Color.clear)
+        else
         {
-            if (climbPointColor == Color.red)
-                FindObjectOfType<GameManager>().AddPoint(1);
-            else if (climbPointColor == Color.yellow)
-                FindObjectOfType<GameManager>().AddPoint(0.5f);
+            Release();
         }
     }
 
@@ -54,12 +60,30 @@ public class Grabber : MonoBehaviour
         }
 
         isGrabbing = true;
+
+        currentGrabbed = nearbyCollider.gameObject;
+        currentGrabbed.tag = "Grabbed";
+        
+        CheckColor();
     }
 
     void Release()
     {
-        isGrabbing = false;
+        if (currentGrabbed)
+        {
+            currentGrabbed.tag = "Untagged";
+            currentGrabbed = null;
+        }
         
+        isGrabbing = false;
         if(fixedJoint) Destroy(fixedJoint);
+    }
+
+    void CheckColor()
+    {
+        Color color = currentGrabbed.GetComponent<MeshRenderer>().material.color;
+
+        if (color == Color.red) scoreTracker.AddPoints(1);
+        else if (color == Color.yellow) scoreTracker.AddPoints(0.5f);
     }
 }

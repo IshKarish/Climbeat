@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,8 +17,9 @@ public class WallGenerator : MonoBehaviour
     [SerializeField] private Color climbColor = Color.red;
     private Color originalColor = Color.black;
 
-    [Header("Times")]
+    [Header("Floats")]
     [SerializeField] private float getReadyTime = .3f;
+    [SerializeField] private float heightToAdd = 357;
 
     [Header("Inputs")]
     [SerializeField] private InputActionProperty startInput;
@@ -42,7 +44,6 @@ public class WallGenerator : MonoBehaviour
         
         path = PlayerPrefs.GetString("Path");
         LoadLevel();
-        PlayerPrefs.DeleteKey("Path");
 
         for (int i = 0; i < seconds.Length; i++)
         {
@@ -58,24 +59,10 @@ public class WallGenerator : MonoBehaviour
         {
             if (Time.time >= (seconds[nextIndex] - getReadyTime) + timePassed)
             {
-                ColorClimbPoint(climbPoints[nextIndex], getReadyColor);
-                Debug.Log("Get Ready...");
+                StartCoroutine(ActiveClimbPoint(climbPoints[nextIndex]));
+                nextIndex++;
             }
 
-            if (Time.time >= seconds[nextIndex] + timePassed)
-            {
-                ColorClimbPoint(climbPoints[nextIndex], climbColor);
-                Debug.Log("Now!");
-                nextIndex++;
-                if (floor.activeSelf) floor.SetActive(false);
-            }
-            
-            if (Time.time >= (seconds[nextIndex] + getReadyTime) + timePassed)
-            {
-                //ColorClimbPoint(climbPoints[nextIndex - 1], originalColor);
-                Debug.Log("Get Ready...");
-            }
-            
             if (!audioSource.isPlaying) audioSource.Play();
         }
         else
@@ -86,9 +73,22 @@ public class WallGenerator : MonoBehaviour
             }
         }
 
-        bool isLevelEnded = Time.time > seconds[^1] + timePassed;
-        if (isLevelEnded) gameManager.EndLevel(levelName);
-        if (player.position.y < 0.5f) gameManager.LoseLevel();
+        bool songHasEnded = Time.time > seconds[^1] + timePassed;
+        if (songHasEnded) gameManager.WinLevel();;
+        if (player.position.y < -0.5f) gameManager.LoadScene(0);
+    }
+
+    IEnumerator ActiveClimbPoint(GameObject climbPoint)
+    {
+        ColorClimbPoint(climbPoint, getReadyColor);
+        
+        yield return new WaitForSeconds(getReadyTime);
+        
+        ColorClimbPoint(climbPoint, climbColor);
+        
+        yield return new WaitForSeconds(getReadyTime);
+        
+        ColorClimbPoint(climbPoint, originalColor);
     }
 
     void ColorClimbPoint(GameObject point, Color color)
@@ -117,15 +117,12 @@ public class WallGenerator : MonoBehaviour
         }
 
         levelName = savesManager.levelName;
-        gameManager.LoadBestScore(levelName);
-
-        GetComponent<ScoreVisuallizer>().levelName = levelName;
     }
 
     GameObject CreateClimbPoint(SavesManager savesManager, int i)
     {
         GameObject point = Instantiate(climbPoint, transform, true);
-        Vector3 newPos = new Vector3(savesManager.positions[i].x, savesManager.positions[i].y + 360, 0);
+        Vector3 newPos = new Vector3(savesManager.positions[i].x, savesManager.positions[i].y + heightToAdd, 0);
         point.transform.position = newPos;
         point.GetComponent<MeshRenderer>().material.color = originalColor;
 

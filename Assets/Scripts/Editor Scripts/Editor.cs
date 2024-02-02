@@ -76,6 +76,7 @@ public class Editor : MonoBehaviour
             if (Input.GetMouseButton(0) && isMouseInBoundsY & isMouseInBoundsX && !isZooming)
             {
                 float newSongTime = MoveCursor(Input.mousePosition.y);
+                Debug.Log(audioSource.time);
                 JumpToSecond(newSongTime);
             }
             else
@@ -97,8 +98,6 @@ public class Editor : MonoBehaviour
 
             if (moveMod)
             {
-                Debug.Log("Move Mode");
-                
                 if(Input.GetKey(KeyCode.X)) MovePoint('x');
                 else if(Input.GetKey(KeyCode.Y)) MovePoint('y');
                 else MovePoint();

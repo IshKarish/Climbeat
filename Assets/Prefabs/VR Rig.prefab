@@ -48,6 +48,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e20cdbbbe8d46fd49978c3acdb7617d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bodyHeightMin: 0.1
+  bodyHeightMax: 2
+  bodyCollider: {fileID: 3324961563542072745}
+  playerHead: {fileID: 7653079500695223246}
   leftHand: {fileID: 2548339217356365042}
   rightHand: {fileID: 8920073760650869020}
   leftHandJoint: {fileID: 6615325091164001101}
@@ -255,7 +259,6 @@ MonoBehaviour:
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
-  m_HasMigratedActions: 1
 --- !u!114 &8313172212695798782
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -552,6 +555,30 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 7779212132400271959, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
+  m_ScaleToggleAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Scale Toggle
+      m_Type: 1
+      m_ExpectedControlType: 
+      m_Id: 187dcc4b-2eec-4a01-be9c-2b88aade0748
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  m_ScaleDeltaAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Scale Delta
+      m_Type: 0
+      m_ExpectedControlType: Vector2
+      m_Id: 6cd5611c-ffce-4668-8825-51c55ad41f5c
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
   m_ButtonPressPoint: 0.5
 --- !u!114 &5970211769911983068
 MonoBehaviour:
@@ -654,6 +681,7 @@ MonoBehaviour:
   m_SampleFrequency: 20
   m_HitDetectionType: 0
   m_SphereCastRadius: 0.1
+  m_ConeCastAngle: 6
   m_RaycastMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -665,6 +693,7 @@ MonoBehaviour:
   m_AutoDeselect: 0
   m_TimeToAutoDeselect: 3
   m_EnableUIInteraction: 1
+  m_BlockUIOnInteractableSelection: 1
   m_AllowAnchorControl: 1
   m_UseForceGrab: 1
   m_RotateSpeed: 180
@@ -680,6 +709,7 @@ MonoBehaviour:
   m_EnableARRaycasting: 0
   m_OccludeARHitsWith3DObjects: 0
   m_OccludeARHitsWith2DObjects: 0
+  m_ScaleMode: 0
 --- !u!120 &5389673853191756157
 LineRenderer:
   serializedVersion: 2
@@ -1150,6 +1180,7 @@ GameObject:
   - component: {fileID: 7500974256218866967}
   - component: {fileID: 1715915700309774329}
   - component: {fileID: 6615325091164001101}
+  - component: {fileID: 8931077721160977541}
   m_Layer: 6
   m_Name: Left Hand Physics
   m_TagString: Untagged
@@ -1181,7 +1212,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7240958032549522690}
   serializedVersion: 4
-  m_Mass: 5
+  m_Mass: 4
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -1199,7 +1230,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!153 &6615325091164001101
 ConfigurableJoint:
   m_ObjectHideFlags: 0
@@ -1207,12 +1238,12 @@ ConfigurableJoint:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7240958032549522690}
-  m_ConnectedBody: {fileID: 0}
+  m_ConnectedBody: {fileID: 1984046926588227422}
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  m_ConnectedAnchor: {x: 0, y: 1.226, z: 0}
   serializedVersion: 3
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 2
@@ -1287,7 +1318,7 @@ ConfigurableJoint:
     useAcceleration: 0
   m_SlerpDrive:
     serializedVersion: 4
-    positionSpring: 10000
+    positionSpring: 1000
     positionDamper: 50
     maximumForce: 3.4028233e+38
     useAcceleration: 0
@@ -1302,6 +1333,35 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &8931077721160977541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7240958032549522690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ddaa89e4a6344d499ceee3d6bbbb07e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabInput:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Grab Input
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: b63b8b8e-d7ed-4eb6-a769-37b758f1bfa4
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 6558622148059887818, guid: c348712bda248c246b8c49b3db54643f,
+      type: 3}
+  radius: 0.1
+  grabLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &7959866173706683221
 GameObject:
   m_ObjectHideFlags: 0
@@ -1554,6 +1614,30 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 875253871413052681, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
+  m_ScaleToggleAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Scale Toggle
+      m_Type: 1
+      m_ExpectedControlType: 
+      m_Id: c3afdca4-efd0-484e-86c4-e0d7e95ace91
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
+  m_ScaleDeltaAction:
+    m_UseReference: 0
+    m_Action:
+      m_Name: Scale Delta
+      m_Type: 0
+      m_ExpectedControlType: Vector2
+      m_Id: 2e88dd8e-0826-433b-bb3b-43734a8b4a71
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: 0}
   m_ButtonPressPoint: 0.5
 --- !u!114 &4290826312400004600
 MonoBehaviour:
@@ -1656,6 +1740,7 @@ MonoBehaviour:
   m_SampleFrequency: 20
   m_HitDetectionType: 0
   m_SphereCastRadius: 0.1
+  m_ConeCastAngle: 6
   m_RaycastMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -1667,6 +1752,7 @@ MonoBehaviour:
   m_AutoDeselect: 0
   m_TimeToAutoDeselect: 3
   m_EnableUIInteraction: 1
+  m_BlockUIOnInteractableSelection: 1
   m_AllowAnchorControl: 1
   m_UseForceGrab: 1
   m_RotateSpeed: 180
@@ -1682,6 +1768,7 @@ MonoBehaviour:
   m_EnableARRaycasting: 0
   m_OccludeARHitsWith3DObjects: 0
   m_OccludeARHitsWith2DObjects: 0
+  m_ScaleMode: 0
 --- !u!120 &7593380264516180194
 LineRenderer:
   serializedVersion: 2
@@ -1991,6 +2078,7 @@ GameObject:
   - component: {fileID: 1186532164380184881}
   - component: {fileID: 5715275767736790391}
   - component: {fileID: 198327962470661643}
+  - component: {fileID: 1156658802136621357}
   m_Layer: 6
   m_Name: Right Hand Physics
   m_TagString: Untagged
@@ -2022,7 +2110,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8626234015786620588}
   serializedVersion: 4
-  m_Mass: 5
+  m_Mass: 4
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -2040,7 +2128,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 0
 --- !u!153 &198327962470661643
 ConfigurableJoint:
   m_ObjectHideFlags: 0
@@ -2048,12 +2136,12 @@ ConfigurableJoint:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8626234015786620588}
-  m_ConnectedBody: {fileID: 0}
+  m_ConnectedBody: {fileID: 1984046926588227422}
   m_ConnectedArticulationBody: {fileID: 0}
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
+  m_ConnectedAnchor: {x: 0, y: 1.226, z: 0}
   serializedVersion: 3
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 2
@@ -2128,7 +2216,7 @@ ConfigurableJoint:
     useAcceleration: 0
   m_SlerpDrive:
     serializedVersion: 4
-    positionSpring: 10000
+    positionSpring: 1000
     positionDamper: 50
     maximumForce: 3.4028233e+38
     useAcceleration: 0
@@ -2143,6 +2231,35 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!114 &1156658802136621357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8626234015786620588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ddaa89e4a6344d499ceee3d6bbbb07e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabInput:
+    m_UseReference: 1
+    m_Action:
+      m_Name: Grab Input
+      m_Type: 0
+      m_ExpectedControlType: 
+      m_Id: 17fbf9d1-839c-48a1-9b41-f873248e2277
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Reference: {fileID: -1758520528963094988, guid: c348712bda248c246b8c49b3db54643f,
+      type: 3}
+  radius: 0.1
+  grabLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1001 &3469442879524716759
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2357,7 +2474,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 109434732395284509, guid: 65847589f926b734d9eaed6e25f0046b,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 9020662496779705620}
+      addedObject: {fileID: 5519405221911313218}
   m_SourcePrefab: {fileID: 100100000, guid: 65847589f926b734d9eaed6e25f0046b, type: 3}
 --- !u!4 &3576180973669258410 stripped
 Transform:
@@ -2409,35 +2526,27 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: 6558622148059887818, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
---- !u!114 &9020662496779705620
-MonoBehaviour:
+--- !u!65 &5519405221911313218
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3576180973669615818}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ddaa89e4a6344d499ceee3d6bbbb07e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grabInput:
-    m_UseReference: 1
-    m_Action:
-      m_Name: Grab Input
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: 8af47631-9197-46c3-ab1e-03cf94da7a35
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: 6558622148059887818, guid: c348712bda248c246b8c49b3db54643f,
-      type: 3}
-  radius: 0.1
-  grabLayer:
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.12, y: 0.07, z: 0.17}
+  m_Center: {x: -0.035, y: 0.04, z: 0.01}
 --- !u!1001 &7789302877536561210
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2652,7 +2761,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5686134208185362930, guid: 1fd3a7c43c8190f4d8c167ebde694364,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 8331520426160570179}
+      addedObject: {fileID: 7625287117613531112}
   m_SourcePrefab: {fileID: 100100000, guid: 1fd3a7c43c8190f4d8c167ebde694364, type: 3}
 --- !u!1 &2517544477227958728 stripped
 GameObject:
@@ -2698,35 +2807,27 @@ MonoBehaviour:
       m_Flags: 0
     m_Reference: {fileID: -1758520528963094988, guid: c348712bda248c246b8c49b3db54643f,
       type: 3}
---- !u!114 &8331520426160570179
-MonoBehaviour:
+--- !u!65 &7625287117613531112
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2517544477227958728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ddaa89e4a6344d499ceee3d6bbbb07e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grabInput:
-    m_UseReference: 1
-    m_Action:
-      m_Name: Grab Input
-      m_Type: 0
-      m_ExpectedControlType: 
-      m_Id: 8af47631-9197-46c3-ab1e-03cf94da7a35
-      m_Processors: 
-      m_Interactions: 
-      m_SingletonActionBindings: []
-      m_Flags: 0
-    m_Reference: {fileID: -1758520528963094988, guid: c348712bda248c246b8c49b3db54643f,
-      type: 3}
-  radius: 0.1
-  grabLayer:
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.12, y: 0.07, z: 0.17}
+  m_Center: {x: 0.035, y: 0.04, z: -0.01}
 --- !u!4 &2517544477228064168 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5686134208185136530, guid: 1fd3a7c43c8190f4d8c167ebde694364,
