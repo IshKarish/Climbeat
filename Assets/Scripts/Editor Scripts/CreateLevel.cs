@@ -29,15 +29,12 @@ public class CreateLevel : MonoBehaviour
     
     Editor editor;
     
-    //private string presistentDataPath;
-    
     private IEnumerator enumerator;
 
     private void Awake()
     {
         editor = GetComponent<Editor>();
         audioSource = GetComponent<AudioSource>();
-        //presistentDataPath = Application.persistentDataPath;
     }
     
     private void Start()
@@ -47,7 +44,6 @@ public class CreateLevel : MonoBehaviour
     
     public void SwitchMenu(GameObject menu)
     {
-        //Transform canvas = GetComponentInParent<Canvas>().transform;
         for (int i = 0; i < canvas.childCount; i++)
         {
             GameObject currentChild = canvas.GetChild(i).gameObject;
