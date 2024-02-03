@@ -76,8 +76,7 @@ public class Editor : MonoBehaviour
             if (Input.GetMouseButton(0) && isMouseInBoundsY & isMouseInBoundsX && !isZooming)
             {
                 float newSongTime = MoveCursor(Input.mousePosition.y);
-                Debug.Log(audioSource.time);
-                JumpToSecond(newSongTime);
+                JumpToSecond(newSongTime, false);
             }
             else
             {

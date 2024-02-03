@@ -6,388 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="8d67143f-cd4f-4567-805e-7f081479c747" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Climbeat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Climbeat/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Roboto/Roboto-Black SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Roboto/Roboto-Black SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Roboto/Roboto-BlackItalic SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Roboto/Roboto-BlackItalic SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Roboto/Roboto-Bold SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Roboto/Roboto-Bold SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/Roboto/Roboto-BoldItalic SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/Roboto/Roboto-BoldItalic SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Fonts/iCiel Ultra SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Fonts/iCiel Ultra SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/IgniteCoders.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/IgniteCoders/Simple Water Shader.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/IgniteCoders/Simple Water Shader/Prefabs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/IgniteCoders/Simple Water Shader/Prefabs/WaterBlock_50m.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/IgniteCoders/Simple Water Shader/Prefabs/WaterBlock_50m.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/IgniteCoders/Simple Water Shader/Prefabs/WaterReflectionCamera.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/IgniteCoders/Simple Water Shader/Prefabs/WaterReflectionCamera.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/IgniteCoders/Simple Water Shader/Resources.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/IgniteCoders/Simple Water Shader/Resources/WaterBlock_50m.mesh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/IgniteCoders/Simple Water Shader/Resources/WaterBlock_50m.mesh.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/IgniteCoders/Simple Water Shader/Resources/WaterReflection.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/IgniteCoders/Simple Water Shader/Resources/WaterReflection.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/IgniteCoders/Simple Water Shader/Resources/WaterReflection.renderTexture" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/IgniteCoders/Simple Water Shader/Resources/WaterReflection.renderTexture.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/IgniteCoders/Simple Water Shader/Resources/WaterShader.shadergraph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/IgniteCoders/Simple Water Shader/Resources/WaterShader.shadergraph.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/IgniteCoders/Simple Water Shader/Resources/WaterSurface_atlas.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/IgniteCoders/Simple Water Shader/Resources/WaterSurface_atlas.tif.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/IgniteCoders/Simple Water Shader/Resources/WaterSurface_single.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/IgniteCoders/Simple Water Shader/Resources/WaterSurface_single.tif.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/IgniteCoders/Simple Water Shader/Resources/Water_mat_01.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/IgniteCoders/Simple Water Shader/Resources/Water_mat_01.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/IgniteCoders/Simple Water Shader/Resources/Water_mat_02.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/IgniteCoders/Simple Water Shader/Resources/Water_mat_02.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/IgniteCoders/Simple Water Shader/Resources/Water_mat_03.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/IgniteCoders/Simple Water Shader/Resources/Water_mat_03.mat.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Other/Settings/URP-Balanced.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/Settings/URP-Balanced.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Other/Settings/URP-HighFidelity.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/Settings/URP-HighFidelity.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Other/Settings/URP-Performant.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/Settings/URP-Performant.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Materials.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Materials/DarkSkybox.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Materials/DarkSkybox.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Materials/UnlitBlack.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Materials/UnlitBlack.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Materials/VertexLitDiffuseCircle.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Materials/VertexLitDiffuseCircle.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Materials/VertexLitDiffuseNoMask.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Materials/VertexLitDiffuseNoMask.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Materials/VertexLitDiffuseRoundedSquare.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Materials/VertexLitDiffuseRoundedSquare.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Materials/VertexUnlitDiffuseCircle.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Materials/VertexUnlitDiffuseCircle.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Materials/VertexUnlitDiffuseNoMask.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Materials/VertexUnlitDiffuseNoMask.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Materials/VertexUnlitDiffuseNoMaskAdditive.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Materials/VertexUnlitDiffuseNoMaskAdditive.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Materials/VertexUnlitGlowCircle.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Materials/VertexUnlitGlowCircle.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Materials/VertexUnlitGlowCircleAdditive.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Materials/VertexUnlitGlowCircleAdditive.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Materials/VertexUnlitGlowFadeMask.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Materials/VertexUnlitGlowFadeMask.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Materials/VertexUnlitGlowHollowCircle.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Materials/VertexUnlitGlowHollowCircle.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Materials/VertexUnlitGlowHollowCircleAdditive.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Materials/VertexUnlitGlowHollowCircleAdditive.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Materials/VertexUnlitGlowNoMask.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Materials/VertexUnlitGlowNoMask.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Materials/VertexUnlitGlowNoMaskAdditive.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Materials/VertexUnlitGlowNoMaskAdditive.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Materials/VertexUnlitGlowRoundedSquare.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Materials/VertexUnlitGlowRoundedSquare.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Materials/VertexUnlitSlightGlowFadedMaskAdditive.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Materials/VertexUnlitSlightGlowFadedMaskAdditive.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Mesh.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Mesh/Triangle.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Mesh/Triangle.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Mesh/WireIco.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Mesh/WireIco.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Mesh/icoBig.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Mesh/icoBig.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Atmosphere.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Atmosphere/Confetti Rain.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Atmosphere/Confetti Rain.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Atmosphere/Etherial Lines.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Atmosphere/Etherial Lines.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Atmosphere/FireFlies.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Atmosphere/FireFlies.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Atmosphere/Ground Embers.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Atmosphere/Ground Embers.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Atmosphere/Rain (Basic).prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Atmosphere/Rain (Basic).prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Atmosphere/Rain (Collision).prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Atmosphere/Rain (Collision).prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Atmosphere/Wind.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Atmosphere/Wind.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/Arcade Spark.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/Arcade Spark.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/BasicSpark 2.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/BasicSpark 2.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/BasicSpark 3.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/BasicSpark 3.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/BasicSpark 4 (Shower).prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/BasicSpark 4 (Shower).prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/BasicSpark.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/BasicSpark.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/BirthdayConfetti + Streamers.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/BirthdayConfetti + Streamers.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/BirthdayConfetti.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/BirthdayConfetti.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/BirthdaySpark.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/BirthdaySpark.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/ChargingPop.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/ChargingPop.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/CosmicReversal.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/CosmicReversal.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/EtherealHit 2.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/EtherealHit 2.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/EtherealHit.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/EtherealHit.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/Fireworks.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/Fireworks.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/Hollywood Spark Shower.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/Hollywood Spark Shower.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/Instability (loop).prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/Instability (loop).prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/MuzzleFlash TRIS.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/MuzzleFlash TRIS.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/MuzzleFlash.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/MuzzleFlash.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/ScifiTris 1.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/ScifiTris 1.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/ScifiTris 2.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/ScifiTris 2.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/ScifiTris 3 (collapse).prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/ScifiTris 3 (collapse).prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/SmokeyExplosion 2.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/SmokeyExplosion 2.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/SmokeyExplosion.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/SmokeyExplosion.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/Tris Spark 2.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/Tris Spark 2.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/Tris Spark.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Normal/Tris Spark.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Trails.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Trails/EtherialStreaksTrail.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Trails/EtherialStreaksTrail.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Trails/EtherialTrail.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Trails/EtherialTrail.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Trails/SmokeTrail 3d.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Trails/SmokeTrail 3d.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Trails/SmokeTrail.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Particles/Trails/SmokeTrail.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Scenes.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Scenes/DemoScene.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Scenes/DemoScene.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Settings.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Settings/PostProcessProfile.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Settings/PostProcessProfile.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Textures.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Textures/MediumCircleMask.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Textures/MediumCircleMask.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Textures/RoundedSquareMask.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Textures/RoundedSquareMask.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Textures/White Circle Mask.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Textures/White Circle Mask.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Textures/WhiteToNothing.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/Sherbbs Particle Collection/Textures/WhiteToNothing.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/long-wood-bridge.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/long-wood-bridge/source.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/long-wood-bridge/source/Long Wood Bridge.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/long-wood-bridge/source/Long Wood Bridge.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/long-wood-bridge/textures.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/long-wood-bridge/textures/BridgeWood.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/long-wood-bridge/textures/BridgeWood.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/long-wood-bridge/textures/BridgeWood_Normal.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/long-wood-bridge/textures/BridgeWood_Normal.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/long-wood-bridge/textures/BridgeWood_Specular.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Other/long-wood-bridge/textures/BridgeWood_Specular.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/VR Rig.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/VR Rig.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/.sample.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/AffordanceThemes.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/AffordanceThemes/InteractionColorAffordanceTheme.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/AffordanceThemes/InteractionColorAffordanceTheme.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Audio.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Audio/Button Pop.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Audio/Button Pop.wav.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/DemoScene.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/DemoScene.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Editor.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Editor/Scripts.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Editor/Scripts/StarterAssetsSampleProjectValidation.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Editor/Scripts/StarterAssetsSampleProjectValidation.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Editor/Unity.XR.Interaction.Toolkit.Samples.StarterAssets.Editor.asmdef" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Editor/Unity.XR.Interaction.Toolkit.Samples.StarterAssets.Editor.asmdef.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Models.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Models/Primitive_Cylinder.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Models/Primitive_Cylinder.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Models/Primitive_Pyramid.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Models/Primitive_Pyramid.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Models/Primitive_Torus.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Models/Primitive_Torus.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Models/Primitive_Wedge.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Models/Primitive_Wedge.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Models/PushButton.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Models/PushButton.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Models/XRControllerLeft.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Models/XRControllerLeft.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Models/XRControllerRight.fbx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Models/XRControllerRight.fbx.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Climb Sample.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Climb Sample.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Climb.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Climb/Climbing Wall.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Climb/Climbing Wall.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Climb/Ladder.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Climb/Ladder.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Controllers.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Controllers/XR Controller Left.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Controllers/XR Controller Left.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Controllers/XR Controller Right.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Controllers/XR Controller Right.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Interactables Sample.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Interactables Sample.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Interactables.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Interactables/Interactable Instant Pyramid.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Interactables/Interactable Instant Pyramid.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Interactables/Interactable Kinematic Torus.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Interactables/Interactable Kinematic Torus.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Interactables/Interactable Simple Cube.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Interactables/Interactable Simple Cube.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Interactables/Interactable Velocity Tracked Wedge.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Interactables/Interactable Velocity Tracked Wedge.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Interactables/Interaction Affordance.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Interactables/Interaction Affordance.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Interactors.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Interactors/Direct Interactor.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Interactors/Direct Interactor.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Interactors/Gaze Interactor.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Interactors/Gaze Interactor.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Interactors/Poke Interactor.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Interactors/Poke Interactor.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Interactors/Ray Interactor.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Interactors/Ray Interactor.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Interactors/Teleport Interactor.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Interactors/Teleport Interactor.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Teleport.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Teleport/Blocking Teleport Reticle.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Teleport/Blocking Teleport Reticle.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Teleport/Directional Teleport Reticle.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Teleport/Directional Teleport Reticle.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Teleport/Snapping Teleport Anchor.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Teleport/Snapping Teleport Anchor.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Teleport/Teleport Anchor.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Teleport/Teleport Anchor.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Teleport/Teleport Area.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Teleport/Teleport Area.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Teleportation Environment.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/Teleportation Environment.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/UI Sample.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/UI Sample.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/UI_2D.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/UI_2D/Dropdown.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/UI_2D/Dropdown.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/UI_2D/Interactive Controls.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/UI_2D/Interactive Controls.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/UI_2D/MinMaxSlider.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/UI_2D/MinMaxSlider.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/UI_2D/ModalSingleButton.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/UI_2D/ModalSingleButton.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/UI_2D/Scroll UI Sample.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/UI_2D/Scroll UI Sample.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/UI_2D/TextButton.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/UI_2D/TextButton.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/UI_3D.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/UI_3D/Push Button.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/UI_3D/Push Button.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/XR Interaction Setup.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/XR Interaction Setup.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/XR Origin (XR Rig).prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Prefabs/XR Origin (XR Rig).prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Scripts.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Scripts/ActionBasedControllerManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Scripts/ActionBasedControllerManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Scripts/DynamicMoveProvider.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Scripts/DynamicMoveProvider.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Scripts/GazeInputManager.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Scripts/GazeInputManager.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Scripts/PokeStation.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Scripts/PokeStation/IncrementUIText.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Scripts/PokeStation/IncrementUIText.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Scripts/XRPokeFollowAffordance.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Scripts/XRPokeFollowAffordance.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Unity.XR.Interaction.Toolkit.Samples.StarterAssets.asmdef" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/Unity.XR.Interaction.Toolkit.Samples.StarterAssets.asmdef.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/XRI Default Continuous Move.preset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/XRI Default Continuous Move.preset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/XRI Default Continuous Turn.preset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/XRI Default Continuous Turn.preset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/XRI Default Gaze Controller.preset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/XRI Default Gaze Controller.preset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/XRI Default Input Actions.inputactions" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/XRI Default Input Actions.inputactions.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/XRI Default Left ActionBasedControllerManager.preset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/XRI Default Left ActionBasedControllerManager.preset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/XRI Default Left Controller.preset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/XRI Default Left Controller.preset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/XRI Default Left Grab Move.preset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/XRI Default Left Grab Move.preset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/XRI Default Right ActionBasedControllerManager.preset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/XRI Default Right ActionBasedControllerManager.preset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/XRI Default Right Controller.preset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/XRI Default Right Controller.preset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/XRI Default Right Grab Move.preset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/XRI Default Right Grab Move.preset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/XRI Default Snap Turn.preset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/XRI Default Snap Turn.preset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/XRI Default XR UI Input Module.preset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/XR Interaction Toolkit/2.4.3/Starter Assets/XRI Default XR UI Input Module.preset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ClimbingWall.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ClimbingWall.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/LevelEditor.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/LevelEditor.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Menu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScoreVisuallizer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScoreVisuallizer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level Editor.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level Editor.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Editor Scripts/Editor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Editor Scripts/Editor.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/WallGenerator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/WallGenerator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/XR Rig Scripts/Grabber.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/XR Rig Scripts/Grabber.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/XR Rig Scripts/PhysicsRig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/XR Rig Scripts/PhysicsRig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleToon.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleToon/Material.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleToon/Material/LitTest.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleToon/Material/LitTest.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleToon/Material/New Material.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleToon/Material/New Material.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleToon/Material/Sphere1.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleToon/Material/Sphere1.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleToon/Material/Sphere2.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleToon/Material/Sphere2.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleToon/Material/Sphere3.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleToon/Material/Sphere3.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleToon/Material/Torus 1.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleToon/Material/Torus 1.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleToon/Material/Torus 2.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleToon/Material/Torus 2.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleToon/Material/Torus 3.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleToon/Material/Torus 3.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleToon/Material/Torus 4.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleToon/Material/Torus 4.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleToon/Shader.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleToon/Shader/ToonLightBase.shader" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleToon/Shader/ToonLightBase.shader.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleToon/Skybox.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleToon/Skybox/Day_BlueSky_Nothing Equirect.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleToon/Skybox/Day_BlueSky_Nothing Equirect.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleToon/Skybox/Sky_Day_BlueSky_Equirect.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleToon/Skybox/Sky_Day_BlueSky_Equirect.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleToon/Skybox/Sky_Day_BlueSky_Nothing_Cam_0_Front+Z.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleToon/Skybox/Sky_Day_BlueSky_Nothing_Cam_0_Front+Z.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleToon/Skybox/Sky_Day_BlueSky_Nothing_Cam_1_Back-Z.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleToon/Skybox/Sky_Day_BlueSky_Nothing_Cam_1_Back-Z.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleToon/Skybox/Sky_Day_BlueSky_Nothing_Cam_2_Left+X.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleToon/Skybox/Sky_Day_BlueSky_Nothing_Cam_2_Left+X.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleToon/Skybox/Sky_Day_BlueSky_Nothing_Cam_3_Right-X.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleToon/Skybox/Sky_Day_BlueSky_Nothing_Cam_3_Right-X.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleToon/Skybox/Sky_Day_BlueSky_Nothing_Cam_4_Up+Y.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleToon/Skybox/Sky_Day_BlueSky_Nothing_Cam_4_Up+Y.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleToon/Skybox/Sky_Day_BlueSky_Nothing_Cam_5_Down-Y.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SimpleToon/Skybox/Sky_Day_BlueSky_Nothing_Cam_5_Down-Y.png.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/XR/Settings/OpenXR Package Settings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/XR/Settings/OpenXR Package Settings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/XR/XRGeneralSettingsPerBuildTarget.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/XR/XRGeneralSettingsPerBuildTarget.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2022.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2022.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -415,28 +42,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\danie\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\DecompilerCache",
-      "C:\\Users\\danie\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\SourcesCache",
-      "C:\\Users\\danie\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\danie\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\danie\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\danie\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="$PROJECT_DIR$/Builds\Climbeat.exe" />
@@ -496,6 +123,8 @@
       <workItem from="1706739254168" duration="3593000" />
       <workItem from="1706868689354" duration="751000" />
       <workItem from="1706876237835" duration="10138000" />
+      <workItem from="1706890936314" duration="976000" />
+      <workItem from="1706968397148" duration="851000" />
     </task>
     <servers />
   </component>
