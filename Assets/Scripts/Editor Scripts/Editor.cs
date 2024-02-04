@@ -229,7 +229,7 @@ public class Editor : MonoBehaviour
         float newCursorYPos = FindCursorPos(second);
         MoveCursor(newCursorYPos);
         
-        JumpToSecond(second, false);
+        JumpToSecond(second);
         
         songTimeInput.text = null;
     }
@@ -239,7 +239,7 @@ public class Editor : MonoBehaviour
         float newCursorYPos = FindCursorPos(second);
         MoveCursor(newCursorYPos);
         
-        JumpToSecond(second, false);
+        JumpToSecond(second);
         
         AddSecond(false);
     }
@@ -322,9 +322,7 @@ public class Editor : MonoBehaviour
         FindMatchingVisuals(out Image climbPointImg, out Image secondImg);
         
         StartCoroutine(PaintMatchingVisuals(Color.red, climbPointImg, secondImg, 0));
-        
-        //JumpToSecond(float.Parse(secondImg.gameObject.name));
-        
+        JumpToSecond(float.Parse(secondImg.gameObject.name));
         StartCoroutine(PaintMatchingVisuals(Color.black, climbPointImg, secondImg, resetColorDelay));
     }
     
@@ -397,6 +395,11 @@ public class Editor : MonoBehaviour
             climbPointsPositions.Add(savesManager.positions[i]);
             SetSecondManually(savesManager.seconds[i]);
         }
+
+        
+        audioSource.Pause();
+        audioSource.time = 0;
+        audioSource.Play();
     }
 
     void SortSecondsAndPositions(float[] seconds, Vector2[] positions)
