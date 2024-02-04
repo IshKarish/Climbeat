@@ -6,8 +6,166 @@
   <component name="ChangeListManager">
     <list default="true" id="8d67143f-cd4f-4567-805e-7f081479c747" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Climbeat/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Climbeat/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Editor Scripts/CreateLevel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Editor Scripts/CreateLevel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EndMenu.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/EndMenu.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/Settings/URP-Balanced.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/Settings/URP-Balanced.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/Settings/URP-HighFidelity.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/Settings/URP-HighFidelity.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Other/Settings/URP-Performant.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Other/Settings/URP-Performant.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Editor Point.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Editor Point.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScoreTracker.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScoreTracker.cs.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Editor Scripts/Editor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Editor Scripts/Editor.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LettersScriptableObject.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LettersScriptableObject.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/.sample.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/AffordanceThemes.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/AffordanceThemes/InteractionColorAffordanceTheme.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/AffordanceThemes/InteractionColorAffordanceTheme.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Audio.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Audio/Button Pop.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Audio/Button Pop.wav.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/DemoScene.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/DemoScene.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Editor.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Editor/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Editor/Scripts/StarterAssetsSampleProjectValidation.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Editor/Scripts/StarterAssetsSampleProjectValidation.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Editor/Unity.XR.Interaction.Toolkit.Samples.StarterAssets.Editor.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Editor/Unity.XR.Interaction.Toolkit.Samples.StarterAssets.Editor.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Models.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Models/Primitive_Cylinder.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Models/Primitive_Cylinder.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Models/Primitive_Pyramid.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Models/Primitive_Pyramid.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Models/Primitive_Torus.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Models/Primitive_Torus.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Models/Primitive_Wedge.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Models/Primitive_Wedge.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Models/PushButton.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Models/PushButton.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Models/XRControllerLeft.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Models/XRControllerLeft.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Models/XRControllerRight.fbx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Models/XRControllerRight.fbx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Climb Sample.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Climb Sample.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Climb.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Climb/Climbing Wall.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Climb/Climbing Wall.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Climb/Ladder.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Climb/Ladder.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Controllers.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Controllers/XR Controller Left.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Controllers/XR Controller Left.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Controllers/XR Controller Right.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Controllers/XR Controller Right.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Interactables Sample.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Interactables Sample.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Interactables.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Interactables/Interactable Instant Pyramid.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Interactables/Interactable Instant Pyramid.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Interactables/Interactable Kinematic Torus.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Interactables/Interactable Kinematic Torus.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Interactables/Interactable Simple Cube.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Interactables/Interactable Simple Cube.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Interactables/Interactable Velocity Tracked Wedge.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Interactables/Interactable Velocity Tracked Wedge.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Interactables/Interaction Affordance.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Interactables/Interaction Affordance.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Interactors.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Interactors/Direct Interactor.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Interactors/Direct Interactor.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Interactors/Gaze Interactor.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Interactors/Gaze Interactor.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Interactors/Poke Interactor.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Interactors/Poke Interactor.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Interactors/Ray Interactor.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Interactors/Ray Interactor.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Interactors/Teleport Interactor.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Interactors/Teleport Interactor.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Teleport.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Teleport/Blocking Teleport Reticle.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Teleport/Blocking Teleport Reticle.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Teleport/Directional Teleport Reticle.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Teleport/Directional Teleport Reticle.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Teleport/Snapping Teleport Anchor.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Teleport/Snapping Teleport Anchor.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Teleport/Teleport Anchor.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Teleport/Teleport Anchor.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Teleport/Teleport Area.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Teleport/Teleport Area.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Teleportation Environment.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/Teleportation Environment.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/UI Sample.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/UI Sample.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/UI_2D.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/UI_2D/Dropdown.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/UI_2D/Dropdown.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/UI_2D/Interactive Controls.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/UI_2D/Interactive Controls.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/UI_2D/MinMaxSlider.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/UI_2D/MinMaxSlider.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/UI_2D/ModalSingleButton.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/UI_2D/ModalSingleButton.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/UI_2D/Scroll UI Sample.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/UI_2D/Scroll UI Sample.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/UI_2D/TextButton.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/UI_2D/TextButton.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/UI_3D.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/UI_3D/Push Button.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/UI_3D/Push Button.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/XR Interaction Setup.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/XR Interaction Setup.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/XR Origin (XR Rig).prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Prefabs/XR Origin (XR Rig).prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Scripts.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Scripts/ActionBasedControllerManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Scripts/ActionBasedControllerManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Scripts/DynamicMoveProvider.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Scripts/DynamicMoveProvider.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Scripts/GazeInputManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Scripts/GazeInputManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Scripts/PokeStation.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Scripts/PokeStation/IncrementUIText.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Scripts/PokeStation/IncrementUIText.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Scripts/XRPokeFollowAffordance.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Scripts/XRPokeFollowAffordance.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Unity.XR.Interaction.Toolkit.Samples.StarterAssets.asmdef" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/Unity.XR.Interaction.Toolkit.Samples.StarterAssets.asmdef.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/XRI Default Continuous Move.preset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/XRI Default Continuous Move.preset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/XRI Default Continuous Turn.preset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/XRI Default Continuous Turn.preset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/XRI Default Gaze Controller.preset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/XRI Default Gaze Controller.preset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/XRI Default Input Actions.inputactions" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/XRI Default Input Actions.inputactions.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/XRI Default Left ActionBasedControllerManager.preset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/XRI Default Left ActionBasedControllerManager.preset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/XRI Default Left Controller.preset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/XRI Default Left Controller.preset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/XRI Default Left Grab Move.preset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/XRI Default Left Grab Move.preset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/XRI Default Right ActionBasedControllerManager.preset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/XRI Default Right ActionBasedControllerManager.preset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/XRI Default Right Controller.preset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/XRI Default Right Controller.preset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/XRI Default Right Grab Move.preset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/XRI Default Right Grab Move.preset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/XRI Default Snap Turn.preset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/XRI Default Snap Turn.preset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/XRI Default XR UI Input Module.preset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Starter Assets/XRI Default XR UI Input Module.preset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Writer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Writer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/XR/Settings/OpenXR Package Settings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/XR/Settings/OpenXR Package Settings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ShaderGraphSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UserSettings/Layouts/default-2022.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/Layouts/default-2022.dwlt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +216,7 @@
 }</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/Builds/Editor\Climbeat.exe" />
+      <option name="EXE_PATH" value="$USER_HOME$/Desktop/Buildes/Editor\Climbeat.exe" />
       <option name="PROGRAM_PARAMETERS" value="" />
       <option name="WORKING_DIRECTORY" value="F:\Unity\Climbeat\Builds" />
       <option name="PASS_PARENT_ENVS" value="1" />
@@ -118,6 +276,8 @@
       <workItem from="1706890936314" duration="976000" />
       <workItem from="1706968397148" duration="851000" />
       <workItem from="1706976320285" duration="766000" />
+      <workItem from="1706995745563" duration="389000" />
+      <workItem from="1707052464955" duration="770000" />
     </task>
     <servers />
   </component>

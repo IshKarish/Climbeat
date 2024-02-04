@@ -76,7 +76,7 @@ public class Editor : MonoBehaviour
             if (Input.GetMouseButton(0) && isMouseInBoundsY & isMouseInBoundsX && !isZooming)
             {
                 float newSongTime = MoveCursor(Input.mousePosition.y);
-                JumpToSecond(newSongTime, false);
+                JumpToSecond(newSongTime);
             }
             else
             {
@@ -213,8 +213,9 @@ public class Editor : MonoBehaviour
     void JumpToSecond(float second, bool play = true)
     {
         audioSource.time = second;
-        audioSource.Play();
-        if(!play) audioSource.Pause();
+        
+        audioSource.Pause();
+        if (play) audioSource.Play();
     }
 
     public void SetSecondManually(TMP_InputField secondInput)
@@ -274,6 +275,8 @@ public class Editor : MonoBehaviour
         GameObject obj = Instantiate(pointPrefab);
         obj.transform.localPosition = newPos;
         obj.name = audioSource.time.ToString("0.0000");
+
+        obj.GetComponentInChildren<TextMeshProUGUI>().text = secondsLst.Count.ToString();
         
         if (wall) obj.transform.SetParent(wall);
 
@@ -287,7 +290,7 @@ public class Editor : MonoBehaviour
         void Call() {OnVisualBtnPress(5);}
 
         ButtonLongPressListener longPressListener = obj.AddComponent<ButtonLongPressListener>();
-        longPressListener.holdDuration = 3;
+        longPressListener.holdDuration = .5f;
         longPressListener.onLongPress = () => moveMod = true;
 
         ButtonDoubleClickListener doubleClickListener = obj.AddComponent<ButtonDoubleClickListener>();
@@ -316,18 +319,18 @@ public class Editor : MonoBehaviour
 
     void OnVisualBtnPress(float resetColorDelay)
     {
-        Debug.Log("Yay");
         FindMatchingVisuals(out Image climbPointImg, out Image secondImg);
         
         StartCoroutine(PaintMatchingVisuals(Color.red, climbPointImg, secondImg, 0));
+        
+        //JumpToSecond(float.Parse(secondImg.gameObject.name));
+        
         StartCoroutine(PaintMatchingVisuals(Color.black, climbPointImg, secondImg, resetColorDelay));
     }
     
     void OnVisualDoubleClick()
     {
-        Debug.Log("Yay");
         FindMatchingVisuals(out Image climbPointImg, out Image secondImg);
-        
         RemovePoints(climbPointImg, secondImg);
     }
 
@@ -390,6 +393,7 @@ public class Editor : MonoBehaviour
         
         for (int i = 0; i < savesManager.seconds.Length; i++)
         {
+            Debug.Log(savesManager.seconds[i]);
             climbPointsPositions.Add(savesManager.positions[i]);
             SetSecondManually(savesManager.seconds[i]);
         }
