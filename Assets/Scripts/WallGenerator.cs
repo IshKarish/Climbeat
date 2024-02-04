@@ -109,7 +109,7 @@ public class WallGenerator : MonoBehaviour
             climbPoints[i] = CreateClimbPoint(savesManager, i);
         }
         
-        transform.localScale = new Vector3(10, 5000, 1);
+        transform.localScale = new Vector3(10, 500, 1);
         
         foreach (GameObject point in climbPoints)
         {

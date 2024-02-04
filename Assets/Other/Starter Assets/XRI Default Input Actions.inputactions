@@ -2234,6 +2234,17 @@
                     "action": "Start Level",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "13ca4d49-04f8-4378-9f8f-18f1b54f707c",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Start Level",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

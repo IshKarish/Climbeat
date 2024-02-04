@@ -642,7 +642,7 @@ Transform:
   m_GameObject: {fileID: 1924409392}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2500, z: 0.5}
+  m_LocalPosition: {x: 0, y: 250, z: 0.5}
   m_LocalScale: {x: 200, y: 5000, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -760,11 +760,11 @@ MonoBehaviour:
   player: {fileID: 509309536}
   climbPoint: {fileID: 9042448353077352431, guid: 05779f344ada06649809fb181aacb744,
     type: 3}
-  climbPointSize: 0.4
+  climbPointSize: 0.3
   getReadyColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
   climbColor: {r: 1, g: 0, b: 0, a: 1}
   getReadyTime: 0.3
-  heightToAdd: 359
+  heightToAdd: -1885
   startInput:
     m_UseReference: 1
     m_Action:
